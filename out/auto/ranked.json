@@ -17,9 +17,11 @@
     "lng": 77.6245,
     "radius_km": 5.0
   },
-  "generated_at": "2026-11-26T15:39:51",
+  "generated_at": "2026-11-26T16:04:14",
   "meta": {
     "judge": "rubric",
+    "judge_requested": "rubric",
+    "judge_fallback": null,
     "booking": "simulation",
     "require_availability": false,
     "sources": [
