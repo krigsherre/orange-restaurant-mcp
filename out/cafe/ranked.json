@@ -5,6 +5,8 @@
     "party_size": 2,
     "budget_for_party_inr": 2000.0,
     "requested_date": "2026-11-27",
+    "requested_weekday": "Friday",
+    "is_weekend": false,
     "requested_time": "20:00",
     "requested_time_end": "22:00",
     "window": "8:00 PM–10:00 PM",
@@ -12,14 +14,15 @@
     "cuisines": [
       "Cafe"
     ],
-    "require_availability": false
+    "require_availability": false,
+    "spend_per_person_inr": null
   },
   "anchor": {
     "lat": 12.9352,
     "lng": 77.6245,
     "radius_km": 5.0
   },
-  "generated_at": "2026-11-26T16:04:13",
+  "generated_at": "2026-11-26T16:24:39",
   "meta": {
     "judge": "rubric",
     "judge_requested": "rubric",
@@ -61,39 +64,43 @@
   },
   "results": [
     {
-      "provider": "swiggy_dineout",
-      "provider_id": "sw_thirdwave",
-      "name": "Third Wave Coffee",
+      "provider": "district",
+      "provider_id": "dt_dyu",
+      "name": "Dyu Art Cafe",
       "cuisines": [
         "Cafe",
-        "Coffee",
-        "Desserts"
+        "Continental"
       ],
-      "locality": "Koramangala 6th Block",
-      "distance_km": 0.8,
+      "locality": "Koramangala 8th Block",
+      "distance_km": 1.1,
       "distance_source": "provider",
-      "cost_for_two": 900.0,
-      "per_person": 450.0,
+      "cost_for_two": 950.0,
+      "per_person": 475.0,
+      "bill_reference": 950.0,
       "rating": 4.4,
-      "rating_count": 7320,
-      "offer_score": 20.0,
-      "offer_count": 2,
+      "rating_count": 4210,
+      "cash_pct": 15.0,
+      "offer_score": 10.5,
+      "offer_count": 1,
       "best_offer": {
-        "title": "Buy 1 Get 1 on all coffees",
+        "title": "15% off up to ₹300",
         "source": "offers",
-        "type": "perk",
-        "value": 0.0,
-        "score": 20.0,
-        "effective_pct": 20.0,
-        "flags": [],
-        "rationale": "non-cash perk",
+        "type": "percent",
+        "value": 15.0,
+        "min_spend": null,
+        "score": 10.5,
+        "effective_pct": 15.0,
+        "flags": [
+          "capped-up-to"
+        ],
+        "rationale": "15% off = 15% of a ₹950 bill; 'up to' is a ceiling",
         "judged_by": "rubric"
       },
       "availability": {
-        "status": "no-slot-in-window",
-        "detail": "No slot between 8:00 PM–10:00 PM"
+        "status": "via-booking-link",
+        "detail": "Book via District link"
       },
-      "booking_url": "",
+      "booking_url": "https://www.district.in/bengaluru/dyu-art-cafe",
       "rank": 1
     },
     {
@@ -109,21 +116,24 @@
       "distance_source": "provider",
       "cost_for_two": 850.0,
       "per_person": 425.0,
+      "bill_reference": 850.0,
       "rating": 4.4,
       "rating_count": 7320,
-      "offer_score": 14.0,
+      "cash_pct": 0.0,
+      "offer_score": 0.0,
       "offer_count": 1,
       "best_offer": {
         "title": "20% off on all beverages",
         "source": "offers",
         "type": "percent",
         "value": 20.0,
-        "score": 14.0,
-        "effective_pct": 20.0,
+        "min_spend": null,
+        "score": 0.0,
+        "effective_pct": 0.0,
         "flags": [
-          "weekday-only"
+          "not-valid-at-requested-time"
         ],
-        "rationale": "20% off: weekdays only",
+        "rationale": "Not usable for this booking.: daytime-only window, invalid for dinner",
         "judged_by": "rubric"
       },
       "availability": {
@@ -134,40 +144,44 @@
       "rank": 2
     },
     {
-      "provider": "district",
-      "provider_id": "dt_dyu",
-      "name": "Dyu Art Cafe",
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_thirdwave",
+      "name": "Third Wave Coffee",
       "cuisines": [
         "Cafe",
-        "Continental"
+        "Coffee",
+        "Desserts"
       ],
-      "locality": "Koramangala 8th Block",
-      "distance_km": 1.1,
+      "locality": "Koramangala 6th Block",
+      "distance_km": 0.8,
       "distance_source": "provider",
-      "cost_for_two": 950.0,
-      "per_person": 475.0,
+      "cost_for_two": 900.0,
+      "per_person": 450.0,
+      "bill_reference": 900.0,
       "rating": 4.4,
-      "rating_count": 4210,
-      "offer_score": 10.5,
-      "offer_count": 1,
+      "rating_count": 7320,
+      "cash_pct": 0.0,
+      "offer_score": 0.0,
+      "offer_count": 2,
       "best_offer": {
-        "title": "15% off up to ₹300",
+        "title": "Buy 1 Get 1 on all coffees",
         "source": "offers",
-        "type": "percent",
-        "value": 15.0,
-        "score": 10.5,
-        "effective_pct": 15.0,
+        "type": "perk",
+        "value": 0.0,
+        "min_spend": null,
+        "score": 0.0,
+        "effective_pct": 0.0,
         "flags": [
-          "capped-up-to"
+          "not-valid-at-requested-time"
         ],
-        "rationale": "15% off: advertised as 'up to', so treat as a ceiling",
+        "rationale": "Not usable for this booking.: daytime-only window, invalid for dinner",
         "judged_by": "rubric"
       },
       "availability": {
-        "status": "via-booking-link",
-        "detail": "Book via District link"
+        "status": "no-slot-in-window",
+        "detail": "No slot between 8:00 PM–10:00 PM"
       },
-      "booking_url": "https://www.district.in/bengaluru/dyu-art-cafe",
+      "booking_url": "",
       "rank": 3
     },
     {
@@ -183,22 +197,24 @@
       "distance_source": "provider",
       "cost_for_two": 900.0,
       "per_person": 450.0,
+      "bill_reference": 900.0,
       "rating": 4.4,
       "rating_count": 4210,
-      "offer_score": 5.0,
+      "cash_pct": 0.0,
+      "offer_score": 0.0,
       "offer_count": 1,
       "best_offer": {
         "title": "Up to 30% off on total bill",
         "source": "offers",
         "type": "percent",
         "value": 30.0,
-        "score": 5.0,
-        "effective_pct": 30.0,
+        "min_spend": 2500.0,
+        "score": 0.0,
+        "effective_pct": 0.0,
         "flags": [
-          "capped-up-to",
           "min-spend-above-party-budget"
         ],
-        "rationale": "30% off: advertised as 'up to', so treat as a ceiling; needs ₹2,500 spend vs ₹2,000 party budget",
+        "rationale": "Needs ₹2,500 spend, above the ₹2,000 party budget; unlocks at ₹2,500.",
         "judged_by": "rubric"
       },
       "availability": {

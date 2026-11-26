@@ -5,6 +5,8 @@
     "party_size": 2,
     "budget_for_party_inr": 2000.0,
     "requested_date": "2026-11-27",
+    "requested_weekday": "Friday",
+    "is_weekend": false,
     "requested_time": "20:00",
     "requested_time_end": "22:00",
     "window": "8:00 PM–10:00 PM",
@@ -13,14 +15,15 @@
       "North Indian",
       "Chinese"
     ],
-    "require_availability": false
+    "require_availability": false,
+    "spend_per_person_inr": null
   },
   "anchor": {
     "lat": 12.9352,
     "lng": 77.6245,
     "radius_km": 5.0
   },
-  "generated_at": "2026-11-26T16:04:13",
+  "generated_at": "2026-11-26T16:24:39",
   "meta": {
     "judge": "rubric",
     "judge_requested": "rubric",
@@ -75,21 +78,24 @@
       "distance_source": "provider",
       "cost_for_two": 1200.0,
       "per_person": 600.0,
+      "bill_reference": 1200.0,
       "rating": 4.0,
       "rating_count": 3120,
-      "offer_score": 35.0,
+      "cash_pct": 25.0,
+      "offer_score": 10.0,
       "offer_count": 1,
       "best_offer": {
         "title": "Flat ₹300 off on total bill",
         "source": "offers",
         "type": "flat",
         "value": 300.0,
-        "score": 35.0,
-        "effective_pct": 50.0,
+        "min_spend": null,
+        "score": 10.0,
+        "effective_pct": 25.0,
         "flags": [
           "card-required"
         ],
-        "rationale": "₹300 off: needs a specific bank card",
+        "rationale": "₹300 off = 25% of a ₹1,200 bill; needs a specific card",
         "judged_by": "rubric"
       },
       "availability": {
@@ -98,164 +104,6 @@
       },
       "booking_url": "",
       "rank": 1
-    },
-    {
-      "provider": "swiggy_dineout",
-      "provider_id": "sw_meghana",
-      "name": "Meghana Foods",
-      "cuisines": [
-        "Biryani",
-        "Andhra",
-        "North Indian"
-      ],
-      "locality": "Koramangala 5th Block",
-      "distance_km": 0.9,
-      "distance_source": "provider",
-      "cost_for_two": 1400.0,
-      "per_person": 700.0,
-      "rating": 4.5,
-      "rating_count": 26110,
-      "offer_score": 28.6,
-      "offer_count": 2,
-      "best_offer": {
-        "title": "Flat ₹200 off on bills above ₹1,200",
-        "source": "offers",
-        "type": "flat",
-        "value": 200.0,
-        "score": 28.6,
-        "effective_pct": 28.6,
-        "flags": [
-          "one-per-table"
-        ],
-        "rationale": "₹200 off",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "available",
-        "detail": "8:00 PM–9:30 PM · Dinner · 4 covers left",
-        "slot": {
-          "date": "2026-11-27",
-          "display_time": "8:00 PM",
-          "group": "Dinner",
-          "is_free": true,
-          "booking_price": 0.0,
-          "inventory": 4,
-          "slot_id": "4001",
-          "item_id": "sw_meghana-ticket_5001",
-          "reservation_time": 1795789800,
-          "duration_min": 90,
-          "window": "8:00 PM–9:30 PM"
-        }
-      },
-      "booking_url": "",
-      "rank": 2
-    },
-    {
-      "provider": "district",
-      "provider_id": "dt_biryaniblues",
-      "name": "Biryani Blues",
-      "cuisines": [
-        "Biryani",
-        "North Indian"
-      ],
-      "locality": "HSR Layout",
-      "distance_km": 3.6,
-      "distance_source": "provider",
-      "cost_for_two": 1100.0,
-      "per_person": 550.0,
-      "rating": 4.1,
-      "rating_count": 5210,
-      "offer_score": 27.3,
-      "offer_count": 1,
-      "best_offer": {
-        "title": "Flat ₹150 off",
-        "source": "offers",
-        "type": "flat",
-        "value": 150.0,
-        "score": 27.3,
-        "effective_pct": 27.3,
-        "flags": [],
-        "rationale": "₹150 off",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "via-booking-link",
-        "detail": "Book via District link"
-      },
-      "booking_url": "https://www.district.in/bengaluru/biryani-blues-hsr",
-      "rank": 3
-    },
-    {
-      "provider": "district",
-      "provider_id": "dt_gillys",
-      "name": "Gilly's Restobar",
-      "cuisines": [
-        "Restobar",
-        "North Indian"
-      ],
-      "locality": "Koramangala 6th Block",
-      "distance_km": 1.764,
-      "distance_source": "haversine",
-      "cost_for_two": 1650.0,
-      "per_person": 825.0,
-      "rating": 4.2,
-      "rating_count": 6710,
-      "offer_score": 12.0,
-      "offer_count": 1,
-      "best_offer": {
-        "title": "Flat 12% off on food",
-        "source": "offers",
-        "type": "percent",
-        "value": 12.0,
-        "score": 12.0,
-        "effective_pct": 12.0,
-        "flags": [
-          "one-per-table"
-        ],
-        "rationale": "12% off",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "via-booking-link",
-        "detail": "Book via District link"
-      },
-      "booking_url": "https://www.district.in/bengaluru/gillys-restobar-koramangala",
-      "rank": 4
-    },
-    {
-      "provider": "swiggy_dineout",
-      "provider_id": "sw_spice",
-      "name": "Spice Elephant",
-      "cuisines": [
-        "North Indian",
-        "Mughlai"
-      ],
-      "locality": "Koramangala 7th Block",
-      "distance_km": 1.9,
-      "distance_source": "provider",
-      "cost_for_two": 1800.0,
-      "per_person": 900.0,
-      "rating": 4.0,
-      "rating_count": 2210,
-      "offer_score": 12.0,
-      "offer_count": 1,
-      "best_offer": {
-        "title": "Complimentary dessert platter",
-        "source": "offers",
-        "type": "perk",
-        "value": 0.0,
-        "score": 12.0,
-        "effective_pct": 12.0,
-        "flags": [],
-        "rationale": "non-cash perk",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "unknown",
-        "detail": "No slot data returned"
-      },
-      "booking_url": "",
-      "rank": 5
     },
     {
       "provider": "swiggy_dineout",
@@ -270,8 +118,10 @@
       "distance_source": "provider",
       "cost_for_two": 1300.0,
       "per_person": 650.0,
+      "bill_reference": 1300.0,
       "rating": 4.2,
       "rating_count": 5410,
+      "cash_pct": 20.0,
       "offer_score": 11.0,
       "offer_count": 1,
       "best_offer": {
@@ -279,13 +129,14 @@
         "source": "offers",
         "type": "percent",
         "value": 20.0,
+        "min_spend": null,
         "score": 11.0,
         "effective_pct": 20.0,
         "flags": [
           "capped-up-to",
           "non-stackable"
         ],
-        "rationale": "20% off: advertised as 'up to', so treat as a ceiling",
+        "rationale": "20% off = 20% of a ₹1,300 bill; 'up to' is a ceiling",
         "judged_by": "rubric"
       },
       "availability": {
@@ -306,6 +157,176 @@
         }
       },
       "booking_url": "",
+      "rank": 2
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_meghana",
+      "name": "Meghana Foods",
+      "cuisines": [
+        "Biryani",
+        "Andhra",
+        "North Indian"
+      ],
+      "locality": "Koramangala 5th Block",
+      "distance_km": 0.9,
+      "distance_source": "provider",
+      "cost_for_two": 1400.0,
+      "per_person": 700.0,
+      "bill_reference": 1400.0,
+      "rating": 4.5,
+      "rating_count": 26110,
+      "cash_pct": 14.3,
+      "offer_score": 14.3,
+      "offer_count": 2,
+      "best_offer": {
+        "title": "Flat ₹200 off on bills above ₹1,200",
+        "source": "offers",
+        "type": "flat",
+        "value": 200.0,
+        "min_spend": 1200.0,
+        "score": 14.3,
+        "effective_pct": 14.3,
+        "flags": [
+          "one-per-table"
+        ],
+        "rationale": "₹200 off = 14.3% of a ₹1,400 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "available",
+        "detail": "8:00 PM–9:30 PM · Dinner · 4 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "8:00 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 4,
+          "slot_id": "4001",
+          "item_id": "sw_meghana-ticket_5001",
+          "reservation_time": 1795789800,
+          "duration_min": 90,
+          "window": "8:00 PM–9:30 PM"
+        }
+      },
+      "booking_url": "",
+      "rank": 3
+    },
+    {
+      "provider": "district",
+      "provider_id": "dt_biryaniblues",
+      "name": "Biryani Blues",
+      "cuisines": [
+        "Biryani",
+        "North Indian"
+      ],
+      "locality": "HSR Layout",
+      "distance_km": 3.6,
+      "distance_source": "provider",
+      "cost_for_two": 1100.0,
+      "per_person": 550.0,
+      "bill_reference": 1100.0,
+      "rating": 4.1,
+      "rating_count": 5210,
+      "cash_pct": 13.6,
+      "offer_score": 13.6,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Flat ₹150 off",
+        "source": "offers",
+        "type": "flat",
+        "value": 150.0,
+        "min_spend": 1000.0,
+        "score": 13.6,
+        "effective_pct": 13.6,
+        "flags": [],
+        "rationale": "₹150 off = 13.6% of a ₹1,100 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "via-booking-link",
+        "detail": "Book via District link"
+      },
+      "booking_url": "https://www.district.in/bengaluru/biryani-blues-hsr",
+      "rank": 4
+    },
+    {
+      "provider": "district",
+      "provider_id": "dt_gillys",
+      "name": "Gilly's Restobar",
+      "cuisines": [
+        "Restobar",
+        "North Indian"
+      ],
+      "locality": "Koramangala 6th Block",
+      "distance_km": 1.764,
+      "distance_source": "haversine",
+      "cost_for_two": 1650.0,
+      "per_person": 825.0,
+      "bill_reference": 1650.0,
+      "rating": 4.2,
+      "rating_count": 6710,
+      "cash_pct": 12.0,
+      "offer_score": 12.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Flat 12% off on food",
+        "source": "offers",
+        "type": "percent",
+        "value": 12.0,
+        "min_spend": null,
+        "score": 12.0,
+        "effective_pct": 12.0,
+        "flags": [
+          "one-per-table"
+        ],
+        "rationale": "12% off = 12% of a ₹1,650 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "via-booking-link",
+        "detail": "Book via District link"
+      },
+      "booking_url": "https://www.district.in/bengaluru/gillys-restobar-koramangala",
+      "rank": 5
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_spice",
+      "name": "Spice Elephant",
+      "cuisines": [
+        "North Indian",
+        "Mughlai"
+      ],
+      "locality": "Koramangala 7th Block",
+      "distance_km": 1.9,
+      "distance_source": "provider",
+      "cost_for_two": 1800.0,
+      "per_person": 900.0,
+      "bill_reference": 1800.0,
+      "rating": 4.0,
+      "rating_count": 2210,
+      "cash_pct": 12.0,
+      "offer_score": 12.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Complimentary dessert platter",
+        "source": "offers",
+        "type": "perk",
+        "value": 0.0,
+        "min_spend": 1800.0,
+        "score": 12.0,
+        "effective_pct": 12.0,
+        "flags": [],
+        "rationale": "non-cash perk = 12% of a ₹1,800 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "unknown",
+        "detail": "No slot data returned"
+      },
+      "booking_url": "",
       "rank": 6
     },
     {
@@ -322,22 +343,24 @@
       "distance_source": "provider",
       "cost_for_two": 1700.0,
       "per_person": 850.0,
+      "bill_reference": 1700.0,
       "rating": 4.2,
       "rating_count": 6710,
-      "offer_score": 4.0,
+      "cash_pct": 10.0,
+      "offer_score": 10.0,
       "offer_count": 1,
       "best_offer": {
         "title": "Flat 10% off on food",
         "source": "offers",
         "type": "percent",
         "value": 10.0,
-        "score": 4.0,
+        "min_spend": null,
+        "score": 10.0,
         "effective_pct": 10.0,
         "flags": [
-          "one-per-table",
-          "weekday-only"
+          "one-per-table"
         ],
-        "rationale": "10% off: weekdays only",
+        "rationale": "10% off = 10% of a ₹1,700 bill",
         "judged_by": "rubric"
       },
       "availability": {
@@ -361,8 +384,10 @@
       "distance_source": "provider",
       "cost_for_two": 1000.0,
       "per_person": 500.0,
+      "bill_reference": 1000.0,
       "rating": 4.1,
       "rating_count": 9840,
+      "cash_pct": 0.0,
       "offer_score": 0.0,
       "offer_count": 0,
       "best_offer": null,

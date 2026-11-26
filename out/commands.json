@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T16:04:14",
+  "generated_at": "2026-11-26T16:24:39",
   "cwd": "/Users/abdulbaasit/Documents/Orange Restaurants",
   "python": "3.14.3",
   "entrypoint": "./run.py",
@@ -18,8 +18,8 @@
       ],
       "out_dir": "out",
       "exit_code": 0,
-      "duration_ms": 85,
-      "stdout": "Discovered 30 · after filters 26 · ranked 26 · bookable 6\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹1,000/person\n\n #  Restaurant                 Provider         Offer                              Score    ₹/p  Dist  Slot                \n---------------------------------------------------------------------------------------------------------------------------\n 1  Beijing Bites              swiggy_dineout   Flat ₹300 off on total bill           35    600   1.1  —                   \n 2  Meghana Foods              district         Flat ₹250 off                         30    750   0.7  —                   \n 3  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above ₹1,2     29    700   0.9  8:00 PM–9:30 PM     \n 4  Biryani Blues              district         Flat ₹150 off                         27    550   3.6  —                   \n 5  Third Wave Coffee          swiggy_dineout   Buy 1 Get 1 on all coffees            20    450   0.8  —                   \n 6  Greenland Veg              swiggy_dineout   Flat ₹100 off on bills above ₹800     17    350   2.0  —                   \n 7  Third Wave Coffee          district         20% off on all beverages              14    425   0.6  —                   \n 8  Toit                       swiggy_dineout   Free dessert on bills above ₹1,50     12  1,000   1.1  8:00 PM–9:30 PM     \n 9  Gilly's Restobar           district         Flat 12% off on food                  12    825   1.8  —                   \n10  Spice Elephant             swiggy_dineout   Complimentary dessert platter         12    900   1.9  —                   \n11  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400                    11    650   1.2  8:00 PM–9:30 PM     \n12  Dyu Art Cafe               district         15% off up to ₹300                    10    475   1.1  —                   \n13  Corner House Ice Cream     swiggy_dineout   Free extra topping on every sunda     10    300   0.5  —                   \n14  Onesta                     district         Free garlic bread                     10    450   1.3  —                   \n15  Fenny's Lounge             swiggy_dineout   Happy hours: 1+1 on all drinks        10    800   1.4  —                   \n16  Onesta                     swiggy_dineout   1+1 on all pizzas                     10    500   1.5  8:30 PM–10:00 PM    \n17  Brahmins Coffee Bar        swiggy_dineout   10% off on breakfast                   5    200   1.0  —                   \n18  Dyu Art Cafe               swiggy_dineout   Up to 30% off on total bill            5    450   1.3  —                   \n19  Truffles                   swiggy_dineout   Flat 15% off on total bill             5    400   2.1  8:15 PM–9:45 PM     \n20  Nandhana Palace            swiggy_dineout   Flat 25% off on total bill             5    750   2.2  —                   \n21  Udupi Garden               district         10% off on total bill                  5    250   2.9  —                   \n22  Fenny's Lounge             district         Buy 1 Get 1 on cocktails               4    850   1.2  —                   \n23  Gilly's Restobar           swiggy_dineout   Flat 10% off on food                   4    850   2.3  —                   \n24  Toit                       district         Flat 15% off + free dessert            2  1,000   1.0  —                   \n25  Empire Restaurant          swiggy_dineout   —                                      0    500   1.6  8:00 PM–9:30 PM     \n\nWrote out/ranked.{md,csv,json}",
+      "duration_ms": 133,
+      "stdout": "Discovered 30 · after filters 26 · ranked 26 · bookable 6\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹1,000/person\n\n #  Restaurant                 Provider         Offer                           Cash% Score    ₹/p  Dist  Slot                \n------------------------------------------------------------------------------------------------------------------------------\n 1  Beijing Bites              swiggy_dineout   Flat ₹300 off on total bill      25.0    10    600   1.1  —                   \n 2  Fenny's Lounge             district         Buy 1 Get 1 on cocktails         20.0    20    850   1.2  —                   \n 3  Fenny's Lounge             swiggy_dineout   Happy hours: 1+1 on all drink    20.0    20    800   1.4  —                   \n 4  Onesta                     swiggy_dineout   1+1 on all pizzas                20.0    20    500   1.5  8:30 PM–10:00 PM    \n 5  Toit                       swiggy_dineout   Flat 20% off on total bill       20.0    17  1,000   1.1  8:00 PM–9:30 PM     \n 6  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400               20.0    11    650   1.2  8:00 PM–9:30 PM     \n 7  Meghana Foods              district         Flat ₹250 off                    16.7    14    750   0.7  —                   \n 8  Truffles                   swiggy_dineout   Flat 15% off on total bill       15.0    15    400   2.1  8:15 PM–9:45 PM     \n 9  Toit                       district         Flat 15% off + free dessert      15.0    12  1,000   1.0  —                   \n10  Dyu Art Cafe               district         15% off up to ₹300               15.0    10    475   1.1  —                   \n11  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above     14.3    14    700   0.9  8:00 PM–9:30 PM     \n12  Biryani Blues              district         Flat ₹150 off                    13.6    14    550   3.6  —                   \n13  Greenland Veg              swiggy_dineout   Flat ₹100 off on bills above     12.5    12    350   2.0  —                   \n14  Gilly's Restobar           district         Flat 12% off on food             12.0    12    825   1.8  —                   \n15  Spice Elephant             swiggy_dineout   Complimentary dessert platter    12.0    12    900   1.9  —                   \n16  Corner House Ice Cream     swiggy_dineout   Free extra topping on every s    10.0    10    300   0.5  —                   \n17  Onesta                     district         Free garlic bread                10.0    10    450   1.3  —                   \n18  Gilly's Restobar           swiggy_dineout   Flat 10% off on food             10.0    10    850   2.3  —                   \n19  Third Wave Coffee          district         20% off on all beverages          0.0     0    425   0.6  —                   \n20  Third Wave Coffee          swiggy_dineout   Buy 1 Get 1 on all coffees        0.0     0    450   0.8  —                   \n21  Brahmins Coffee Bar        swiggy_dineout   10% off on breakfast              0.0     0    200   1.0  —                   \n22  Dyu Art Cafe               swiggy_dineout   Up to 30% off on total bill       0.0     0    450   1.3  —                   \n23  Empire Restaurant          swiggy_dineout   —                                 0.0     0    500   1.6  8:00 PM–9:30 PM     \n24  Nandhana Palace            swiggy_dineout   Flat 25% off on total bill        0.0     0    750   2.2  —                   \n25  Udupi Garden               district         10% off on total bill             0.0     0    250   2.9  —                   \n\nWrote out/ranked.{md,csv,json}",
       "stderr": "",
       "result": {
         "counts": {
@@ -32,12 +32,15 @@
           "party_size": 2,
           "budget_for_party_inr": 2000.0,
           "requested_date": "2026-11-27",
+          "requested_weekday": "Friday",
+          "is_weekend": false,
           "requested_time": "20:00",
           "requested_time_end": "22:00",
           "window": "8:00 PM–10:00 PM",
           "meal": "dinner",
           "cuisines": [],
-          "require_availability": false
+          "require_availability": false,
+          "spend_per_person_inr": null
         },
         "bookable": 6,
         "top": [
@@ -45,46 +48,46 @@
             "rank": 1,
             "name": "Beijing Bites",
             "provider": "swiggy_dineout",
-            "offer_score": 35.0,
+            "offer_score": 10.0,
             "per_person": 600.0,
             "distance_km": 1.1,
             "slot": null
           },
           {
             "rank": 2,
-            "name": "Meghana Foods",
+            "name": "Fenny's Lounge",
             "provider": "district",
-            "offer_score": 30.3,
-            "per_person": 750.0,
-            "distance_km": 0.7,
+            "offer_score": 20.0,
+            "per_person": 850.0,
+            "distance_km": 1.2,
             "slot": null
           },
           {
             "rank": 3,
-            "name": "Meghana Foods",
+            "name": "Fenny's Lounge",
             "provider": "swiggy_dineout",
-            "offer_score": 28.6,
-            "per_person": 700.0,
-            "distance_km": 0.9,
-            "slot": "8:00 PM–9:30 PM"
+            "offer_score": 20.0,
+            "per_person": 800.0,
+            "distance_km": 1.4,
+            "slot": null
           },
           {
             "rank": 4,
-            "name": "Biryani Blues",
-            "provider": "district",
-            "offer_score": 27.3,
-            "per_person": 550.0,
-            "distance_km": 3.6,
-            "slot": null
+            "name": "Onesta",
+            "provider": "swiggy_dineout",
+            "offer_score": 20.0,
+            "per_person": 500.0,
+            "distance_km": 1.5,
+            "slot": "8:30 PM–10:00 PM"
           },
           {
             "rank": 5,
-            "name": "Third Wave Coffee",
+            "name": "Toit",
             "provider": "swiggy_dineout",
-            "offer_score": 20.0,
-            "per_person": 450.0,
-            "distance_km": 0.8,
-            "slot": null
+            "offer_score": 17.0,
+            "per_person": 1000.0,
+            "distance_km": 1.1,
+            "slot": "8:00 PM–9:30 PM"
           }
         ]
       },
@@ -105,8 +108,8 @@
       ],
       "out_dir": "out/available",
       "exit_code": 0,
-      "duration_ms": 82,
-      "stdout": "Discovered 30 · after filters 6 · ranked 6 · bookable 6\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹1,000/person\n\n #  Restaurant                 Provider         Offer                              Score    ₹/p  Dist  Slot                \n---------------------------------------------------------------------------------------------------------------------------\n 1  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above ₹1,2     29    700   0.9  8:00 PM–9:30 PM     \n 2  Toit                       swiggy_dineout   Free dessert on bills above ₹1,50     12  1,000   1.1  8:00 PM–9:30 PM     \n 3  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400                    11    650   1.2  8:00 PM–9:30 PM     \n 4  Onesta                     swiggy_dineout   1+1 on all pizzas                     10    500   1.5  8:30 PM–10:00 PM    \n 5  Truffles                   swiggy_dineout   Flat 15% off on total bill             5    400   2.1  8:15 PM–9:45 PM     \n 6  Empire Restaurant          swiggy_dineout   —                                      0    500   1.6  8:00 PM–9:30 PM     \n\nWrote out/available/ranked.{md,csv,json}",
+      "duration_ms": 101,
+      "stdout": "Discovered 30 · after filters 6 · ranked 6 · bookable 6\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹1,000/person\n\n #  Restaurant                 Provider         Offer                           Cash% Score    ₹/p  Dist  Slot                \n------------------------------------------------------------------------------------------------------------------------------\n 1  Onesta                     swiggy_dineout   1+1 on all pizzas                20.0    20    500   1.5  8:30 PM–10:00 PM    \n 2  Toit                       swiggy_dineout   Flat 20% off on total bill       20.0    17  1,000   1.1  8:00 PM–9:30 PM     \n 3  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400               20.0    11    650   1.2  8:00 PM–9:30 PM     \n 4  Truffles                   swiggy_dineout   Flat 15% off on total bill       15.0    15    400   2.1  8:15 PM–9:45 PM     \n 5  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above     14.3    14    700   0.9  8:00 PM–9:30 PM     \n 6  Empire Restaurant          swiggy_dineout   —                                 0.0     0    500   1.6  8:00 PM–9:30 PM     \n\nWrote out/available/ranked.{md,csv,json}",
       "stderr": "",
       "result": {
         "counts": {
@@ -119,29 +122,32 @@
           "party_size": 2,
           "budget_for_party_inr": 2000.0,
           "requested_date": "2026-11-27",
+          "requested_weekday": "Friday",
+          "is_weekend": false,
           "requested_time": "20:00",
           "requested_time_end": "22:00",
           "window": "8:00 PM–10:00 PM",
           "meal": "dinner",
           "cuisines": [],
-          "require_availability": true
+          "require_availability": true,
+          "spend_per_person_inr": null
         },
         "bookable": 6,
         "top": [
           {
             "rank": 1,
-            "name": "Meghana Foods",
+            "name": "Onesta",
             "provider": "swiggy_dineout",
-            "offer_score": 28.6,
-            "per_person": 700.0,
-            "distance_km": 0.9,
-            "slot": "8:00 PM–9:30 PM"
+            "offer_score": 20.0,
+            "per_person": 500.0,
+            "distance_km": 1.5,
+            "slot": "8:30 PM–10:00 PM"
           },
           {
             "rank": 2,
             "name": "Toit",
             "provider": "swiggy_dineout",
-            "offer_score": 12.0,
+            "offer_score": 17.0,
             "per_person": 1000.0,
             "distance_km": 1.1,
             "slot": "8:00 PM–9:30 PM"
@@ -157,21 +163,21 @@
           },
           {
             "rank": 4,
-            "name": "Onesta",
-            "provider": "swiggy_dineout",
-            "offer_score": 10.0,
-            "per_person": 500.0,
-            "distance_km": 1.5,
-            "slot": "8:30 PM–10:00 PM"
-          },
-          {
-            "rank": 5,
             "name": "Truffles",
             "provider": "swiggy_dineout",
-            "offer_score": 5.0,
+            "offer_score": 15.0,
             "per_person": 400.0,
             "distance_km": 2.1,
             "slot": "8:15 PM–9:45 PM"
+          },
+          {
+            "rank": 5,
+            "name": "Meghana Foods",
+            "provider": "swiggy_dineout",
+            "offer_score": 14.3,
+            "per_person": 700.0,
+            "distance_km": 0.9,
+            "slot": "8:00 PM–9:30 PM"
           }
         ]
       },
@@ -196,8 +202,8 @@
       ],
       "out_dir": "out/window-1930-2100",
       "exit_code": 0,
-      "duration_ms": 80,
-      "stdout": "Discovered 30 · after filters 6 · ranked 6 · bookable 6\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 7:30 PM–9:00 PM · party 2 · ≤₹1,000/person\n\n #  Restaurant                 Provider         Offer                              Score    ₹/p  Dist  Slot                \n---------------------------------------------------------------------------------------------------------------------------\n 1  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above ₹1,2     29    700   0.9  7:30 PM–9:00 PM     \n 2  Toit                       swiggy_dineout   Free dessert on bills above ₹1,50     12  1,000   1.1  8:00 PM–9:30 PM     \n 3  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400                    11    650   1.2  8:00 PM–9:30 PM     \n 4  Onesta                     swiggy_dineout   1+1 on all pizzas                     10    500   1.5  8:30 PM–10:00 PM    \n 5  Truffles                   swiggy_dineout   Flat 15% off on total bill             5    400   2.1  8:15 PM–9:45 PM     \n 6  Empire Restaurant          swiggy_dineout   —                                      0    500   1.6  8:00 PM–9:30 PM     \n\nWrote out/window-1930-2100/ranked.{md,csv,json}",
+      "duration_ms": 90,
+      "stdout": "Discovered 30 · after filters 6 · ranked 6 · bookable 6\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 7:30 PM–9:00 PM · party 2 · ≤₹1,000/person\n\n #  Restaurant                 Provider         Offer                           Cash% Score    ₹/p  Dist  Slot                \n------------------------------------------------------------------------------------------------------------------------------\n 1  Onesta                     swiggy_dineout   1+1 on all pizzas                20.0    20    500   1.5  8:30 PM–10:00 PM    \n 2  Toit                       swiggy_dineout   Flat 20% off on total bill       20.0    17  1,000   1.1  8:00 PM–9:30 PM     \n 3  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400               20.0    11    650   1.2  8:00 PM–9:30 PM     \n 4  Truffles                   swiggy_dineout   Flat 15% off on total bill       15.0    15    400   2.1  8:15 PM–9:45 PM     \n 5  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above     14.3    14    700   0.9  7:30 PM–9:00 PM     \n 6  Empire Restaurant          swiggy_dineout   —                                 0.0     0    500   1.6  8:00 PM–9:30 PM     \n\nWrote out/window-1930-2100/ranked.{md,csv,json}",
       "stderr": "",
       "result": {
         "counts": {
@@ -210,29 +216,32 @@
           "party_size": 2,
           "budget_for_party_inr": 2000.0,
           "requested_date": "2026-11-27",
+          "requested_weekday": "Friday",
+          "is_weekend": false,
           "requested_time": "19:30",
           "requested_time_end": "21:00",
           "window": "7:30 PM–9:00 PM",
           "meal": "dinner",
           "cuisines": [],
-          "require_availability": true
+          "require_availability": true,
+          "spend_per_person_inr": null
         },
         "bookable": 6,
         "top": [
           {
             "rank": 1,
-            "name": "Meghana Foods",
+            "name": "Onesta",
             "provider": "swiggy_dineout",
-            "offer_score": 28.6,
-            "per_person": 700.0,
-            "distance_km": 0.9,
-            "slot": "7:30 PM–9:00 PM"
+            "offer_score": 20.0,
+            "per_person": 500.0,
+            "distance_km": 1.5,
+            "slot": "8:30 PM–10:00 PM"
           },
           {
             "rank": 2,
             "name": "Toit",
             "provider": "swiggy_dineout",
-            "offer_score": 12.0,
+            "offer_score": 17.0,
             "per_person": 1000.0,
             "distance_km": 1.1,
             "slot": "8:00 PM–9:30 PM"
@@ -248,21 +257,21 @@
           },
           {
             "rank": 4,
-            "name": "Onesta",
-            "provider": "swiggy_dineout",
-            "offer_score": 10.0,
-            "per_person": 500.0,
-            "distance_km": 1.5,
-            "slot": "8:30 PM–10:00 PM"
-          },
-          {
-            "rank": 5,
             "name": "Truffles",
             "provider": "swiggy_dineout",
-            "offer_score": 5.0,
+            "offer_score": 15.0,
             "per_person": 400.0,
             "distance_km": 2.1,
             "slot": "8:15 PM–9:45 PM"
+          },
+          {
+            "rank": 5,
+            "name": "Meghana Foods",
+            "provider": "swiggy_dineout",
+            "offer_score": 14.3,
+            "per_person": 700.0,
+            "distance_km": 0.9,
+            "slot": "7:30 PM–9:00 PM"
           }
         ]
       },
@@ -284,8 +293,8 @@
       ],
       "out_dir": "out/cafe",
       "exit_code": 0,
-      "duration_ms": 80,
-      "stdout": "Discovered 30 · after filters 4 · ranked 4 · bookable 0\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹1,000/person\nCuisine filter: Cafe\n\n #  Restaurant                 Provider         Offer                              Score    ₹/p  Dist  Slot                \n---------------------------------------------------------------------------------------------------------------------------\n 1  Third Wave Coffee          swiggy_dineout   Buy 1 Get 1 on all coffees            20    450   0.8  —                   \n 2  Third Wave Coffee          district         20% off on all beverages              14    425   0.6  —                   \n 3  Dyu Art Cafe               district         15% off up to ₹300                    10    475   1.1  —                   \n 4  Dyu Art Cafe               swiggy_dineout   Up to 30% off on total bill            5    450   1.3  —                   \n\nWrote out/cafe/ranked.{md,csv,json}",
+      "duration_ms": 84,
+      "stdout": "Discovered 30 · after filters 4 · ranked 4 · bookable 0\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹1,000/person\nCuisine filter: Cafe\n\n #  Restaurant                 Provider         Offer                           Cash% Score    ₹/p  Dist  Slot                \n------------------------------------------------------------------------------------------------------------------------------\n 1  Dyu Art Cafe               district         15% off up to ₹300               15.0    10    475   1.1  —                   \n 2  Third Wave Coffee          district         20% off on all beverages          0.0     0    425   0.6  —                   \n 3  Third Wave Coffee          swiggy_dineout   Buy 1 Get 1 on all coffees        0.0     0    450   0.8  —                   \n 4  Dyu Art Cafe               swiggy_dineout   Up to 30% off on total bill       0.0     0    450   1.3  —                   \n\nWrote out/cafe/ranked.{md,csv,json}",
       "stderr": "",
       "result": {
         "counts": {
@@ -298,6 +307,8 @@
           "party_size": 2,
           "budget_for_party_inr": 2000.0,
           "requested_date": "2026-11-27",
+          "requested_weekday": "Friday",
+          "is_weekend": false,
           "requested_time": "20:00",
           "requested_time_end": "22:00",
           "window": "8:00 PM–10:00 PM",
@@ -305,30 +316,13 @@
           "cuisines": [
             "Cafe"
           ],
-          "require_availability": false
+          "require_availability": false,
+          "spend_per_person_inr": null
         },
         "bookable": 0,
         "top": [
           {
             "rank": 1,
-            "name": "Third Wave Coffee",
-            "provider": "swiggy_dineout",
-            "offer_score": 20.0,
-            "per_person": 450.0,
-            "distance_km": 0.8,
-            "slot": null
-          },
-          {
-            "rank": 2,
-            "name": "Third Wave Coffee",
-            "provider": "district",
-            "offer_score": 14.0,
-            "per_person": 425.0,
-            "distance_km": 0.6,
-            "slot": null
-          },
-          {
-            "rank": 3,
             "name": "Dyu Art Cafe",
             "provider": "district",
             "offer_score": 10.5,
@@ -337,10 +331,28 @@
             "slot": null
           },
           {
+            "rank": 2,
+            "name": "Third Wave Coffee",
+            "provider": "district",
+            "offer_score": 0.0,
+            "per_person": 425.0,
+            "distance_km": 0.6,
+            "slot": null
+          },
+          {
+            "rank": 3,
+            "name": "Third Wave Coffee",
+            "provider": "swiggy_dineout",
+            "offer_score": 0.0,
+            "per_person": 450.0,
+            "distance_km": 0.8,
+            "slot": null
+          },
+          {
             "rank": 4,
             "name": "Dyu Art Cafe",
             "provider": "swiggy_dineout",
-            "offer_score": 5.0,
+            "offer_score": 0.0,
             "per_person": 450.0,
             "distance_km": 1.3,
             "slot": null
@@ -365,8 +377,8 @@
       ],
       "out_dir": "out/north-indian-chinese",
       "exit_code": 0,
-      "duration_ms": 78,
-      "stdout": "Discovered 30 · after filters 8 · ranked 8 · bookable 3\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹1,000/person\nCuisine filter: North Indian, Chinese\n\n #  Restaurant                 Provider         Offer                              Score    ₹/p  Dist  Slot                \n---------------------------------------------------------------------------------------------------------------------------\n 1  Beijing Bites              swiggy_dineout   Flat ₹300 off on total bill           35    600   1.1  —                   \n 2  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above ₹1,2     29    700   0.9  8:00 PM–9:30 PM     \n 3  Biryani Blues              district         Flat ₹150 off                         27    550   3.6  —                   \n 4  Gilly's Restobar           district         Flat 12% off on food                  12    825   1.8  —                   \n 5  Spice Elephant             swiggy_dineout   Complimentary dessert platter         12    900   1.9  —                   \n 6  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400                    11    650   1.2  8:00 PM–9:30 PM     \n 7  Gilly's Restobar           swiggy_dineout   Flat 10% off on food                   4    850   2.3  —                   \n 8  Empire Restaurant          swiggy_dineout   —                                      0    500   1.6  8:00 PM–9:30 PM     \n\nWrote out/north-indian-chinese/ranked.{md,csv,json}",
+      "duration_ms": 86,
+      "stdout": "Discovered 30 · after filters 8 · ranked 8 · bookable 3\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹1,000/person\nCuisine filter: North Indian, Chinese\n\n #  Restaurant                 Provider         Offer                           Cash% Score    ₹/p  Dist  Slot                \n------------------------------------------------------------------------------------------------------------------------------\n 1  Beijing Bites              swiggy_dineout   Flat ₹300 off on total bill      25.0    10    600   1.1  —                   \n 2  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400               20.0    11    650   1.2  8:00 PM–9:30 PM     \n 3  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above     14.3    14    700   0.9  8:00 PM–9:30 PM     \n 4  Biryani Blues              district         Flat ₹150 off                    13.6    14    550   3.6  —                   \n 5  Gilly's Restobar           district         Flat 12% off on food             12.0    12    825   1.8  —                   \n 6  Spice Elephant             swiggy_dineout   Complimentary dessert platter    12.0    12    900   1.9  —                   \n 7  Gilly's Restobar           swiggy_dineout   Flat 10% off on food             10.0    10    850   2.3  —                   \n 8  Empire Restaurant          swiggy_dineout   —                                 0.0     0    500   1.6  8:00 PM–9:30 PM     \n\nWrote out/north-indian-chinese/ranked.{md,csv,json}",
       "stderr": "",
       "result": {
         "counts": {
@@ -379,6 +391,8 @@
           "party_size": 2,
           "budget_for_party_inr": 2000.0,
           "requested_date": "2026-11-27",
+          "requested_weekday": "Friday",
+          "is_weekend": false,
           "requested_time": "20:00",
           "requested_time_end": "22:00",
           "window": "8:00 PM–10:00 PM",
@@ -387,7 +401,8 @@
             "North Indian",
             "Chinese"
           ],
-          "require_availability": false
+          "require_availability": false,
+          "spend_per_person_inr": null
         },
         "bookable": 3,
         "top": [
@@ -395,45 +410,45 @@
             "rank": 1,
             "name": "Beijing Bites",
             "provider": "swiggy_dineout",
-            "offer_score": 35.0,
+            "offer_score": 10.0,
             "per_person": 600.0,
             "distance_km": 1.1,
             "slot": null
           },
           {
             "rank": 2,
+            "name": "Chulha Chauki Da Dhaba",
+            "provider": "swiggy_dineout",
+            "offer_score": 11.0,
+            "per_person": 650.0,
+            "distance_km": 1.2,
+            "slot": "8:00 PM–9:30 PM"
+          },
+          {
+            "rank": 3,
             "name": "Meghana Foods",
             "provider": "swiggy_dineout",
-            "offer_score": 28.6,
+            "offer_score": 14.3,
             "per_person": 700.0,
             "distance_km": 0.9,
             "slot": "8:00 PM–9:30 PM"
           },
           {
-            "rank": 3,
+            "rank": 4,
             "name": "Biryani Blues",
             "provider": "district",
-            "offer_score": 27.3,
+            "offer_score": 13.6,
             "per_person": 550.0,
             "distance_km": 3.6,
             "slot": null
           },
           {
-            "rank": 4,
+            "rank": 5,
             "name": "Gilly's Restobar",
             "provider": "district",
             "offer_score": 12.0,
             "per_person": 825.0,
             "distance_km": 1.764,
-            "slot": null
-          },
-          {
-            "rank": 5,
-            "name": "Spice Elephant",
-            "provider": "swiggy_dineout",
-            "offer_score": 12.0,
-            "per_person": 900.0,
-            "distance_km": 1.9,
             "slot": null
           }
         ]
@@ -458,8 +473,8 @@
       ],
       "out_dir": "out/budget-800",
       "exit_code": 0,
-      "duration_ms": 81,
-      "stdout": "Discovered 30 · after filters 18 · ranked 18 · bookable 5\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹800/person\n\n #  Restaurant                 Provider         Offer                              Score    ₹/p  Dist  Slot                \n---------------------------------------------------------------------------------------------------------------------------\n 1  Beijing Bites              swiggy_dineout   Flat ₹300 off on total bill           35    600   1.1  —                   \n 2  Meghana Foods              district         Flat ₹250 off                         30    750   0.7  —                   \n 3  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above ₹1,2     29    700   0.9  8:00 PM–9:30 PM     \n 4  Third Wave Coffee          swiggy_dineout   Buy 1 Get 1 on all coffees            20    450   0.8  —                   \n 5  Greenland Veg              swiggy_dineout   Flat ₹100 off on bills above ₹800     17    350   2.0  —                   \n 6  Third Wave Coffee          district         20% off on all beverages              14    425   0.6  —                   \n 7  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400                    11    650   1.2  8:00 PM–9:30 PM     \n 8  Dyu Art Cafe               district         15% off up to ₹300                    10    475   1.1  —                   \n 9  Corner House Ice Cream     swiggy_dineout   Free extra topping on every sunda     10    300   0.5  —                   \n10  Onesta                     district         Free garlic bread                     10    450   1.3  —                   \n11  Fenny's Lounge             swiggy_dineout   Happy hours: 1+1 on all drinks        10    800   1.4  —                   \n12  Onesta                     swiggy_dineout   1+1 on all pizzas                     10    500   1.5  8:30 PM–10:00 PM    \n13  Brahmins Coffee Bar        swiggy_dineout   10% off on breakfast                   5    200   1.0  —                   \n14  Dyu Art Cafe               swiggy_dineout   Up to 30% off on total bill            5    450   1.3  —                   \n15  Truffles                   swiggy_dineout   Flat 15% off on total bill             5    400   2.1  8:15 PM–9:45 PM     \n16  Nandhana Palace            swiggy_dineout   Flat 25% off on total bill             5    750   2.2  —                   \n17  Udupi Garden               district         10% off on total bill                  5    250   2.9  —                   \n18  Empire Restaurant          swiggy_dineout   —                                      0    500   1.6  8:00 PM–9:30 PM     \n\nWrote out/budget-800/ranked.{md,csv,json}",
+      "duration_ms": 85,
+      "stdout": "Discovered 30 · after filters 18 · ranked 18 · bookable 5\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹800/person\n\n #  Restaurant                 Provider         Offer                           Cash% Score    ₹/p  Dist  Slot                \n------------------------------------------------------------------------------------------------------------------------------\n 1  Beijing Bites              swiggy_dineout   Flat ₹300 off on total bill      25.0    10    600   1.1  —                   \n 2  Fenny's Lounge             swiggy_dineout   Happy hours: 1+1 on all drink    20.0    20    800   1.4  —                   \n 3  Onesta                     swiggy_dineout   1+1 on all pizzas                20.0    20    500   1.5  8:30 PM–10:00 PM    \n 4  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400               20.0    11    650   1.2  8:00 PM–9:30 PM     \n 5  Meghana Foods              district         Flat ₹250 off                    16.7    14    750   0.7  —                   \n 6  Truffles                   swiggy_dineout   Flat 15% off on total bill       15.0    15    400   2.1  8:15 PM–9:45 PM     \n 7  Dyu Art Cafe               district         15% off up to ₹300               15.0    10    475   1.1  —                   \n 8  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above     14.3    14    700   0.9  8:00 PM–9:30 PM     \n 9  Greenland Veg              swiggy_dineout   Flat ₹100 off on bills above     12.5    12    350   2.0  —                   \n10  Corner House Ice Cream     swiggy_dineout   Free extra topping on every s    10.0    10    300   0.5  —                   \n11  Onesta                     district         Free garlic bread                10.0    10    450   1.3  —                   \n12  Third Wave Coffee          district         20% off on all beverages          0.0     0    425   0.6  —                   \n13  Third Wave Coffee          swiggy_dineout   Buy 1 Get 1 on all coffees        0.0     0    450   0.8  —                   \n14  Brahmins Coffee Bar        swiggy_dineout   10% off on breakfast              0.0     0    200   1.0  —                   \n15  Dyu Art Cafe               swiggy_dineout   Up to 30% off on total bill       0.0     0    450   1.3  —                   \n16  Empire Restaurant          swiggy_dineout   —                                 0.0     0    500   1.6  8:00 PM–9:30 PM     \n17  Nandhana Palace            swiggy_dineout   Flat 25% off on total bill        0.0     0    750   2.2  —                   \n18  Udupi Garden               district         10% off on total bill             0.0     0    250   2.9  —                   \n\nWrote out/budget-800/ranked.{md,csv,json}",
       "stderr": "",
       "result": {
         "counts": {
@@ -472,12 +487,15 @@
           "party_size": 2,
           "budget_for_party_inr": 1600.0,
           "requested_date": "2026-11-27",
+          "requested_weekday": "Friday",
+          "is_weekend": false,
           "requested_time": "20:00",
           "requested_time_end": "22:00",
           "window": "8:00 PM–10:00 PM",
           "meal": "dinner",
           "cuisines": [],
-          "require_availability": false
+          "require_availability": false,
+          "spend_per_person_inr": null
         },
         "bookable": 5,
         "top": [
@@ -485,45 +503,45 @@
             "rank": 1,
             "name": "Beijing Bites",
             "provider": "swiggy_dineout",
-            "offer_score": 35.0,
+            "offer_score": 10.0,
             "per_person": 600.0,
             "distance_km": 1.1,
             "slot": null
           },
           {
             "rank": 2,
-            "name": "Meghana Foods",
-            "provider": "district",
-            "offer_score": 30.3,
-            "per_person": 750.0,
-            "distance_km": 0.7,
+            "name": "Fenny's Lounge",
+            "provider": "swiggy_dineout",
+            "offer_score": 20.0,
+            "per_person": 800.0,
+            "distance_km": 1.4,
             "slot": null
           },
           {
             "rank": 3,
-            "name": "Meghana Foods",
+            "name": "Onesta",
             "provider": "swiggy_dineout",
-            "offer_score": 28.6,
-            "per_person": 700.0,
-            "distance_km": 0.9,
-            "slot": "8:00 PM–9:30 PM"
+            "offer_score": 20.0,
+            "per_person": 500.0,
+            "distance_km": 1.5,
+            "slot": "8:30 PM–10:00 PM"
           },
           {
             "rank": 4,
-            "name": "Third Wave Coffee",
+            "name": "Chulha Chauki Da Dhaba",
             "provider": "swiggy_dineout",
-            "offer_score": 20.0,
-            "per_person": 450.0,
-            "distance_km": 0.8,
-            "slot": null
+            "offer_score": 11.0,
+            "per_person": 650.0,
+            "distance_km": 1.2,
+            "slot": "8:00 PM–9:30 PM"
           },
           {
             "rank": 5,
-            "name": "Greenland Veg",
-            "provider": "swiggy_dineout",
-            "offer_score": 16.6,
-            "per_person": 350.0,
-            "distance_km": 2.0,
+            "name": "Meghana Foods",
+            "provider": "district",
+            "offer_score": 13.7,
+            "per_person": 750.0,
+            "distance_km": 0.7,
             "slot": null
           }
         ]
@@ -555,8 +573,8 @@
       ],
       "out_dir": "out/combined",
       "exit_code": 0,
-      "duration_ms": 79,
-      "stdout": "Discovered 30 · after filters 3 · ranked 3 · bookable 3\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 7:30 PM–9:30 PM · party 2 · ≤₹900/person\nCuisine filter: North Indian, Chinese\n\n #  Restaurant                 Provider         Offer                              Score    ₹/p  Dist  Slot                \n---------------------------------------------------------------------------------------------------------------------------\n 1  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above ₹1,2     29    700   0.9  7:30 PM–9:00 PM     \n 2  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400                    11    650   1.2  8:00 PM–9:30 PM     \n 3  Empire Restaurant          swiggy_dineout   —                                      0    500   1.6  8:00 PM–9:30 PM     \n\nWrote out/combined/ranked.{md,csv,json}",
+      "duration_ms": 85,
+      "stdout": "Discovered 30 · after filters 3 · ranked 3 · bookable 3\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 7:30 PM–9:30 PM · party 2 · ≤₹900/person\nCuisine filter: North Indian, Chinese\n\n #  Restaurant                 Provider         Offer                           Cash% Score    ₹/p  Dist  Slot                \n------------------------------------------------------------------------------------------------------------------------------\n 1  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400               20.0    11    650   1.2  8:00 PM–9:30 PM     \n 2  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above     14.3    14    700   0.9  7:30 PM–9:00 PM     \n 3  Empire Restaurant          swiggy_dineout   —                                 0.0     0    500   1.6  8:00 PM–9:30 PM     \n\nWrote out/combined/ranked.{md,csv,json}",
       "stderr": "",
       "result": {
         "counts": {
@@ -569,6 +587,8 @@
           "party_size": 2,
           "budget_for_party_inr": 1800.0,
           "requested_date": "2026-11-27",
+          "requested_weekday": "Friday",
+          "is_weekend": false,
           "requested_time": "19:30",
           "requested_time_end": "21:30",
           "window": "7:30 PM–9:30 PM",
@@ -577,27 +597,28 @@
             "North Indian",
             "Chinese"
           ],
-          "require_availability": true
+          "require_availability": true,
+          "spend_per_person_inr": null
         },
         "bookable": 3,
         "top": [
           {
             "rank": 1,
-            "name": "Meghana Foods",
-            "provider": "swiggy_dineout",
-            "offer_score": 28.6,
-            "per_person": 700.0,
-            "distance_km": 0.9,
-            "slot": "7:30 PM–9:00 PM"
-          },
-          {
-            "rank": 2,
             "name": "Chulha Chauki Da Dhaba",
             "provider": "swiggy_dineout",
             "offer_score": 11.0,
             "per_person": 650.0,
             "distance_km": 1.2,
             "slot": "8:00 PM–9:30 PM"
+          },
+          {
+            "rank": 2,
+            "name": "Meghana Foods",
+            "provider": "swiggy_dineout",
+            "offer_score": 14.3,
+            "per_person": 700.0,
+            "distance_km": 0.9,
+            "slot": "7:30 PM–9:00 PM"
           },
           {
             "rank": 3,
@@ -628,8 +649,8 @@
       ],
       "out_dir": "out/auto",
       "exit_code": 0,
-      "duration_ms": 82,
-      "stdout": "Discovered 30 · after filters 26 · ranked 26 · bookable 6\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹1,000/person\n\n #  Restaurant                 Provider         Offer                              Score    ₹/p  Dist  Slot                \n---------------------------------------------------------------------------------------------------------------------------\n 1  Beijing Bites              swiggy_dineout   Flat ₹300 off on total bill           35    600   1.1  —                   \n 2  Meghana Foods              district         Flat ₹250 off                         30    750   0.7  —                   \n 3  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above ₹1,2     29    700   0.9  8:00 PM–9:30 PM     \n 4  Biryani Blues              district         Flat ₹150 off                         27    550   3.6  —                   \n 5  Third Wave Coffee          swiggy_dineout   Buy 1 Get 1 on all coffees            20    450   0.8  —                   \n 6  Greenland Veg              swiggy_dineout   Flat ₹100 off on bills above ₹800     17    350   2.0  —                   \n 7  Third Wave Coffee          district         20% off on all beverages              14    425   0.6  —                   \n 8  Toit                       swiggy_dineout   Free dessert on bills above ₹1,50     12  1,000   1.1  8:00 PM–9:30 PM     \n 9  Gilly's Restobar           district         Flat 12% off on food                  12    825   1.8  —                   \n10  Spice Elephant             swiggy_dineout   Complimentary dessert platter         12    900   1.9  —                   \n11  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400                    11    650   1.2  8:00 PM–9:30 PM     \n12  Dyu Art Cafe               district         15% off up to ₹300                    10    475   1.1  —                   \n13  Corner House Ice Cream     swiggy_dineout   Free extra topping on every sunda     10    300   0.5  —                   \n14  Onesta                     district         Free garlic bread                     10    450   1.3  —                   \n15  Fenny's Lounge             swiggy_dineout   Happy hours: 1+1 on all drinks        10    800   1.4  —                   \n16  Onesta                     swiggy_dineout   1+1 on all pizzas                     10    500   1.5  8:30 PM–10:00 PM    \n17  Brahmins Coffee Bar        swiggy_dineout   10% off on breakfast                   5    200   1.0  —                   \n18  Dyu Art Cafe               swiggy_dineout   Up to 30% off on total bill            5    450   1.3  —                   \n19  Truffles                   swiggy_dineout   Flat 15% off on total bill             5    400   2.1  8:15 PM–9:45 PM     \n20  Nandhana Palace            swiggy_dineout   Flat 25% off on total bill             5    750   2.2  —                   \n21  Udupi Garden               district         10% off on total bill                  5    250   2.9  —                   \n22  Fenny's Lounge             district         Buy 1 Get 1 on cocktails               4    850   1.2  —                   \n23  Gilly's Restobar           swiggy_dineout   Flat 10% off on food                   4    850   2.3  —                   \n24  Toit                       district         Flat 15% off + free dessert            2  1,000   1.0  —                   \n25  Empire Restaurant          swiggy_dineout   —                                      0    500   1.6  8:00 PM–9:30 PM     \n\nWrote out/auto/ranked.{md,csv,json}\n\nBooking: SIMULATION · Meghana Foods · 8:00 PM–9:30 PM\n  order: SIM-472E415FBC · Simulated booking — no live swiggy_dineout session was used.\n  wrote out/auto/booking.{json,md}",
+      "duration_ms": 84,
+      "stdout": "Discovered 30 · after filters 26 · ranked 26 · bookable 6\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹1,000/person\n\n #  Restaurant                 Provider         Offer                           Cash% Score    ₹/p  Dist  Slot                \n------------------------------------------------------------------------------------------------------------------------------\n 1  Beijing Bites              swiggy_dineout   Flat ₹300 off on total bill      25.0    10    600   1.1  —                   \n 2  Fenny's Lounge             district         Buy 1 Get 1 on cocktails         20.0    20    850   1.2  —                   \n 3  Fenny's Lounge             swiggy_dineout   Happy hours: 1+1 on all drink    20.0    20    800   1.4  —                   \n 4  Onesta                     swiggy_dineout   1+1 on all pizzas                20.0    20    500   1.5  8:30 PM–10:00 PM    \n 5  Toit                       swiggy_dineout   Flat 20% off on total bill       20.0    17  1,000   1.1  8:00 PM–9:30 PM     \n 6  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400               20.0    11    650   1.2  8:00 PM–9:30 PM     \n 7  Meghana Foods              district         Flat ₹250 off                    16.7    14    750   0.7  —                   \n 8  Truffles                   swiggy_dineout   Flat 15% off on total bill       15.0    15    400   2.1  8:15 PM–9:45 PM     \n 9  Toit                       district         Flat 15% off + free dessert      15.0    12  1,000   1.0  —                   \n10  Dyu Art Cafe               district         15% off up to ₹300               15.0    10    475   1.1  —                   \n11  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above     14.3    14    700   0.9  8:00 PM–9:30 PM     \n12  Biryani Blues              district         Flat ₹150 off                    13.6    14    550   3.6  —                   \n13  Greenland Veg              swiggy_dineout   Flat ₹100 off on bills above     12.5    12    350   2.0  —                   \n14  Gilly's Restobar           district         Flat 12% off on food             12.0    12    825   1.8  —                   \n15  Spice Elephant             swiggy_dineout   Complimentary dessert platter    12.0    12    900   1.9  —                   \n16  Corner House Ice Cream     swiggy_dineout   Free extra topping on every s    10.0    10    300   0.5  —                   \n17  Onesta                     district         Free garlic bread                10.0    10    450   1.3  —                   \n18  Gilly's Restobar           swiggy_dineout   Flat 10% off on food             10.0    10    850   2.3  —                   \n19  Third Wave Coffee          district         20% off on all beverages          0.0     0    425   0.6  —                   \n20  Third Wave Coffee          swiggy_dineout   Buy 1 Get 1 on all coffees        0.0     0    450   0.8  —                   \n21  Brahmins Coffee Bar        swiggy_dineout   10% off on breakfast              0.0     0    200   1.0  —                   \n22  Dyu Art Cafe               swiggy_dineout   Up to 30% off on total bill       0.0     0    450   1.3  —                   \n23  Empire Restaurant          swiggy_dineout   —                                 0.0     0    500   1.6  8:00 PM–9:30 PM     \n24  Nandhana Palace            swiggy_dineout   Flat 25% off on total bill        0.0     0    750   2.2  —                   \n25  Udupi Garden               district         10% off on total bill             0.0     0    250   2.9  —                   \n\nWrote out/auto/ranked.{md,csv,json}\n\nBooking: SIMULATION · Onesta · 8:30 PM–10:00 PM\n  order: SIM-F6CE93DE28 · Simulated booking — no live swiggy_dineout session was used.\n  wrote out/auto/booking.{json,md}",
       "stderr": "",
       "result": {
         "counts": {
@@ -642,12 +663,15 @@
           "party_size": 2,
           "budget_for_party_inr": 2000.0,
           "requested_date": "2026-11-27",
+          "requested_weekday": "Friday",
+          "is_weekend": false,
           "requested_time": "20:00",
           "requested_time_end": "22:00",
           "window": "8:00 PM–10:00 PM",
           "meal": "dinner",
           "cuisines": [],
-          "require_availability": false
+          "require_availability": false,
+          "spend_per_person_inr": null
         },
         "bookable": 6,
         "top": [
@@ -655,55 +679,55 @@
             "rank": 1,
             "name": "Beijing Bites",
             "provider": "swiggy_dineout",
-            "offer_score": 35.0,
+            "offer_score": 10.0,
             "per_person": 600.0,
             "distance_km": 1.1,
             "slot": null
           },
           {
             "rank": 2,
-            "name": "Meghana Foods",
+            "name": "Fenny's Lounge",
             "provider": "district",
-            "offer_score": 30.3,
-            "per_person": 750.0,
-            "distance_km": 0.7,
+            "offer_score": 20.0,
+            "per_person": 850.0,
+            "distance_km": 1.2,
             "slot": null
           },
           {
             "rank": 3,
-            "name": "Meghana Foods",
+            "name": "Fenny's Lounge",
             "provider": "swiggy_dineout",
-            "offer_score": 28.6,
-            "per_person": 700.0,
-            "distance_km": 0.9,
-            "slot": "8:00 PM–9:30 PM"
+            "offer_score": 20.0,
+            "per_person": 800.0,
+            "distance_km": 1.4,
+            "slot": null
           },
           {
             "rank": 4,
-            "name": "Biryani Blues",
-            "provider": "district",
-            "offer_score": 27.3,
-            "per_person": 550.0,
-            "distance_km": 3.6,
-            "slot": null
+            "name": "Onesta",
+            "provider": "swiggy_dineout",
+            "offer_score": 20.0,
+            "per_person": 500.0,
+            "distance_km": 1.5,
+            "slot": "8:30 PM–10:00 PM"
           },
           {
             "rank": 5,
-            "name": "Third Wave Coffee",
+            "name": "Toit",
             "provider": "swiggy_dineout",
-            "offer_score": 20.0,
-            "per_person": 450.0,
-            "distance_km": 0.8,
-            "slot": null
+            "offer_score": 17.0,
+            "per_person": 1000.0,
+            "distance_km": 1.1,
+            "slot": "8:00 PM–9:30 PM"
           }
         ],
         "booking": {
           "status": "simulation",
-          "restaurant": "Meghana Foods",
-          "start_time": "8:00 PM",
-          "end_time": "9:30 PM",
+          "restaurant": "Onesta",
+          "start_time": "8:30 PM",
+          "end_time": "10:00 PM",
           "party": 2,
-          "order_id": "SIM-472E415FBC",
+          "order_id": "SIM-F6CE93DE28",
           "simulated": true
         }
       },
@@ -717,19 +741,21 @@
     },
     {
       "name": "book-select",
-      "description": "User-selected booking: rank #3 from the default shortlist",
-      "command": "./run.py --book --select 3 --out out/select-3",
+      "description": "User-selected booking: the bookable Meghana Foods (Swiggy) row",
+      "command": "./run.py --book --select 'Meghana Foods' --provider swiggy_dineout --out out/select-3",
       "argv": [
         "--book",
         "--select",
-        "3",
+        "Meghana Foods",
+        "--provider",
+        "swiggy_dineout",
         "--out",
         "out/select-3"
       ],
       "out_dir": "out/select-3",
       "exit_code": 0,
-      "duration_ms": 81,
-      "stdout": "Discovered 30 · after filters 26 · ranked 26 · bookable 6\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹1,000/person\n\n #  Restaurant                 Provider         Offer                              Score    ₹/p  Dist  Slot                \n---------------------------------------------------------------------------------------------------------------------------\n 1  Beijing Bites              swiggy_dineout   Flat ₹300 off on total bill           35    600   1.1  —                   \n 2  Meghana Foods              district         Flat ₹250 off                         30    750   0.7  —                   \n 3  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above ₹1,2     29    700   0.9  8:00 PM–9:30 PM     \n 4  Biryani Blues              district         Flat ₹150 off                         27    550   3.6  —                   \n 5  Third Wave Coffee          swiggy_dineout   Buy 1 Get 1 on all coffees            20    450   0.8  —                   \n 6  Greenland Veg              swiggy_dineout   Flat ₹100 off on bills above ₹800     17    350   2.0  —                   \n 7  Third Wave Coffee          district         20% off on all beverages              14    425   0.6  —                   \n 8  Toit                       swiggy_dineout   Free dessert on bills above ₹1,50     12  1,000   1.1  8:00 PM–9:30 PM     \n 9  Gilly's Restobar           district         Flat 12% off on food                  12    825   1.8  —                   \n10  Spice Elephant             swiggy_dineout   Complimentary dessert platter         12    900   1.9  —                   \n11  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400                    11    650   1.2  8:00 PM–9:30 PM     \n12  Dyu Art Cafe               district         15% off up to ₹300                    10    475   1.1  —                   \n13  Corner House Ice Cream     swiggy_dineout   Free extra topping on every sunda     10    300   0.5  —                   \n14  Onesta                     district         Free garlic bread                     10    450   1.3  —                   \n15  Fenny's Lounge             swiggy_dineout   Happy hours: 1+1 on all drinks        10    800   1.4  —                   \n16  Onesta                     swiggy_dineout   1+1 on all pizzas                     10    500   1.5  8:30 PM–10:00 PM    \n17  Brahmins Coffee Bar        swiggy_dineout   10% off on breakfast                   5    200   1.0  —                   \n18  Dyu Art Cafe               swiggy_dineout   Up to 30% off on total bill            5    450   1.3  —                   \n19  Truffles                   swiggy_dineout   Flat 15% off on total bill             5    400   2.1  8:15 PM–9:45 PM     \n20  Nandhana Palace            swiggy_dineout   Flat 25% off on total bill             5    750   2.2  —                   \n21  Udupi Garden               district         10% off on total bill                  5    250   2.9  —                   \n22  Fenny's Lounge             district         Buy 1 Get 1 on cocktails               4    850   1.2  —                   \n23  Gilly's Restobar           swiggy_dineout   Flat 10% off on food                   4    850   2.3  —                   \n24  Toit                       district         Flat 15% off + free dessert            2  1,000   1.0  —                   \n25  Empire Restaurant          swiggy_dineout   —                                      0    500   1.6  8:00 PM–9:30 PM     \n\nWrote out/select-3/ranked.{md,csv,json}\n\nBooking: SIMULATION · Meghana Foods · 8:00 PM–9:30 PM\n  order: SIM-472E415FBC · Simulated booking — no live swiggy_dineout session was used.\n  wrote out/select-3/booking.{json,md}",
+      "duration_ms": 86,
+      "stdout": "Discovered 30 · after filters 26 · ranked 26 · bookable 6\nJudge: rubric · Sources: swiggy_dineout (fixture), district (fixture)\nWindow: 2026-11-27 8:00 PM–10:00 PM · party 2 · ≤₹1,000/person\n\n #  Restaurant                 Provider         Offer                           Cash% Score    ₹/p  Dist  Slot                \n------------------------------------------------------------------------------------------------------------------------------\n 1  Beijing Bites              swiggy_dineout   Flat ₹300 off on total bill      25.0    10    600   1.1  —                   \n 2  Fenny's Lounge             district         Buy 1 Get 1 on cocktails         20.0    20    850   1.2  —                   \n 3  Fenny's Lounge             swiggy_dineout   Happy hours: 1+1 on all drink    20.0    20    800   1.4  —                   \n 4  Onesta                     swiggy_dineout   1+1 on all pizzas                20.0    20    500   1.5  8:30 PM–10:00 PM    \n 5  Toit                       swiggy_dineout   Flat 20% off on total bill       20.0    17  1,000   1.1  8:00 PM–9:30 PM     \n 6  Chulha Chauki Da Dhaba     swiggy_dineout   20% off up to ₹400               20.0    11    650   1.2  8:00 PM–9:30 PM     \n 7  Meghana Foods              district         Flat ₹250 off                    16.7    14    750   0.7  —                   \n 8  Truffles                   swiggy_dineout   Flat 15% off on total bill       15.0    15    400   2.1  8:15 PM–9:45 PM     \n 9  Toit                       district         Flat 15% off + free dessert      15.0    12  1,000   1.0  —                   \n10  Dyu Art Cafe               district         15% off up to ₹300               15.0    10    475   1.1  —                   \n11  Meghana Foods              swiggy_dineout   Flat ₹200 off on bills above     14.3    14    700   0.9  8:00 PM–9:30 PM     \n12  Biryani Blues              district         Flat ₹150 off                    13.6    14    550   3.6  —                   \n13  Greenland Veg              swiggy_dineout   Flat ₹100 off on bills above     12.5    12    350   2.0  —                   \n14  Gilly's Restobar           district         Flat 12% off on food             12.0    12    825   1.8  —                   \n15  Spice Elephant             swiggy_dineout   Complimentary dessert platter    12.0    12    900   1.9  —                   \n16  Corner House Ice Cream     swiggy_dineout   Free extra topping on every s    10.0    10    300   0.5  —                   \n17  Onesta                     district         Free garlic bread                10.0    10    450   1.3  —                   \n18  Gilly's Restobar           swiggy_dineout   Flat 10% off on food             10.0    10    850   2.3  —                   \n19  Third Wave Coffee          district         20% off on all beverages          0.0     0    425   0.6  —                   \n20  Third Wave Coffee          swiggy_dineout   Buy 1 Get 1 on all coffees        0.0     0    450   0.8  —                   \n21  Brahmins Coffee Bar        swiggy_dineout   10% off on breakfast              0.0     0    200   1.0  —                   \n22  Dyu Art Cafe               swiggy_dineout   Up to 30% off on total bill       0.0     0    450   1.3  —                   \n23  Empire Restaurant          swiggy_dineout   —                                 0.0     0    500   1.6  8:00 PM–9:30 PM     \n24  Nandhana Palace            swiggy_dineout   Flat 25% off on total bill        0.0     0    750   2.2  —                   \n25  Udupi Garden               district         10% off on total bill             0.0     0    250   2.9  —                   \n\nWrote out/select-3/ranked.{md,csv,json}\n\nBooking: SIMULATION · Meghana Foods · 8:00 PM–9:30 PM\n  order: SIM-472E415FBC · Simulated booking — no live swiggy_dineout session was used.\n  wrote out/select-3/booking.{json,md}",
       "stderr": "",
       "result": {
         "counts": {
@@ -742,12 +768,15 @@
           "party_size": 2,
           "budget_for_party_inr": 2000.0,
           "requested_date": "2026-11-27",
+          "requested_weekday": "Friday",
+          "is_weekend": false,
           "requested_time": "20:00",
           "requested_time_end": "22:00",
           "window": "8:00 PM–10:00 PM",
           "meal": "dinner",
           "cuisines": [],
-          "require_availability": false
+          "require_availability": false,
+          "spend_per_person_inr": null
         },
         "bookable": 6,
         "top": [
@@ -755,46 +784,46 @@
             "rank": 1,
             "name": "Beijing Bites",
             "provider": "swiggy_dineout",
-            "offer_score": 35.0,
+            "offer_score": 10.0,
             "per_person": 600.0,
             "distance_km": 1.1,
             "slot": null
           },
           {
             "rank": 2,
-            "name": "Meghana Foods",
+            "name": "Fenny's Lounge",
             "provider": "district",
-            "offer_score": 30.3,
-            "per_person": 750.0,
-            "distance_km": 0.7,
+            "offer_score": 20.0,
+            "per_person": 850.0,
+            "distance_km": 1.2,
             "slot": null
           },
           {
             "rank": 3,
-            "name": "Meghana Foods",
+            "name": "Fenny's Lounge",
             "provider": "swiggy_dineout",
-            "offer_score": 28.6,
-            "per_person": 700.0,
-            "distance_km": 0.9,
-            "slot": "8:00 PM–9:30 PM"
+            "offer_score": 20.0,
+            "per_person": 800.0,
+            "distance_km": 1.4,
+            "slot": null
           },
           {
             "rank": 4,
-            "name": "Biryani Blues",
-            "provider": "district",
-            "offer_score": 27.3,
-            "per_person": 550.0,
-            "distance_km": 3.6,
-            "slot": null
+            "name": "Onesta",
+            "provider": "swiggy_dineout",
+            "offer_score": 20.0,
+            "per_person": 500.0,
+            "distance_km": 1.5,
+            "slot": "8:30 PM–10:00 PM"
           },
           {
             "rank": 5,
-            "name": "Third Wave Coffee",
+            "name": "Toit",
             "provider": "swiggy_dineout",
-            "offer_score": 20.0,
-            "per_person": 450.0,
-            "distance_km": 0.8,
-            "slot": null
+            "offer_score": 17.0,
+            "per_person": 1000.0,
+            "distance_km": 1.1,
+            "slot": "8:00 PM–9:30 PM"
           }
         ],
         "booking": {

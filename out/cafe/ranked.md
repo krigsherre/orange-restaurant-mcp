@@ -3,23 +3,24 @@
 **Anchor** 12.9352, 77.6245 · **radius** ≤ 5 km · **budget** ≤ ₹1,000/person · **party** 2 · **when** 2026-11-27 8:00 PM–10:00 PM
 **Cuisine** Cafe (any match)
 **Offer judge**: `rubric` · **Sources**: swiggy_dineout (fixture), district (fixture)
+**Bill reference**: each restaurant's cost for two (per person × party)
 
-Sorted by: offer strength ↓, distance ↑, name A–Z (then provider/id).
-**Top 3:** **Third Wave Coffee** (Buy 1 Get 1 on all coffees, 20) · **Dyu Art Cafe** (15% off up to ₹300, 10)
+Sorted by: cash value at the reference bill ↓, score ↓, distance ↑, name A–Z (then provider/id).
+**Top 3:** **Dyu Art Cafe** (15% off up to ₹300, 15% of bill) · **Third Wave Coffee** (20% off on all beverages, 0% of bill)
 
-| # | Restaurant | Provider | Best offer | Score | ₹/person | Dist | Slot (start–end) | Booking |
-|---:|---|---|---|---:|---:|---:|---|---|
-| 1 | **Third Wave Coffee** | `swiggy_dineout` | Buy 1 Get 1 on all coffees *(20)* | 20 | ₹450 | 0.8 km | — | no slot |
-| 2 | **Third Wave Coffee** | `district` | 20% off on all beverages *(14)* | 14 | ₹425 | 0.6 km | — | District link |
-| 3 | **Dyu Art Cafe** | `district` | 15% off up to ₹300 *(10)* | 10 | ₹475 | 1.1 km | — | District link |
-| 4 | **Dyu Art Cafe** | `swiggy_dineout` | Up to 30% off on total bill *(5)* | 5 | ₹450 | 1.3 km | — | no data |
+| # | Restaurant | Provider | Best offer | Cash % | Score | ₹/person | Dist | Slot (start–end) | Booking |
+|---:|---|---|---|---:|---:|---:|---:|---|---|
+| 1 | **Dyu Art Cafe** | `district` | 15% off up to ₹300 *(10)* | 15% | 10 | ₹475 | 1.1 km | — | District link |
+| 2 | **Third Wave Coffee** | `district` | 20% off on all beverages *(0)* | 0% | 0 | ₹425 | 0.6 km | — | District link |
+| 3 | **Third Wave Coffee** | `swiggy_dineout` | Buy 1 Get 1 on all coffees *(0)* | 0% | 0 | ₹450 | 0.8 km | — | no slot |
+| 4 | **Dyu Art Cafe** | `swiggy_dineout` | Up to 30% off on total bill *(0)* | 0% | 0 | ₹450 | 1.3 km | — | no data |
 
 ## Why each offer scored that way
 
-- **Third Wave Coffee** — Buy 1 Get 1 on all coffees → score 20, ~20% effective, flags: none. non-cash perk
-- **Third Wave Coffee** — 20% off on all beverages → score 14, ~20% effective, flags: weekday-only. 20% off: weekdays only
-- **Dyu Art Cafe** — 15% off up to ₹300 → score 10, ~15% effective, flags: capped-up-to. 15% off: advertised as 'up to', so treat as a ceiling
-- **Dyu Art Cafe** — Up to 30% off on total bill → score 5, ~30% effective, flags: capped-up-to, min-spend-above-party-budget. 30% off: advertised as 'up to', so treat as a ceiling; needs ₹2,500 spend vs ₹2,000 party budget
+- **Dyu Art Cafe** — 15% off up to ₹300 → 15% of a ₹950 bill, score 10, flags: capped-up-to. 15% off = 15% of a ₹950 bill; 'up to' is a ceiling
+- **Third Wave Coffee** — 20% off on all beverages → 0% of a ₹850 bill, score 0, flags: not-valid-at-requested-time. Not usable for this booking.: daytime-only window, invalid for dinner
+- **Third Wave Coffee** — Buy 1 Get 1 on all coffees → 0% of a ₹900 bill, score 0, flags: not-valid-at-requested-time. Not usable for this booking.: daytime-only window, invalid for dinner
+- **Dyu Art Cafe** — Up to 30% off on total bill → 0% of a ₹900 bill, score 0, flags: min-spend-above-party-budget. Needs ₹2,500 spend, above the ₹2,000 party budget; unlocks at ₹2,500.
 
 ## Excluded before ranking
 

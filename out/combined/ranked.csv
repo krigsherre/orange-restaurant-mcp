@@ -1,4 +1,4 @@
-rank,name,provider,provider_id,best_offer,offer_score,effective_pct,per_person,distance_km,rating,availability,flags,rationale
-1,Meghana Foods,swiggy_dineout,sw_meghana,"Flat ₹200 off on bills above ₹1,200",28.6,28.6,700.0,0.9,4.5,7:30 PM–9:00 PM · Dinner · 6 covers left,one-per-table,₹200 off
-2,Chulha Chauki Da Dhaba,swiggy_dineout,sw_chulha,20% off up to ₹400,11.0,20.0,650.0,1.2,4.2,8:00 PM–9:30 PM · Dinner · 5 covers left,"capped-up-to, non-stackable","20% off: advertised as 'up to', so treat as a ceiling"
-3,Empire Restaurant,swiggy_dineout,sw_empire,,0.0,,500.0,1.6,4.1,8:00 PM–9:30 PM · Dinner · 20 covers left,—,
+rank,name,provider,provider_id,best_offer,offer_score,effective_pct,bill_reference,per_person,distance_km,rating,availability,flags,rationale
+1,Chulha Chauki Da Dhaba,swiggy_dineout,sw_chulha,20% off up to ₹400,11.0,20.0,1300.0,650.0,1.2,4.2,8:00 PM–9:30 PM · Dinner · 5 covers left,"capped-up-to, non-stackable","20% off = 20% of a ₹1,300 bill; 'up to' is a ceiling"
+2,Meghana Foods,swiggy_dineout,sw_meghana,"Flat ₹200 off on bills above ₹1,200",14.3,14.3,1400.0,700.0,0.9,4.5,7:30 PM–9:00 PM · Dinner · 6 covers left,one-per-table,"₹200 off = 14.3% of a ₹1,400 bill"
+3,Empire Restaurant,swiggy_dineout,sw_empire,,0.0,,1000.0,500.0,1.6,4.1,8:00 PM–9:30 PM · Dinner · 20 covers left,—,

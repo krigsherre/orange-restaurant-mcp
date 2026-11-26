@@ -5,6 +5,8 @@
     "party_size": 2,
     "budget_for_party_inr": 1800.0,
     "requested_date": "2026-11-27",
+    "requested_weekday": "Friday",
+    "is_weekend": false,
     "requested_time": "19:30",
     "requested_time_end": "21:30",
     "window": "7:30 PM–9:30 PM",
@@ -13,14 +15,15 @@
       "North Indian",
       "Chinese"
     ],
-    "require_availability": true
+    "require_availability": true,
+    "spend_per_person_inr": null
   },
   "anchor": {
     "lat": 12.9352,
     "lng": 77.6245,
     "radius_km": 3.0
   },
-  "generated_at": "2026-11-26T16:04:13",
+  "generated_at": "2026-11-26T16:24:39",
   "meta": {
     "judge": "rubric",
     "judge_requested": "rubric",
@@ -64,57 +67,6 @@
   "results": [
     {
       "provider": "swiggy_dineout",
-      "provider_id": "sw_meghana",
-      "name": "Meghana Foods",
-      "cuisines": [
-        "Biryani",
-        "Andhra",
-        "North Indian"
-      ],
-      "locality": "Koramangala 5th Block",
-      "distance_km": 0.9,
-      "distance_source": "provider",
-      "cost_for_two": 1400.0,
-      "per_person": 700.0,
-      "rating": 4.5,
-      "rating_count": 26110,
-      "offer_score": 28.6,
-      "offer_count": 2,
-      "best_offer": {
-        "title": "Flat ₹200 off on bills above ₹1,200",
-        "source": "offers",
-        "type": "flat",
-        "value": 200.0,
-        "score": 28.6,
-        "effective_pct": 28.6,
-        "flags": [
-          "one-per-table"
-        ],
-        "rationale": "₹200 off",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "available",
-        "detail": "7:30 PM–9:00 PM · Dinner · 6 covers left",
-        "slot": {
-          "date": "2026-11-27",
-          "display_time": "7:30 PM",
-          "group": "Dinner",
-          "is_free": true,
-          "booking_price": 0.0,
-          "inventory": 6,
-          "slot_id": "4000",
-          "item_id": "sw_meghana-ticket_5000",
-          "reservation_time": 1795788000,
-          "duration_min": 90,
-          "window": "7:30 PM–9:00 PM"
-        }
-      },
-      "booking_url": "",
-      "rank": 1
-    },
-    {
-      "provider": "swiggy_dineout",
       "provider_id": "sw_chulha",
       "name": "Chulha Chauki Da Dhaba",
       "cuisines": [
@@ -126,8 +78,10 @@
       "distance_source": "provider",
       "cost_for_two": 1300.0,
       "per_person": 650.0,
+      "bill_reference": 1300.0,
       "rating": 4.2,
       "rating_count": 5410,
+      "cash_pct": 20.0,
       "offer_score": 11.0,
       "offer_count": 1,
       "best_offer": {
@@ -135,13 +89,14 @@
         "source": "offers",
         "type": "percent",
         "value": 20.0,
+        "min_spend": null,
         "score": 11.0,
         "effective_pct": 20.0,
         "flags": [
           "capped-up-to",
           "non-stackable"
         ],
-        "rationale": "20% off: advertised as 'up to', so treat as a ceiling",
+        "rationale": "20% off = 20% of a ₹1,300 bill; 'up to' is a ceiling",
         "judged_by": "rubric"
       },
       "availability": {
@@ -162,6 +117,60 @@
         }
       },
       "booking_url": "",
+      "rank": 1
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_meghana",
+      "name": "Meghana Foods",
+      "cuisines": [
+        "Biryani",
+        "Andhra",
+        "North Indian"
+      ],
+      "locality": "Koramangala 5th Block",
+      "distance_km": 0.9,
+      "distance_source": "provider",
+      "cost_for_two": 1400.0,
+      "per_person": 700.0,
+      "bill_reference": 1400.0,
+      "rating": 4.5,
+      "rating_count": 26110,
+      "cash_pct": 14.3,
+      "offer_score": 14.3,
+      "offer_count": 2,
+      "best_offer": {
+        "title": "Flat ₹200 off on bills above ₹1,200",
+        "source": "offers",
+        "type": "flat",
+        "value": 200.0,
+        "min_spend": 1200.0,
+        "score": 14.3,
+        "effective_pct": 14.3,
+        "flags": [
+          "one-per-table"
+        ],
+        "rationale": "₹200 off = 14.3% of a ₹1,400 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "available",
+        "detail": "7:30 PM–9:00 PM · Dinner · 6 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "7:30 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 6,
+          "slot_id": "4000",
+          "item_id": "sw_meghana-ticket_5000",
+          "reservation_time": 1795788000,
+          "duration_min": 90,
+          "window": "7:30 PM–9:00 PM"
+        }
+      },
+      "booking_url": "",
       "rank": 2
     },
     {
@@ -178,8 +187,10 @@
       "distance_source": "provider",
       "cost_for_two": 1000.0,
       "per_person": 500.0,
+      "bill_reference": 1000.0,
       "rating": 4.1,
       "rating_count": 9840,
+      "cash_pct": 0.0,
       "offer_score": 0.0,
       "offer_count": 0,
       "best_offer": null,

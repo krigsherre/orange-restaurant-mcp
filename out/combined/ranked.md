@@ -3,20 +3,21 @@
 **Anchor** 12.9352, 77.6245 · **radius** ≤ 3 km · **budget** ≤ ₹900/person · **party** 2 · **when** 2026-11-27 7:30 PM–9:30 PM
 **Cuisine** North Indian, Chinese (any match)
 **Offer judge**: `rubric` · **Sources**: swiggy_dineout (fixture), district (fixture)
+**Bill reference**: each restaurant's cost for two (per person × party)
 
-Sorted by: offer strength ↓, distance ↑, name A–Z (then provider/id).
-**Top 3:** **Meghana Foods** (Flat ₹200 off on bills above ₹1,200, 29) · **Chulha Chauki Da Dhaba** (20% off up to ₹400, 11) · **Empire Restaurant** (no offer, 0)
+Sorted by: cash value at the reference bill ↓, score ↓, distance ↑, name A–Z (then provider/id).
+**Top 3:** **Chulha Chauki Da Dhaba** (20% off up to ₹400, 20% of bill) · **Meghana Foods** (Flat ₹200 off on bills above ₹1,200, 14% of bill) · **Empire Restaurant** (no offer, 0% of bill)
 
-| # | Restaurant | Provider | Best offer | Score | ₹/person | Dist | Slot (start–end) | Booking |
-|---:|---|---|---|---:|---:|---:|---|---|
-| 1 | **Meghana Foods** | `swiggy_dineout` | Flat ₹200 off on bills above ₹1,200 *(29)* | 29 | ₹700 | 0.9 km | 7:30 PM–9:00 PM | free |
-| 2 | **Chulha Chauki Da Dhaba** | `swiggy_dineout` | 20% off up to ₹400 *(11)* | 11 | ₹650 | 1.2 km | 8:00 PM–9:30 PM | free |
-| 3 | **Empire Restaurant** | `swiggy_dineout` | No offer | 0 | ₹500 | 1.6 km | 8:00 PM–9:30 PM | free |
+| # | Restaurant | Provider | Best offer | Cash % | Score | ₹/person | Dist | Slot (start–end) | Booking |
+|---:|---|---|---|---:|---:|---:|---:|---|---|
+| 1 | **Chulha Chauki Da Dhaba** | `swiggy_dineout` | 20% off up to ₹400 *(11)* | 20% | 11 | ₹650 | 1.2 km | 8:00 PM–9:30 PM | free |
+| 2 | **Meghana Foods** | `swiggy_dineout` | Flat ₹200 off on bills above ₹1,200 *(14)* | 14% | 14 | ₹700 | 0.9 km | 7:30 PM–9:00 PM | free |
+| 3 | **Empire Restaurant** | `swiggy_dineout` | No offer | 0% | 0 | ₹500 | 1.6 km | 8:00 PM–9:30 PM | free |
 
 ## Why each offer scored that way
 
-- **Meghana Foods** — Flat ₹200 off on bills above ₹1,200 → score 29, ~29% effective, flags: one-per-table. ₹200 off
-- **Chulha Chauki Da Dhaba** — 20% off up to ₹400 → score 11, ~20% effective, flags: capped-up-to, non-stackable. 20% off: advertised as 'up to', so treat as a ceiling
+- **Chulha Chauki Da Dhaba** — 20% off up to ₹400 → 20% of a ₹1,300 bill, score 11, flags: capped-up-to, non-stackable. 20% off = 20% of a ₹1,300 bill; 'up to' is a ceiling
+- **Meghana Foods** — Flat ₹200 off on bills above ₹1,200 → 14% of a ₹1,400 bill, score 14, flags: one-per-table. ₹200 off = 14.3% of a ₹1,400 bill
 - **Empire Restaurant** — no offer listed; ranked below every offer-bearing restaurant.
 
 ## Excluded before ranking

@@ -3,30 +3,31 @@
 **Anchor** 12.9352, 77.6245 · **radius** ≤ 5 km · **budget** ≤ ₹1,000/person · **party** 2 · **when** 2026-11-27 8:00 PM–10:00 PM
 **Cuisine** North Indian, Chinese (any match)
 **Offer judge**: `rubric` · **Sources**: swiggy_dineout (fixture), district (fixture)
+**Bill reference**: each restaurant's cost for two (per person × party)
 
-Sorted by: offer strength ↓, distance ↑, name A–Z (then provider/id).
-**Top 3:** **Beijing Bites** (Flat ₹300 off on total bill, 35) · **Meghana Foods** (Flat ₹200 off on bills above ₹1,200, 29) · **Biryani Blues** (Flat ₹150 off, 27)
+Sorted by: cash value at the reference bill ↓, score ↓, distance ↑, name A–Z (then provider/id).
+**Top 3:** **Beijing Bites** (Flat ₹300 off on total bill, 25% of bill) · **Chulha Chauki Da Dhaba** (20% off up to ₹400, 20% of bill) · **Meghana Foods** (Flat ₹200 off on bills above ₹1,200, 14% of bill)
 
-| # | Restaurant | Provider | Best offer | Score | ₹/person | Dist | Slot (start–end) | Booking |
-|---:|---|---|---|---:|---:|---:|---|---|
-| 1 | **Beijing Bites** | `swiggy_dineout` | Flat ₹300 off on total bill *(35)* | 35 | ₹600 | 1.1 km | — | no data |
-| 2 | **Meghana Foods** | `swiggy_dineout` | Flat ₹200 off on bills above ₹1,200 *(29)* | 29 | ₹700 | 0.9 km | 8:00 PM–9:30 PM | free |
-| 3 | **Biryani Blues** | `district` | Flat ₹150 off *(27)* | 27 | ₹550 | 3.6 km | — | District link |
-| 4 | **Gilly's Restobar** | `district` | Flat 12% off on food *(12)* | 12 | ₹825 | 1.8 km | — | District link |
-| 5 | **Spice Elephant** | `swiggy_dineout` | Complimentary dessert platter *(12)* | 12 | ₹900 | 1.9 km | — | no data |
-| 6 | **Chulha Chauki Da Dhaba** | `swiggy_dineout` | 20% off up to ₹400 *(11)* | 11 | ₹650 | 1.2 km | 8:00 PM–9:30 PM | free |
-| 7 | **Gilly's Restobar** | `swiggy_dineout` | Flat 10% off on food *(4)* | 4 | ₹850 | 2.3 km | — | no data |
-| 8 | **Empire Restaurant** | `swiggy_dineout` | No offer | 0 | ₹500 | 1.6 km | 8:00 PM–9:30 PM | free |
+| # | Restaurant | Provider | Best offer | Cash % | Score | ₹/person | Dist | Slot (start–end) | Booking |
+|---:|---|---|---|---:|---:|---:|---:|---|---|
+| 1 | **Beijing Bites** | `swiggy_dineout` | Flat ₹300 off on total bill *(10)* | 25% | 10 | ₹600 | 1.1 km | — | no data |
+| 2 | **Chulha Chauki Da Dhaba** | `swiggy_dineout` | 20% off up to ₹400 *(11)* | 20% | 11 | ₹650 | 1.2 km | 8:00 PM–9:30 PM | free |
+| 3 | **Meghana Foods** | `swiggy_dineout` | Flat ₹200 off on bills above ₹1,200 *(14)* | 14% | 14 | ₹700 | 0.9 km | 8:00 PM–9:30 PM | free |
+| 4 | **Biryani Blues** | `district` | Flat ₹150 off *(14)* | 14% | 14 | ₹550 | 3.6 km | — | District link |
+| 5 | **Gilly's Restobar** | `district` | Flat 12% off on food *(12)* | 12% | 12 | ₹825 | 1.8 km | — | District link |
+| 6 | **Spice Elephant** | `swiggy_dineout` | Complimentary dessert platter *(12)* | 12% | 12 | ₹900 | 1.9 km | — | no data |
+| 7 | **Gilly's Restobar** | `swiggy_dineout` | Flat 10% off on food *(10)* | 10% | 10 | ₹850 | 2.3 km | — | no data |
+| 8 | **Empire Restaurant** | `swiggy_dineout` | No offer | 0% | 0 | ₹500 | 1.6 km | 8:00 PM–9:30 PM | free |
 
 ## Why each offer scored that way
 
-- **Beijing Bites** — Flat ₹300 off on total bill → score 35, ~50% effective, flags: card-required. ₹300 off: needs a specific bank card
-- **Meghana Foods** — Flat ₹200 off on bills above ₹1,200 → score 29, ~29% effective, flags: one-per-table. ₹200 off
-- **Biryani Blues** — Flat ₹150 off → score 27, ~27% effective, flags: none. ₹150 off
-- **Gilly's Restobar** — Flat 12% off on food → score 12, ~12% effective, flags: one-per-table. 12% off
-- **Spice Elephant** — Complimentary dessert platter → score 12, ~12% effective, flags: none. non-cash perk
-- **Chulha Chauki Da Dhaba** — 20% off up to ₹400 → score 11, ~20% effective, flags: capped-up-to, non-stackable. 20% off: advertised as 'up to', so treat as a ceiling
-- **Gilly's Restobar** — Flat 10% off on food → score 4, ~10% effective, flags: one-per-table, weekday-only. 10% off: weekdays only
+- **Beijing Bites** — Flat ₹300 off on total bill → 25% of a ₹1,200 bill, score 10, flags: card-required. ₹300 off = 25% of a ₹1,200 bill; needs a specific card
+- **Chulha Chauki Da Dhaba** — 20% off up to ₹400 → 20% of a ₹1,300 bill, score 11, flags: capped-up-to, non-stackable. 20% off = 20% of a ₹1,300 bill; 'up to' is a ceiling
+- **Meghana Foods** — Flat ₹200 off on bills above ₹1,200 → 14% of a ₹1,400 bill, score 14, flags: one-per-table. ₹200 off = 14.3% of a ₹1,400 bill
+- **Biryani Blues** — Flat ₹150 off → 14% of a ₹1,100 bill, score 14, flags: none. ₹150 off = 13.6% of a ₹1,100 bill
+- **Gilly's Restobar** — Flat 12% off on food → 12% of a ₹1,650 bill, score 12, flags: one-per-table. 12% off = 12% of a ₹1,650 bill
+- **Spice Elephant** — Complimentary dessert platter → 12% of a ₹1,800 bill, score 12, flags: none. non-cash perk = 12% of a ₹1,800 bill
+- **Gilly's Restobar** — Flat 10% off on food → 10% of a ₹1,700 bill, score 10, flags: one-per-table. 10% off = 10% of a ₹1,700 bill
 - **Empire Restaurant** — no offer listed; ranked below every offer-bearing restaurant.
 
 ## Excluded before ranking

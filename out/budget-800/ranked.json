@@ -5,19 +5,22 @@
     "party_size": 2,
     "budget_for_party_inr": 1600.0,
     "requested_date": "2026-11-27",
+    "requested_weekday": "Friday",
+    "is_weekend": false,
     "requested_time": "20:00",
     "requested_time_end": "22:00",
     "window": "8:00 PM–10:00 PM",
     "meal": "dinner",
     "cuisines": [],
-    "require_availability": false
+    "require_availability": false,
+    "spend_per_person_inr": null
   },
   "anchor": {
     "lat": 12.9352,
     "lng": 77.6245,
     "radius_km": 3.0
   },
-  "generated_at": "2026-11-26T16:04:13",
+  "generated_at": "2026-11-26T16:24:39",
   "meta": {
     "judge": "rubric",
     "judge_requested": "rubric",
@@ -69,21 +72,24 @@
       "distance_source": "provider",
       "cost_for_two": 1200.0,
       "per_person": 600.0,
+      "bill_reference": 1200.0,
       "rating": 4.0,
       "rating_count": 3120,
-      "offer_score": 35.0,
+      "cash_pct": 25.0,
+      "offer_score": 10.0,
       "offer_count": 1,
       "best_offer": {
         "title": "Flat ₹300 off on total bill",
         "source": "offers",
         "type": "flat",
         "value": 300.0,
-        "score": 35.0,
-        "effective_pct": 50.0,
+        "min_spend": null,
+        "score": 10.0,
+        "effective_pct": 25.0,
         "flags": [
           "card-required"
         ],
-        "rationale": "₹300 off: needs a specific bank card",
+        "rationale": "₹300 off = 25% of a ₹1,200 bill; needs a specific card",
         "judged_by": "rubric"
       },
       "availability": {
@@ -92,362 +98,6 @@
       },
       "booking_url": "",
       "rank": 1
-    },
-    {
-      "provider": "district",
-      "provider_id": "dt_meghana",
-      "name": "Meghana Foods",
-      "cuisines": [
-        "Biryani",
-        "Andhra"
-      ],
-      "locality": "Koramangala 5th Block",
-      "distance_km": 0.7,
-      "distance_source": "provider",
-      "cost_for_two": 1500.0,
-      "per_person": 750.0,
-      "rating": 4.5,
-      "rating_count": 26110,
-      "offer_score": 30.3,
-      "offer_count": 1,
-      "best_offer": {
-        "title": "Flat ₹250 off",
-        "source": "offers",
-        "type": "flat",
-        "value": 250.0,
-        "score": 30.3,
-        "effective_pct": 33.3,
-        "flags": [
-          "non-stackable"
-        ],
-        "rationale": "₹250 off",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "via-booking-link",
-        "detail": "Book via District link"
-      },
-      "booking_url": "https://www.district.in/bengaluru/meghana-foods-koramangala",
-      "rank": 2
-    },
-    {
-      "provider": "swiggy_dineout",
-      "provider_id": "sw_meghana",
-      "name": "Meghana Foods",
-      "cuisines": [
-        "Biryani",
-        "Andhra",
-        "North Indian"
-      ],
-      "locality": "Koramangala 5th Block",
-      "distance_km": 0.9,
-      "distance_source": "provider",
-      "cost_for_two": 1400.0,
-      "per_person": 700.0,
-      "rating": 4.5,
-      "rating_count": 26110,
-      "offer_score": 28.6,
-      "offer_count": 2,
-      "best_offer": {
-        "title": "Flat ₹200 off on bills above ₹1,200",
-        "source": "offers",
-        "type": "flat",
-        "value": 200.0,
-        "score": 28.6,
-        "effective_pct": 28.6,
-        "flags": [
-          "one-per-table"
-        ],
-        "rationale": "₹200 off",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "available",
-        "detail": "8:00 PM–9:30 PM · Dinner · 4 covers left",
-        "slot": {
-          "date": "2026-11-27",
-          "display_time": "8:00 PM",
-          "group": "Dinner",
-          "is_free": true,
-          "booking_price": 0.0,
-          "inventory": 4,
-          "slot_id": "4001",
-          "item_id": "sw_meghana-ticket_5001",
-          "reservation_time": 1795789800,
-          "duration_min": 90,
-          "window": "8:00 PM–9:30 PM"
-        }
-      },
-      "booking_url": "",
-      "rank": 3
-    },
-    {
-      "provider": "swiggy_dineout",
-      "provider_id": "sw_thirdwave",
-      "name": "Third Wave Coffee",
-      "cuisines": [
-        "Cafe",
-        "Coffee",
-        "Desserts"
-      ],
-      "locality": "Koramangala 6th Block",
-      "distance_km": 0.8,
-      "distance_source": "provider",
-      "cost_for_two": 900.0,
-      "per_person": 450.0,
-      "rating": 4.4,
-      "rating_count": 7320,
-      "offer_score": 20.0,
-      "offer_count": 2,
-      "best_offer": {
-        "title": "Buy 1 Get 1 on all coffees",
-        "source": "offers",
-        "type": "perk",
-        "value": 0.0,
-        "score": 20.0,
-        "effective_pct": 20.0,
-        "flags": [],
-        "rationale": "non-cash perk",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "no-slot-in-window",
-        "detail": "No slot between 8:00 PM–10:00 PM"
-      },
-      "booking_url": "",
-      "rank": 4
-    },
-    {
-      "provider": "swiggy_dineout",
-      "provider_id": "sw_greenland",
-      "name": "Greenland Veg",
-      "cuisines": [
-        "South Indian",
-        "Vegetarian"
-      ],
-      "locality": "Koramangala 8th Block",
-      "distance_km": 2.0,
-      "distance_source": "provider",
-      "cost_for_two": 700.0,
-      "per_person": 350.0,
-      "rating": 3.9,
-      "rating_count": 1810,
-      "offer_score": 16.6,
-      "offer_count": 1,
-      "best_offer": {
-        "title": "Flat ₹100 off on bills above ₹800",
-        "source": "offers",
-        "type": "flat",
-        "value": 100.0,
-        "score": 16.6,
-        "effective_pct": 28.6,
-        "flags": [
-          "min-spend-tight"
-        ],
-        "rationale": "₹100 off: requires ₹800 minimum vs a typical ₹700 bill",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "unknown",
-        "detail": "No slot data returned"
-      },
-      "booking_url": "",
-      "rank": 5
-    },
-    {
-      "provider": "district",
-      "provider_id": "dt_thirdwave",
-      "name": "Third Wave Coffee",
-      "cuisines": [
-        "Cafe",
-        "Coffee"
-      ],
-      "locality": "Koramangala 6th Block",
-      "distance_km": 0.6,
-      "distance_source": "provider",
-      "cost_for_two": 850.0,
-      "per_person": 425.0,
-      "rating": 4.4,
-      "rating_count": 7320,
-      "offer_score": 14.0,
-      "offer_count": 1,
-      "best_offer": {
-        "title": "20% off on all beverages",
-        "source": "offers",
-        "type": "percent",
-        "value": 20.0,
-        "score": 14.0,
-        "effective_pct": 20.0,
-        "flags": [
-          "weekday-only"
-        ],
-        "rationale": "20% off: weekdays only",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "via-booking-link",
-        "detail": "Book via District link"
-      },
-      "booking_url": "https://www.district.in/bengaluru/third-wave-koramangala",
-      "rank": 6
-    },
-    {
-      "provider": "swiggy_dineout",
-      "provider_id": "sw_chulha",
-      "name": "Chulha Chauki Da Dhaba",
-      "cuisines": [
-        "North Indian",
-        "Punjabi"
-      ],
-      "locality": "Koramangala 6th Block",
-      "distance_km": 1.2,
-      "distance_source": "provider",
-      "cost_for_two": 1300.0,
-      "per_person": 650.0,
-      "rating": 4.2,
-      "rating_count": 5410,
-      "offer_score": 11.0,
-      "offer_count": 1,
-      "best_offer": {
-        "title": "20% off up to ₹400",
-        "source": "offers",
-        "type": "percent",
-        "value": 20.0,
-        "score": 11.0,
-        "effective_pct": 20.0,
-        "flags": [
-          "capped-up-to",
-          "non-stackable"
-        ],
-        "rationale": "20% off: advertised as 'up to', so treat as a ceiling",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "available",
-        "detail": "8:00 PM–9:30 PM · Dinner · 5 covers left",
-        "slot": {
-          "date": "2026-11-27",
-          "display_time": "8:00 PM",
-          "group": "Dinner",
-          "is_free": true,
-          "booking_price": 0.0,
-          "inventory": 5,
-          "slot_id": "4000",
-          "item_id": "sw_chulha-ticket_5000",
-          "reservation_time": 1795789800,
-          "duration_min": 90,
-          "window": "8:00 PM–9:30 PM"
-        }
-      },
-      "booking_url": "",
-      "rank": 7
-    },
-    {
-      "provider": "district",
-      "provider_id": "dt_dyu",
-      "name": "Dyu Art Cafe",
-      "cuisines": [
-        "Cafe",
-        "Continental"
-      ],
-      "locality": "Koramangala 8th Block",
-      "distance_km": 1.1,
-      "distance_source": "provider",
-      "cost_for_two": 950.0,
-      "per_person": 475.0,
-      "rating": 4.4,
-      "rating_count": 4210,
-      "offer_score": 10.5,
-      "offer_count": 1,
-      "best_offer": {
-        "title": "15% off up to ₹300",
-        "source": "offers",
-        "type": "percent",
-        "value": 15.0,
-        "score": 10.5,
-        "effective_pct": 15.0,
-        "flags": [
-          "capped-up-to"
-        ],
-        "rationale": "15% off: advertised as 'up to', so treat as a ceiling",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "via-booking-link",
-        "detail": "Book via District link"
-      },
-      "booking_url": "https://www.district.in/bengaluru/dyu-art-cafe",
-      "rank": 8
-    },
-    {
-      "provider": "swiggy_dineout",
-      "provider_id": "sw_cornerhouse",
-      "name": "Corner House Ice Cream",
-      "cuisines": [
-        "Desserts",
-        "Ice Cream"
-      ],
-      "locality": "Koramangala 5th Block",
-      "distance_km": 0.5,
-      "distance_source": "provider",
-      "cost_for_two": 600.0,
-      "per_person": 300.0,
-      "rating": 4.7,
-      "rating_count": 15980,
-      "offer_score": 10.0,
-      "offer_count": 1,
-      "best_offer": {
-        "title": "Free extra topping on every sundae",
-        "source": "offers",
-        "type": "perk",
-        "value": 0.0,
-        "score": 10.0,
-        "effective_pct": 10.0,
-        "flags": [],
-        "rationale": "non-cash perk",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "unknown",
-        "detail": "No slot data returned"
-      },
-      "booking_url": "",
-      "rank": 9
-    },
-    {
-      "provider": "district",
-      "provider_id": "dt_onesta",
-      "name": "Onesta",
-      "cuisines": [
-        "Italian",
-        "Pizza"
-      ],
-      "locality": "Koramangala 5th Block",
-      "distance_km": 1.3,
-      "distance_source": "provider",
-      "cost_for_two": 900.0,
-      "per_person": 450.0,
-      "rating": 4.2,
-      "rating_count": 11290,
-      "offer_score": 10.0,
-      "offer_count": 1,
-      "best_offer": {
-        "title": "Free garlic bread",
-        "source": "offers",
-        "type": "perk",
-        "value": 0.0,
-        "score": 10.0,
-        "effective_pct": 10.0,
-        "flags": [],
-        "rationale": "non-cash perk",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "via-booking-link",
-        "detail": "Book via District link"
-      },
-      "booking_url": "https://www.district.in/bengaluru/onesta-koramangala",
-      "rank": 10
     },
     {
       "provider": "swiggy_dineout",
@@ -463,21 +113,22 @@
       "distance_source": "provider",
       "cost_for_two": 1600.0,
       "per_person": 800.0,
+      "bill_reference": 1600.0,
       "rating": 4.3,
       "rating_count": 5310,
-      "offer_score": 10.0,
+      "cash_pct": 20.0,
+      "offer_score": 20.0,
       "offer_count": 1,
       "best_offer": {
         "title": "Happy hours: 1+1 on all drinks",
         "source": "offers",
         "type": "perk",
         "value": 0.0,
-        "score": 10.0,
+        "min_spend": null,
+        "score": 20.0,
         "effective_pct": 20.0,
-        "flags": [
-          "weekend-excluded"
-        ],
-        "rationale": "non-cash perk: not valid on weekends",
+        "flags": [],
+        "rationale": "non-cash perk = 20% of a ₹1,600 bill",
         "judged_by": "rubric"
       },
       "availability": {
@@ -485,7 +136,7 @@
         "detail": "No slot between 8:00 PM–10:00 PM"
       },
       "booking_url": "",
-      "rank": 11
+      "rank": 2
     },
     {
       "provider": "swiggy_dineout",
@@ -501,21 +152,22 @@
       "distance_source": "provider",
       "cost_for_two": 1000.0,
       "per_person": 500.0,
+      "bill_reference": 1000.0,
       "rating": 4.2,
       "rating_count": 11290,
-      "offer_score": 10.0,
+      "cash_pct": 20.0,
+      "offer_score": 20.0,
       "offer_count": 1,
       "best_offer": {
         "title": "1+1 on all pizzas",
         "source": "offers",
         "type": "perk",
         "value": 0.0,
-        "score": 10.0,
+        "min_spend": null,
+        "score": 20.0,
         "effective_pct": 20.0,
-        "flags": [
-          "weekend-excluded"
-        ],
-        "rationale": "non-cash perk: not valid on weekends",
+        "flags": [],
+        "rationale": "non-cash perk = 20% of a ₹1,000 bill",
         "judged_by": "rubric"
       },
       "availability": {
@@ -536,82 +188,101 @@
         }
       },
       "booking_url": "",
-      "rank": 12
+      "rank": 3
     },
     {
       "provider": "swiggy_dineout",
-      "provider_id": "sw_brahmins",
-      "name": "Brahmins Coffee Bar",
+      "provider_id": "sw_chulha",
+      "name": "Chulha Chauki Da Dhaba",
       "cuisines": [
-        "South Indian",
-        "Breakfast"
+        "North Indian",
+        "Punjabi"
       ],
-      "locality": "Koramangala 5th Block",
-      "distance_km": 1.0,
+      "locality": "Koramangala 6th Block",
+      "distance_km": 1.2,
       "distance_source": "provider",
-      "cost_for_two": 400.0,
-      "per_person": 200.0,
-      "rating": 4.5,
-      "rating_count": 6210,
-      "offer_score": 5.0,
+      "cost_for_two": 1300.0,
+      "per_person": 650.0,
+      "bill_reference": 1300.0,
+      "rating": 4.2,
+      "rating_count": 5410,
+      "cash_pct": 20.0,
+      "offer_score": 11.0,
       "offer_count": 1,
       "best_offer": {
-        "title": "10% off on breakfast",
+        "title": "20% off up to ₹400",
         "source": "offers",
         "type": "percent",
-        "value": 10.0,
-        "score": 5.0,
-        "effective_pct": 10.0,
-        "flags": [
-          "not-valid-at-requested-time"
-        ],
-        "rationale": "10% off: lunch-only but you asked for dinner",
-        "judged_by": "rubric"
-      },
-      "availability": {
-        "status": "unknown",
-        "detail": "No slot data returned"
-      },
-      "booking_url": "",
-      "rank": 13
-    },
-    {
-      "provider": "swiggy_dineout",
-      "provider_id": "sw_dyu",
-      "name": "Dyu Art Cafe",
-      "cuisines": [
-        "Cafe",
-        "Continental"
-      ],
-      "locality": "Koramangala 8th Block",
-      "distance_km": 1.3,
-      "distance_source": "provider",
-      "cost_for_two": 900.0,
-      "per_person": 450.0,
-      "rating": 4.4,
-      "rating_count": 4210,
-      "offer_score": 5.0,
-      "offer_count": 1,
-      "best_offer": {
-        "title": "Up to 30% off on total bill",
-        "source": "offers",
-        "type": "percent",
-        "value": 30.0,
-        "score": 5.0,
-        "effective_pct": 30.0,
+        "value": 20.0,
+        "min_spend": null,
+        "score": 11.0,
+        "effective_pct": 20.0,
         "flags": [
           "capped-up-to",
-          "min-spend-above-party-budget"
+          "non-stackable"
         ],
-        "rationale": "30% off: advertised as 'up to', so treat as a ceiling; needs ₹2,500 spend vs ₹1,600 party budget",
+        "rationale": "20% off = 20% of a ₹1,300 bill; 'up to' is a ceiling",
         "judged_by": "rubric"
       },
       "availability": {
-        "status": "unknown",
-        "detail": "No slot data returned"
+        "status": "available",
+        "detail": "8:00 PM–9:30 PM · Dinner · 5 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "8:00 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 5,
+          "slot_id": "4000",
+          "item_id": "sw_chulha-ticket_5000",
+          "reservation_time": 1795789800,
+          "duration_min": 90,
+          "window": "8:00 PM–9:30 PM"
+        }
       },
       "booking_url": "",
-      "rank": 14
+      "rank": 4
+    },
+    {
+      "provider": "district",
+      "provider_id": "dt_meghana",
+      "name": "Meghana Foods",
+      "cuisines": [
+        "Biryani",
+        "Andhra"
+      ],
+      "locality": "Koramangala 5th Block",
+      "distance_km": 0.7,
+      "distance_source": "provider",
+      "cost_for_two": 1500.0,
+      "per_person": 750.0,
+      "bill_reference": 1500.0,
+      "rating": 4.5,
+      "rating_count": 26110,
+      "cash_pct": 16.7,
+      "offer_score": 13.7,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Flat ₹250 off",
+        "source": "offers",
+        "type": "flat",
+        "value": 250.0,
+        "min_spend": 1500.0,
+        "score": 13.7,
+        "effective_pct": 16.7,
+        "flags": [
+          "non-stackable"
+        ],
+        "rationale": "₹250 off = 16.7% of a ₹1,500 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "via-booking-link",
+        "detail": "Book via District link"
+      },
+      "booking_url": "https://www.district.in/bengaluru/meghana-foods-koramangala",
+      "rank": 5
     },
     {
       "provider": "swiggy_dineout",
@@ -627,21 +298,22 @@
       "distance_source": "provider",
       "cost_for_two": 800.0,
       "per_person": 400.0,
+      "bill_reference": 800.0,
       "rating": 4.3,
       "rating_count": 31240,
-      "offer_score": 5.0,
+      "cash_pct": 15.0,
+      "offer_score": 15.0,
       "offer_count": 1,
       "best_offer": {
         "title": "Flat 15% off on total bill",
         "source": "offers",
         "type": "percent",
         "value": 15.0,
-        "score": 5.0,
+        "min_spend": null,
+        "score": 15.0,
         "effective_pct": 15.0,
-        "flags": [
-          "weekend-excluded"
-        ],
-        "rationale": "15% off: not valid on weekends",
+        "flags": [],
+        "rationale": "15% off = 15% of a ₹800 bill",
         "judged_by": "rubric"
       },
       "availability": {
@@ -662,39 +334,133 @@
         }
       },
       "booking_url": "",
-      "rank": 15
+      "rank": 6
+    },
+    {
+      "provider": "district",
+      "provider_id": "dt_dyu",
+      "name": "Dyu Art Cafe",
+      "cuisines": [
+        "Cafe",
+        "Continental"
+      ],
+      "locality": "Koramangala 8th Block",
+      "distance_km": 1.1,
+      "distance_source": "provider",
+      "cost_for_two": 950.0,
+      "per_person": 475.0,
+      "bill_reference": 950.0,
+      "rating": 4.4,
+      "rating_count": 4210,
+      "cash_pct": 15.0,
+      "offer_score": 10.5,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "15% off up to ₹300",
+        "source": "offers",
+        "type": "percent",
+        "value": 15.0,
+        "min_spend": null,
+        "score": 10.5,
+        "effective_pct": 15.0,
+        "flags": [
+          "capped-up-to"
+        ],
+        "rationale": "15% off = 15% of a ₹950 bill; 'up to' is a ceiling",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "via-booking-link",
+        "detail": "Book via District link"
+      },
+      "booking_url": "https://www.district.in/bengaluru/dyu-art-cafe",
+      "rank": 7
     },
     {
       "provider": "swiggy_dineout",
-      "provider_id": "sw_nandhana",
-      "name": "Nandhana Palace",
+      "provider_id": "sw_meghana",
+      "name": "Meghana Foods",
       "cuisines": [
-        "Andhra",
         "Biryani",
-        "South Indian"
+        "Andhra",
+        "North Indian"
       ],
-      "locality": "Koramangala 4th Block",
-      "distance_km": 2.2,
+      "locality": "Koramangala 5th Block",
+      "distance_km": 0.9,
       "distance_source": "provider",
-      "cost_for_two": 1500.0,
-      "per_person": 750.0,
-      "rating": 4.1,
-      "rating_count": 4410,
-      "offer_score": 5.0,
+      "cost_for_two": 1400.0,
+      "per_person": 700.0,
+      "bill_reference": 1400.0,
+      "rating": 4.5,
+      "rating_count": 26110,
+      "cash_pct": 14.3,
+      "offer_score": 14.3,
+      "offer_count": 2,
+      "best_offer": {
+        "title": "Flat ₹200 off on bills above ₹1,200",
+        "source": "offers",
+        "type": "flat",
+        "value": 200.0,
+        "min_spend": 1200.0,
+        "score": 14.3,
+        "effective_pct": 14.3,
+        "flags": [
+          "one-per-table"
+        ],
+        "rationale": "₹200 off = 14.3% of a ₹1,400 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "available",
+        "detail": "8:00 PM–9:30 PM · Dinner · 4 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "8:00 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 4,
+          "slot_id": "4001",
+          "item_id": "sw_meghana-ticket_5001",
+          "reservation_time": 1795789800,
+          "duration_min": 90,
+          "window": "8:00 PM–9:30 PM"
+        }
+      },
+      "booking_url": "",
+      "rank": 8
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_greenland",
+      "name": "Greenland Veg",
+      "cuisines": [
+        "South Indian",
+        "Vegetarian"
+      ],
+      "locality": "Koramangala 8th Block",
+      "distance_km": 2.0,
+      "distance_source": "provider",
+      "cost_for_two": 700.0,
+      "per_person": 350.0,
+      "bill_reference": 700.0,
+      "rating": 3.9,
+      "rating_count": 1810,
+      "cash_pct": 12.5,
+      "offer_score": 12.5,
       "offer_count": 1,
       "best_offer": {
-        "title": "Flat 25% off on total bill",
+        "title": "Flat ₹100 off on bills above ₹800",
         "source": "offers",
-        "type": "percent",
-        "value": 25.0,
-        "score": 5.0,
-        "effective_pct": 25.0,
+        "type": "flat",
+        "value": 100.0,
+        "min_spend": 800.0,
+        "score": 12.5,
+        "effective_pct": 12.5,
         "flags": [
-          "not-valid-at-requested-time",
-          "weekday-only",
-          "weekend-excluded"
+          "min-spend-tight"
         ],
-        "rationale": "25% off: not valid on weekends; weekdays only; lunch-only but you asked for dinner",
+        "rationale": "₹100 off = 12.5% of a ₹800 bill; ₹800 minimum raises the bill from ₹700",
         "judged_by": "rubric"
       },
       "availability": {
@@ -702,44 +468,244 @@
         "detail": "No slot data returned"
       },
       "booking_url": "",
-      "rank": 16
+      "rank": 9
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_cornerhouse",
+      "name": "Corner House Ice Cream",
+      "cuisines": [
+        "Desserts",
+        "Ice Cream"
+      ],
+      "locality": "Koramangala 5th Block",
+      "distance_km": 0.5,
+      "distance_source": "provider",
+      "cost_for_two": 600.0,
+      "per_person": 300.0,
+      "bill_reference": 600.0,
+      "rating": 4.7,
+      "rating_count": 15980,
+      "cash_pct": 10.0,
+      "offer_score": 10.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Free extra topping on every sundae",
+        "source": "offers",
+        "type": "perk",
+        "value": 0.0,
+        "min_spend": null,
+        "score": 10.0,
+        "effective_pct": 10.0,
+        "flags": [],
+        "rationale": "non-cash perk = 10% of a ₹600 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "unknown",
+        "detail": "No slot data returned"
+      },
+      "booking_url": "",
+      "rank": 10
     },
     {
       "provider": "district",
-      "provider_id": "dt_udupigarden",
-      "name": "Udupi Garden",
+      "provider_id": "dt_onesta",
+      "name": "Onesta",
       "cuisines": [
-        "South Indian",
-        "Vegetarian"
+        "Italian",
+        "Pizza"
       ],
-      "locality": "BTM Layout",
-      "distance_km": 2.9,
+      "locality": "Koramangala 5th Block",
+      "distance_km": 1.3,
       "distance_source": "provider",
-      "cost_for_two": 500.0,
-      "per_person": 250.0,
-      "rating": 4.0,
-      "rating_count": 3110,
-      "offer_score": 5.0,
+      "cost_for_two": 900.0,
+      "per_person": 450.0,
+      "bill_reference": 900.0,
+      "rating": 4.2,
+      "rating_count": 11290,
+      "cash_pct": 10.0,
+      "offer_score": 10.0,
       "offer_count": 1,
       "best_offer": {
-        "title": "10% off on total bill",
+        "title": "Free garlic bread",
         "source": "offers",
-        "type": "percent",
-        "value": 10.0,
-        "score": 5.0,
+        "type": "perk",
+        "value": 0.0,
+        "min_spend": null,
+        "score": 10.0,
         "effective_pct": 10.0,
-        "flags": [
-          "not-valid-at-requested-time"
-        ],
-        "rationale": "10% off: lunch-only but you asked for dinner",
+        "flags": [],
+        "rationale": "non-cash perk = 10% of a ₹900 bill",
         "judged_by": "rubric"
       },
       "availability": {
         "status": "via-booking-link",
         "detail": "Book via District link"
       },
-      "booking_url": "https://www.district.in/bengaluru/udupi-garden-btm",
-      "rank": 17
+      "booking_url": "https://www.district.in/bengaluru/onesta-koramangala",
+      "rank": 11
+    },
+    {
+      "provider": "district",
+      "provider_id": "dt_thirdwave",
+      "name": "Third Wave Coffee",
+      "cuisines": [
+        "Cafe",
+        "Coffee"
+      ],
+      "locality": "Koramangala 6th Block",
+      "distance_km": 0.6,
+      "distance_source": "provider",
+      "cost_for_two": 850.0,
+      "per_person": 425.0,
+      "bill_reference": 850.0,
+      "rating": 4.4,
+      "rating_count": 7320,
+      "cash_pct": 0.0,
+      "offer_score": 0.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "20% off on all beverages",
+        "source": "offers",
+        "type": "percent",
+        "value": 20.0,
+        "min_spend": null,
+        "score": 0.0,
+        "effective_pct": 0.0,
+        "flags": [
+          "not-valid-at-requested-time"
+        ],
+        "rationale": "Not usable for this booking.: daytime-only window, invalid for dinner",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "via-booking-link",
+        "detail": "Book via District link"
+      },
+      "booking_url": "https://www.district.in/bengaluru/third-wave-koramangala",
+      "rank": 12
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_thirdwave",
+      "name": "Third Wave Coffee",
+      "cuisines": [
+        "Cafe",
+        "Coffee",
+        "Desserts"
+      ],
+      "locality": "Koramangala 6th Block",
+      "distance_km": 0.8,
+      "distance_source": "provider",
+      "cost_for_two": 900.0,
+      "per_person": 450.0,
+      "bill_reference": 900.0,
+      "rating": 4.4,
+      "rating_count": 7320,
+      "cash_pct": 0.0,
+      "offer_score": 0.0,
+      "offer_count": 2,
+      "best_offer": {
+        "title": "Buy 1 Get 1 on all coffees",
+        "source": "offers",
+        "type": "perk",
+        "value": 0.0,
+        "min_spend": null,
+        "score": 0.0,
+        "effective_pct": 0.0,
+        "flags": [
+          "not-valid-at-requested-time"
+        ],
+        "rationale": "Not usable for this booking.: daytime-only window, invalid for dinner",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "no-slot-in-window",
+        "detail": "No slot between 8:00 PM–10:00 PM"
+      },
+      "booking_url": "",
+      "rank": 13
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_brahmins",
+      "name": "Brahmins Coffee Bar",
+      "cuisines": [
+        "South Indian",
+        "Breakfast"
+      ],
+      "locality": "Koramangala 5th Block",
+      "distance_km": 1.0,
+      "distance_source": "provider",
+      "cost_for_two": 400.0,
+      "per_person": 200.0,
+      "bill_reference": 400.0,
+      "rating": 4.5,
+      "rating_count": 6210,
+      "cash_pct": 0.0,
+      "offer_score": 0.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "10% off on breakfast",
+        "source": "offers",
+        "type": "percent",
+        "value": 10.0,
+        "min_spend": null,
+        "score": 0.0,
+        "effective_pct": 0.0,
+        "flags": [
+          "not-valid-at-requested-time"
+        ],
+        "rationale": "Not usable for this booking.: lunch-only but you asked for dinner; breakfast offer, invalid for dinner",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "unknown",
+        "detail": "No slot data returned"
+      },
+      "booking_url": "",
+      "rank": 14
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_dyu",
+      "name": "Dyu Art Cafe",
+      "cuisines": [
+        "Cafe",
+        "Continental"
+      ],
+      "locality": "Koramangala 8th Block",
+      "distance_km": 1.3,
+      "distance_source": "provider",
+      "cost_for_two": 900.0,
+      "per_person": 450.0,
+      "bill_reference": 900.0,
+      "rating": 4.4,
+      "rating_count": 4210,
+      "cash_pct": 0.0,
+      "offer_score": 0.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Up to 30% off on total bill",
+        "source": "offers",
+        "type": "percent",
+        "value": 30.0,
+        "min_spend": 2500.0,
+        "score": 0.0,
+        "effective_pct": 0.0,
+        "flags": [
+          "min-spend-above-party-budget"
+        ],
+        "rationale": "Needs ₹2,500 spend, above the ₹1,600 party budget; unlocks at ₹2,500.",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "unknown",
+        "detail": "No slot data returned"
+      },
+      "booking_url": "",
+      "rank": 15
     },
     {
       "provider": "swiggy_dineout",
@@ -755,8 +721,10 @@
       "distance_source": "provider",
       "cost_for_two": 1000.0,
       "per_person": 500.0,
+      "bill_reference": 1000.0,
       "rating": 4.1,
       "rating_count": 9840,
+      "cash_pct": 0.0,
       "offer_score": 0.0,
       "offer_count": 0,
       "best_offer": null,
@@ -778,6 +746,87 @@
         }
       },
       "booking_url": "",
+      "rank": 16
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_nandhana",
+      "name": "Nandhana Palace",
+      "cuisines": [
+        "Andhra",
+        "Biryani",
+        "South Indian"
+      ],
+      "locality": "Koramangala 4th Block",
+      "distance_km": 2.2,
+      "distance_source": "provider",
+      "cost_for_two": 1500.0,
+      "per_person": 750.0,
+      "bill_reference": 1500.0,
+      "rating": 4.1,
+      "rating_count": 4410,
+      "cash_pct": 0.0,
+      "offer_score": 0.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Flat 25% off on total bill",
+        "source": "offers",
+        "type": "percent",
+        "value": 25.0,
+        "min_spend": null,
+        "score": 0.0,
+        "effective_pct": 0.0,
+        "flags": [
+          "not-valid-at-requested-time"
+        ],
+        "rationale": "Not usable for this booking.: lunch-only but you asked for dinner",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "unknown",
+        "detail": "No slot data returned"
+      },
+      "booking_url": "",
+      "rank": 17
+    },
+    {
+      "provider": "district",
+      "provider_id": "dt_udupigarden",
+      "name": "Udupi Garden",
+      "cuisines": [
+        "South Indian",
+        "Vegetarian"
+      ],
+      "locality": "BTM Layout",
+      "distance_km": 2.9,
+      "distance_source": "provider",
+      "cost_for_two": 500.0,
+      "per_person": 250.0,
+      "bill_reference": 500.0,
+      "rating": 4.0,
+      "rating_count": 3110,
+      "cash_pct": 0.0,
+      "offer_score": 0.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "10% off on total bill",
+        "source": "offers",
+        "type": "percent",
+        "value": 10.0,
+        "min_spend": null,
+        "score": 0.0,
+        "effective_pct": 0.0,
+        "flags": [
+          "not-valid-at-requested-time"
+        ],
+        "rationale": "Not usable for this booking.: lunch-only but you asked for dinner",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "via-booking-link",
+        "detail": "Book via District link"
+      },
+      "booking_url": "https://www.district.in/bengaluru/udupi-garden-btm",
       "rank": 18
     }
   ],

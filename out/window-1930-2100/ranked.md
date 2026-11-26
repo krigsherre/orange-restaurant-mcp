@@ -2,26 +2,27 @@
 
 **Anchor** 12.9352, 77.6245 · **radius** ≤ 5 km · **budget** ≤ ₹1,000/person · **party** 2 · **when** 2026-11-27 7:30 PM–9:00 PM
 **Offer judge**: `rubric` · **Sources**: swiggy_dineout (fixture), district (fixture)
+**Bill reference**: each restaurant's cost for two (per person × party)
 
-Sorted by: offer strength ↓, distance ↑, name A–Z (then provider/id).
-**Top 3:** **Meghana Foods** (Flat ₹200 off on bills above ₹1,200, 29) · **Toit** (Free dessert on bills above ₹1,500, 12) · **Chulha Chauki Da Dhaba** (20% off up to ₹400, 11)
+Sorted by: cash value at the reference bill ↓, score ↓, distance ↑, name A–Z (then provider/id).
+**Top 3:** **Onesta** (1+1 on all pizzas, 20% of bill) · **Toit** (Flat 20% off on total bill, 20% of bill) · **Chulha Chauki Da Dhaba** (20% off up to ₹400, 20% of bill)
 
-| # | Restaurant | Provider | Best offer | Score | ₹/person | Dist | Slot (start–end) | Booking |
-|---:|---|---|---|---:|---:|---:|---|---|
-| 1 | **Meghana Foods** | `swiggy_dineout` | Flat ₹200 off on bills above ₹1,200 *(29)* | 29 | ₹700 | 0.9 km | 7:30 PM–9:00 PM | free |
-| 2 | **Toit** | `swiggy_dineout` | Free dessert on bills above ₹1,500 *(12)* | 12 | ₹1,000 | 1.1 km | 8:00 PM–9:30 PM | ₹500 prebook |
-| 3 | **Chulha Chauki Da Dhaba** | `swiggy_dineout` | 20% off up to ₹400 *(11)* | 11 | ₹650 | 1.2 km | 8:00 PM–9:30 PM | free |
-| 4 | **Onesta** | `swiggy_dineout` | 1+1 on all pizzas *(10)* | 10 | ₹500 | 1.5 km | 8:30 PM–10:00 PM | free |
-| 5 | **Truffles** | `swiggy_dineout` | Flat 15% off on total bill *(5)* | 5 | ₹400 | 2.1 km | 8:15 PM–9:45 PM | free |
-| 6 | **Empire Restaurant** | `swiggy_dineout` | No offer | 0 | ₹500 | 1.6 km | 8:00 PM–9:30 PM | free |
+| # | Restaurant | Provider | Best offer | Cash % | Score | ₹/person | Dist | Slot (start–end) | Booking |
+|---:|---|---|---|---:|---:|---:|---:|---|---|
+| 1 | **Onesta** | `swiggy_dineout` | 1+1 on all pizzas *(20)* | 20% | 20 | ₹500 | 1.5 km | 8:30 PM–10:00 PM | free |
+| 2 | **Toit** | `swiggy_dineout` | Flat 20% off on total bill *(17)* | 20% | 17 | ₹1,000 | 1.1 km | 8:00 PM–9:30 PM | ₹500 prebook |
+| 3 | **Chulha Chauki Da Dhaba** | `swiggy_dineout` | 20% off up to ₹400 *(11)* | 20% | 11 | ₹650 | 1.2 km | 8:00 PM–9:30 PM | free |
+| 4 | **Truffles** | `swiggy_dineout` | Flat 15% off on total bill *(15)* | 15% | 15 | ₹400 | 2.1 km | 8:15 PM–9:45 PM | free |
+| 5 | **Meghana Foods** | `swiggy_dineout` | Flat ₹200 off on bills above ₹1,200 *(14)* | 14% | 14 | ₹700 | 0.9 km | 7:30 PM–9:00 PM | free |
+| 6 | **Empire Restaurant** | `swiggy_dineout` | No offer | 0% | 0 | ₹500 | 1.6 km | 8:00 PM–9:30 PM | free |
 
 ## Why each offer scored that way
 
-- **Meghana Foods** — Flat ₹200 off on bills above ₹1,200 → score 29, ~29% effective, flags: one-per-table. ₹200 off
-- **Toit** — Free dessert on bills above ₹1,500 → score 12, ~12% effective, flags: none. non-cash perk
-- **Chulha Chauki Da Dhaba** — 20% off up to ₹400 → score 11, ~20% effective, flags: capped-up-to, non-stackable. 20% off: advertised as 'up to', so treat as a ceiling
-- **Onesta** — 1+1 on all pizzas → score 10, ~20% effective, flags: weekend-excluded. non-cash perk: not valid on weekends
-- **Truffles** — Flat 15% off on total bill → score 5, ~15% effective, flags: weekend-excluded. 15% off: not valid on weekends
+- **Onesta** — 1+1 on all pizzas → 20% of a ₹1,000 bill, score 20, flags: none. non-cash perk = 20% of a ₹1,000 bill
+- **Toit** — Flat 20% off on total bill → 20% of a ₹2,000 bill, score 17, flags: non-stackable. 20% off = 20% of a ₹2,000 bill
+- **Chulha Chauki Da Dhaba** — 20% off up to ₹400 → 20% of a ₹1,300 bill, score 11, flags: capped-up-to, non-stackable. 20% off = 20% of a ₹1,300 bill; 'up to' is a ceiling
+- **Truffles** — Flat 15% off on total bill → 15% of a ₹800 bill, score 15, flags: none. 15% off = 15% of a ₹800 bill
+- **Meghana Foods** — Flat ₹200 off on bills above ₹1,200 → 14% of a ₹1,400 bill, score 14, flags: one-per-table. ₹200 off = 14.3% of a ₹1,400 bill
 - **Empire Restaurant** — no offer listed; ranked below every offer-bearing restaurant.
 
 ## Excluded before ranking
