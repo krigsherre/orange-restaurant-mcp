@@ -1,0 +1,7 @@
+rank,name,provider,provider_id,best_offer,offer_score,effective_pct,per_person,distance_km,rating,availability,flags,rationale
+1,Meghana Foods,swiggy_dineout,sw_meghana,"Flat ₹200 off on bills above ₹1,200",28.6,28.6,700.0,0.9,4.5,8:00 PM–9:30 PM · Dinner · 4 covers left,one-per-table,₹200 off
+2,Toit,swiggy_dineout,sw_toit,"Free dessert on bills above ₹1,500",12.0,12.0,1000.0,1.1,4.6,8:00 PM–9:30 PM · Dinner · ₹500 prebook · 2 covers left,—,non-cash perk
+3,Chulha Chauki Da Dhaba,swiggy_dineout,sw_chulha,20% off up to ₹400,11.0,20.0,650.0,1.2,4.2,8:00 PM–9:30 PM · Dinner · 5 covers left,"capped-up-to, non-stackable","20% off: advertised as 'up to', so treat as a ceiling"
+4,Onesta,swiggy_dineout,sw_onesta,1+1 on all pizzas,10.0,20.0,500.0,1.5,4.2,8:30 PM–10:00 PM · Dinner · 10 covers left,weekend-excluded,non-cash perk: not valid on weekends
+5,Truffles,swiggy_dineout,sw_truffles,Flat 15% off on total bill,5.0,15.0,400.0,2.1,4.3,8:15 PM–9:45 PM · Dinner · 3 covers left,weekend-excluded,15% off: not valid on weekends
+6,Empire Restaurant,swiggy_dineout,sw_empire,,0.0,,500.0,1.6,4.1,8:00 PM–9:30 PM · Dinner · 20 covers left,—,

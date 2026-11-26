@@ -1,0 +1,566 @@
+{
+  "query": {
+    "area": "Koramangala",
+    "budget_per_person_inr": 1000.0,
+    "party_size": 2,
+    "budget_for_party_inr": 2000.0,
+    "requested_date": "2026-11-27",
+    "requested_time": "20:00",
+    "requested_time_end": "22:00",
+    "window": "8:00 PM–10:00 PM",
+    "meal": "dinner",
+    "cuisines": [
+      "North Indian",
+      "Chinese"
+    ],
+    "require_availability": false
+  },
+  "anchor": {
+    "lat": 12.9352,
+    "lng": 77.6245,
+    "radius_km": 5.0
+  },
+  "generated_at": "2026-11-26T15:39:51",
+  "meta": {
+    "judge": "rubric",
+    "booking": null,
+    "require_availability": false,
+    "sources": [
+      "swiggy_dineout (fixture)",
+      "district (fixture)"
+    ],
+    "notes": [
+      "swiggy_dineout: fixture (set SWIGGY_MCP_TOKEN for live)",
+      "district: fixture (set DISTRICT_MCP_ENDPOINT + DISTRICT_MCP_TOKEN for live)",
+      "swiggy_dineout: discovered 18",
+      "district: discovered 12",
+      "availability probed: 8"
+    ],
+    "counts": {
+      "discovered": 30,
+      "after_filters": 8,
+      "rejected": 22,
+      "with_offers": 7,
+      "bookable": 3
+    },
+    "constraints": {
+      "radius_km": 5.0,
+      "budget_per_person": 1000.0,
+      "party_size": 2,
+      "cuisines": [
+        "North Indian",
+        "Chinese"
+      ],
+      "window": "8:00 PM–10:00 PM",
+      "require_availability": false
+    }
+  },
+  "counts": {
+    "ranked": 8,
+    "rejected": 22
+  },
+  "results": [
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_beijing",
+      "name": "Beijing Bites",
+      "cuisines": [
+        "Chinese",
+        "Thai"
+      ],
+      "locality": "Koramangala 6th Block",
+      "distance_km": 1.1,
+      "distance_source": "provider",
+      "cost_for_two": 1200.0,
+      "per_person": 600.0,
+      "rating": 4.0,
+      "rating_count": 3120,
+      "offer_score": 35.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Flat ₹300 off on total bill",
+        "source": "offers",
+        "type": "flat",
+        "value": 300.0,
+        "score": 35.0,
+        "effective_pct": 50.0,
+        "flags": [
+          "card-required"
+        ],
+        "rationale": "₹300 off: needs a specific bank card",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "unknown",
+        "detail": "No slot data returned"
+      },
+      "booking_url": "",
+      "rank": 1
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_meghana",
+      "name": "Meghana Foods",
+      "cuisines": [
+        "Biryani",
+        "Andhra",
+        "North Indian"
+      ],
+      "locality": "Koramangala 5th Block",
+      "distance_km": 0.9,
+      "distance_source": "provider",
+      "cost_for_two": 1400.0,
+      "per_person": 700.0,
+      "rating": 4.5,
+      "rating_count": 26110,
+      "offer_score": 28.6,
+      "offer_count": 2,
+      "best_offer": {
+        "title": "Flat ₹200 off on bills above ₹1,200",
+        "source": "offers",
+        "type": "flat",
+        "value": 200.0,
+        "score": 28.6,
+        "effective_pct": 28.6,
+        "flags": [
+          "one-per-table"
+        ],
+        "rationale": "₹200 off",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "available",
+        "detail": "8:00 PM–9:30 PM · Dinner · 4 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "8:00 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 4,
+          "slot_id": "4001",
+          "item_id": "sw_meghana-ticket_5001",
+          "reservation_time": 1795789800,
+          "duration_min": 90,
+          "window": "8:00 PM–9:30 PM"
+        }
+      },
+      "booking_url": "",
+      "rank": 2
+    },
+    {
+      "provider": "district",
+      "provider_id": "dt_biryaniblues",
+      "name": "Biryani Blues",
+      "cuisines": [
+        "Biryani",
+        "North Indian"
+      ],
+      "locality": "HSR Layout",
+      "distance_km": 3.6,
+      "distance_source": "provider",
+      "cost_for_two": 1100.0,
+      "per_person": 550.0,
+      "rating": 4.1,
+      "rating_count": 5210,
+      "offer_score": 27.3,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Flat ₹150 off",
+        "source": "offers",
+        "type": "flat",
+        "value": 150.0,
+        "score": 27.3,
+        "effective_pct": 27.3,
+        "flags": [],
+        "rationale": "₹150 off",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "via-booking-link",
+        "detail": "Book via District link"
+      },
+      "booking_url": "https://www.district.in/bengaluru/biryani-blues-hsr",
+      "rank": 3
+    },
+    {
+      "provider": "district",
+      "provider_id": "dt_gillys",
+      "name": "Gilly's Restobar",
+      "cuisines": [
+        "Restobar",
+        "North Indian"
+      ],
+      "locality": "Koramangala 6th Block",
+      "distance_km": 1.764,
+      "distance_source": "haversine",
+      "cost_for_two": 1650.0,
+      "per_person": 825.0,
+      "rating": 4.2,
+      "rating_count": 6710,
+      "offer_score": 12.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Flat 12% off on food",
+        "source": "offers",
+        "type": "percent",
+        "value": 12.0,
+        "score": 12.0,
+        "effective_pct": 12.0,
+        "flags": [
+          "one-per-table"
+        ],
+        "rationale": "12% off",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "via-booking-link",
+        "detail": "Book via District link"
+      },
+      "booking_url": "https://www.district.in/bengaluru/gillys-restobar-koramangala",
+      "rank": 4
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_spice",
+      "name": "Spice Elephant",
+      "cuisines": [
+        "North Indian",
+        "Mughlai"
+      ],
+      "locality": "Koramangala 7th Block",
+      "distance_km": 1.9,
+      "distance_source": "provider",
+      "cost_for_two": 1800.0,
+      "per_person": 900.0,
+      "rating": 4.0,
+      "rating_count": 2210,
+      "offer_score": 12.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Complimentary dessert platter",
+        "source": "offers",
+        "type": "perk",
+        "value": 0.0,
+        "score": 12.0,
+        "effective_pct": 12.0,
+        "flags": [],
+        "rationale": "non-cash perk",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "unknown",
+        "detail": "No slot data returned"
+      },
+      "booking_url": "",
+      "rank": 5
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_chulha",
+      "name": "Chulha Chauki Da Dhaba",
+      "cuisines": [
+        "North Indian",
+        "Punjabi"
+      ],
+      "locality": "Koramangala 6th Block",
+      "distance_km": 1.2,
+      "distance_source": "provider",
+      "cost_for_two": 1300.0,
+      "per_person": 650.0,
+      "rating": 4.2,
+      "rating_count": 5410,
+      "offer_score": 11.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "20% off up to ₹400",
+        "source": "offers",
+        "type": "percent",
+        "value": 20.0,
+        "score": 11.0,
+        "effective_pct": 20.0,
+        "flags": [
+          "capped-up-to",
+          "non-stackable"
+        ],
+        "rationale": "20% off: advertised as 'up to', so treat as a ceiling",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "available",
+        "detail": "8:00 PM–9:30 PM · Dinner · 5 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "8:00 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 5,
+          "slot_id": "4000",
+          "item_id": "sw_chulha-ticket_5000",
+          "reservation_time": 1795789800,
+          "duration_min": 90,
+          "window": "8:00 PM–9:30 PM"
+        }
+      },
+      "booking_url": "",
+      "rank": 6
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_gillys",
+      "name": "Gilly's Restobar",
+      "cuisines": [
+        "Restobar",
+        "North Indian",
+        "Continental"
+      ],
+      "locality": "Koramangala 6th Block",
+      "distance_km": 2.3,
+      "distance_source": "provider",
+      "cost_for_two": 1700.0,
+      "per_person": 850.0,
+      "rating": 4.2,
+      "rating_count": 6710,
+      "offer_score": 4.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Flat 10% off on food",
+        "source": "offers",
+        "type": "percent",
+        "value": 10.0,
+        "score": 4.0,
+        "effective_pct": 10.0,
+        "flags": [
+          "one-per-table",
+          "weekday-only"
+        ],
+        "rationale": "10% off: weekdays only",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "unknown",
+        "detail": "No slot data returned"
+      },
+      "booking_url": "",
+      "rank": 7
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_empire",
+      "name": "Empire Restaurant",
+      "cuisines": [
+        "Biryani",
+        "North Indian",
+        "Mughlai"
+      ],
+      "locality": "Koramangala 4th Block",
+      "distance_km": 1.6,
+      "distance_source": "provider",
+      "cost_for_two": 1000.0,
+      "per_person": 500.0,
+      "rating": 4.1,
+      "rating_count": 9840,
+      "offer_score": 0.0,
+      "offer_count": 0,
+      "best_offer": null,
+      "availability": {
+        "status": "available",
+        "detail": "8:00 PM–9:30 PM · Dinner · 20 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "8:00 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 20,
+          "slot_id": "4000",
+          "item_id": "sw_empire-ticket_5000",
+          "reservation_time": 1795789800,
+          "duration_min": 90,
+          "window": "8:00 PM–9:30 PM"
+        }
+      },
+      "booking_url": "",
+      "rank": 8
+    }
+  ],
+  "rejected": [
+    {
+      "provider": "swiggy_dineout",
+      "name": "Toit",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Continental, European, Pizza",
+      "distance_km": 1.1,
+      "per_person": 1000.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Third Wave Coffee",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Cafe, Coffee, Desserts",
+      "distance_km": 0.8,
+      "per_person": 450.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Corner House Ice Cream",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Desserts, Ice Cream",
+      "distance_km": 0.5,
+      "per_person": 300.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Truffles",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Burgers, American, Fast Food",
+      "distance_km": 2.1,
+      "per_person": 400.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Dyu Art Cafe",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Cafe, Continental",
+      "distance_km": 1.3,
+      "per_person": 450.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Brahmins Coffee Bar",
+      "reason": "cuisine-mismatch",
+      "detail": "serves South Indian, Breakfast",
+      "distance_km": 1.0,
+      "per_person": 200.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Prost Brew Pub",
+      "reason": "over-budget",
+      "detail": "",
+      "distance_km": 1.9,
+      "per_person": 1100.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Onesta",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Italian, Pizza, Pasta",
+      "distance_km": 1.5,
+      "per_person": 500.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Nandhana Palace",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Andhra, Biryani, South Indian",
+      "distance_km": 2.2,
+      "per_person": 750.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Big Brewsky",
+      "reason": "beyond-radius",
+      "detail": "",
+      "distance_km": 7.4,
+      "per_person": 1200.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Greenland Veg",
+      "reason": "cuisine-mismatch",
+      "detail": "serves South Indian, Vegetarian",
+      "distance_km": 2.0,
+      "per_person": 350.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Fenny's Lounge",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Lounge, Continental, Finger Food",
+      "distance_km": 1.4,
+      "per_person": 800.0
+    },
+    {
+      "provider": "district",
+      "name": "Toit",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Continental, European, Pizza",
+      "distance_km": 1.0,
+      "per_person": 1000.0
+    },
+    {
+      "provider": "district",
+      "name": "Meghana Foods",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Biryani, Andhra",
+      "distance_km": 0.7,
+      "per_person": 750.0
+    },
+    {
+      "provider": "district",
+      "name": "Third Wave Coffee",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Cafe, Coffee",
+      "distance_km": 0.6,
+      "per_person": 425.0
+    },
+    {
+      "provider": "district",
+      "name": "Onesta",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Italian, Pizza",
+      "distance_km": 1.3,
+      "per_person": 450.0
+    },
+    {
+      "provider": "district",
+      "name": "Dyu Art Cafe",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Cafe, Continental",
+      "distance_km": 1.1,
+      "per_person": 475.0
+    },
+    {
+      "provider": "district",
+      "name": "Taaza Thindi",
+      "reason": "cuisine-mismatch",
+      "detail": "serves South Indian, Breakfast",
+      "distance_km": 4.9,
+      "per_person": 150.0
+    },
+    {
+      "provider": "district",
+      "name": "Udupi Garden",
+      "reason": "cuisine-mismatch",
+      "detail": "serves South Indian, Vegetarian",
+      "distance_km": 2.9,
+      "per_person": 250.0
+    },
+    {
+      "provider": "district",
+      "name": "Windmills Craftworks",
+      "reason": "beyond-radius",
+      "detail": "",
+      "distance_km": 5.4,
+      "per_person": 1500.0
+    },
+    {
+      "provider": "district",
+      "name": "Fenny's Lounge",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Lounge, Finger Food",
+      "distance_km": 1.2,
+      "per_person": 850.0
+    },
+    {
+      "provider": "district",
+      "name": "Cafe Azzure",
+      "reason": "unknown-cost",
+      "detail": "",
+      "distance_km": 1.573,
+      "per_person": null
+    }
+  ]
+}
