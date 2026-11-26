@@ -54,7 +54,11 @@ def rank(restaurants: list[Restaurant], ctx: QueryContext, judge: OfferJudge) ->
 
 
 def rank_rows(restaurants: list[Restaurant], ctx: QueryContext) -> list[dict[str, Any]]:
-    """Sort: offer strength desc -> distance asc -> name asc -> provider/id (deterministic)."""
+    """Sort: cash value at the reference bill desc -> score desc -> distance -> name -> ids.
+
+    "Best offer" is the offer with the most cash value for this party, not the one with
+    the highest usability score — a card-gated ₹300 is still ₹300 if you hold the card.
+    """
     rows: list[dict[str, Any]] = []
     for restaurant in restaurants:
         best = restaurant.best_offer
@@ -70,9 +74,11 @@ def rank_rows(restaurants: list[Restaurant], ctx: QueryContext) -> list[dict[str
                 "distance_source": restaurant.distance_source,
                 "cost_for_two": restaurant.cost_for_two,
                 "per_person": restaurant.per_person,
+                "bill_reference": ctx.expected_bill(restaurant.per_person),
                 "rating": restaurant.rating,
                 "rating_count": restaurant.rating_count,
-                "offer_score": restaurant.offer_score,
+                "cash_pct": best.effective_pct if best else 0.0,
+                "offer_score": best.score if best else 0.0,
                 "offer_count": len(restaurant.offers),
                 "best_offer": (
                     {
@@ -80,6 +86,7 @@ def rank_rows(restaurants: list[Restaurant], ctx: QueryContext) -> list[dict[str
                         "source": best.source,
                         "type": best.offer_type,
                         "value": best.value,
+                        "min_spend": best.min_spend,
                         "score": best.score,
                         "effective_pct": best.effective_pct,
                         "flags": best.flags,
@@ -96,6 +103,7 @@ def rank_rows(restaurants: list[Restaurant], ctx: QueryContext) -> list[dict[str
 
     rows.sort(
         key=lambda row: (
+            -row["cash_pct"],
             -row["offer_score"],
             row["distance_km"] if row["distance_km"] is not None else float("inf"),
             row["name"].casefold(),

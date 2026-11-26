@@ -67,6 +67,27 @@ class ComparatorTests(unittest.TestCase):
         rows = rank_rows([restaurant("Weak", score=10), restaurant("Strong", score=90)], self.ctx)
         self.assertEqual([r["name"] for r in rows], ["Strong", "Weak"])
 
+    def test_cash_value_beats_usability_score(self):
+        cash = restaurant("Cash", score=10)
+        cash.offers[0].effective_pct = 30.0
+        clean = restaurant("Clean", score=90)
+        clean.offers[0].effective_pct = 10.0
+        rows = rank_rows([clean, cash], self.ctx)
+        self.assertEqual([r["name"] for r in rows], ["Cash", "Clean"])
+        self.assertEqual(rows[0]["cash_pct"], 30.0)
+        self.assertEqual(rows[0]["offer_score"], 10.0)
+
+    def test_best_offer_is_the_cash_maximum(self):
+        record = restaurant("Both", score=10)
+        record.offers = [
+            Offer(title="card-gated ₹300", score=10, effective_pct=25.0),
+            Offer(title="clean ₹200", score=90, effective_pct=14.0),
+        ]
+        self.assertEqual(record.best_offer.title, "card-gated ₹300")
+        rows = rank_rows([record], self.ctx)
+        self.assertEqual(rows[0]["cash_pct"], 25.0)
+        self.assertEqual(rows[0]["offer_score"], 10.0)
+
     def test_tie_broken_by_distance(self):
         rows = rank_rows([restaurant("Far", distance=3.0, score=50), restaurant("Near", distance=1.0, score=50)], self.ctx)
         self.assertEqual([r["name"] for r in rows], ["Near", "Far"])

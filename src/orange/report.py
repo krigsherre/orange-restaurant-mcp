@@ -38,6 +38,7 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
         "best_offer",
         "offer_score",
         "effective_pct",
+        "bill_reference",
         "per_person",
         "distance_km",
         "rating",
@@ -59,6 +60,7 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
                     "best_offer": best.get("title", ""),
                     "offer_score": row["offer_score"],
                     "effective_pct": best.get("effective_pct", ""),
+                    "bill_reference": row.get("bill_reference", ""),
                     "per_person": row["per_person"],
                     "distance_km": row["distance_km"],
                     "rating": row["rating"],
@@ -90,8 +92,12 @@ def write_markdown(
     lines.append(f"**Offer judge**: `{judge_name}` · **Sources**: {', '.join(meta.get('sources', []))}")
     if meta.get("judge_fallback"):
         lines.append(f"**Scoring fallback**: `{judge_name}` — {meta['judge_fallback']}")
+    if ctx.spend_per_person:
+        lines.append(f"**Bill reference**: ₹{ctx.spend_per_person:,.0f}/person × {ctx.party_size} (`--spend`)")
+    else:
+        lines.append("**Bill reference**: each restaurant's cost for two (per person × party)")
     lines.append("")
-    lines.append("Sorted by: offer strength ↓, distance ↑, name A–Z (then provider/id).")
+    lines.append("Sorted by: cash value at the reference bill ↓, score ↓, distance ↑, name A–Z (then provider/id).")
     if rows:
         seen: set[str] = set()
         podium_rows = []
@@ -104,12 +110,13 @@ def write_markdown(
             if len(podium_rows) == 3:
                 break
         podium = " · ".join(
-            f"**{row['name']}** ({(row['best_offer'] or {}).get('title', 'no offer')}, {row['offer_score']:.0f})" for row in podium_rows
+            f"**{row['name']}** ({(row['best_offer'] or {}).get('title', 'no offer')}, {row['cash_pct']:.0f}% of bill)"
+            for row in podium_rows
         )
         lines.append(f"**Top 3:** {podium}")
     lines.append("")
-    lines.append("| # | Restaurant | Provider | Best offer | Score | ₹/person | Dist | Slot (start–end) | Booking |")
-    lines.append("|---:|---|---|---|---:|---:|---:|---|---|")
+    lines.append("| # | Restaurant | Provider | Best offer | Cash % | Score | ₹/person | Dist | Slot (start–end) | Booking |")
+    lines.append("|---:|---|---|---|---:|---:|---:|---:|---|---|")
     for row in rows:
         best = row.get("best_offer") or {}
         offer = best.get("title", "No offer")
@@ -128,8 +135,8 @@ def write_markdown(
             }.get(status, status)
         lines.append(
             f"| {row['rank']} | **{row['name']}** | `{row['provider']}` | {offer} | "
-            f"{row['offer_score']:.0f} | ₹{row['per_person']:,.0f} | {row['distance_km']:.1f} km | "
-            f"{slot_text} | {booking} |"
+            f"{row['cash_pct']:.0f}% | {row['offer_score']:.0f} | ₹{row['per_person']:,.0f} | "
+            f"{row['distance_km']:.1f} km | {slot_text} | {booking} |"
         )
 
     lines.append("")
@@ -142,8 +149,9 @@ def write_markdown(
             continue
         flags = ", ".join(best.get("flags") or []) or "none"
         lines.append(
-            f"- **{row['name']}** — {best.get('title')} → score {best.get('score'):.0f}, "
-            f"~{best.get('effective_pct'):.0f}% effective, flags: {flags}. {best.get('rationale', '')}"
+            f"- **{row['name']}** — {best.get('title')} → {best.get('effective_pct'):.0f}% of a "
+            f"₹{row.get('bill_reference', 0):,.0f} bill, score {best.get('score'):.0f}, flags: {flags}. "
+            f"{best.get('rationale', '')}"
         )
 
     if rejected:

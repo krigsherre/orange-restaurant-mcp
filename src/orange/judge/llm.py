@@ -33,6 +33,17 @@ Judge each offer on:
 5. Caps and qualifiers: "up to 40%" is a ceiling, not a promise — discount it accordingly.
 6. Stackability: assume offers do NOT stack unless stated, and say so in the rationale.
 
+The bill is not known in advance. Each offer carries `bill_reference_inr`: the party's expected
+bill at that restaurant (provider cost for two, or the user's stated spend). Compute every
+percentage against THAT bill, never against `budget_for_party_inr` or `budget_per_person_inr`:
+- flat ₹X off -> X / bill_reference_inr
+- percent -> the advertised %, with its cap applied to this bill when known
+If `min_spend` is above `bill_reference_inr` but within the party budget, value the offer at the
+higher bill (you would have to spend that much). If `min_spend` exceeds the party budget, score 0
+and state the spend that unlocks it.
+`requested_weekday` and `is_weekend` are authoritative: use `is_weekend` for weekend rules and do
+not infer the weekday from the date. Friday is a weekday.
+
 Scoring:
 - 0   = unusable for this booking (expired window, impossible spend, wrong card you may not hold).
 - 1-20 = marginal or heavily conditional.
@@ -44,8 +55,9 @@ Never reward a bigger headline number that is harder to actually use.
 Return STRICT JSON only, no markdown, matching:
 {"verdicts":[{"index":0,"score":0-100,"effective_pct":0-100,"flags":["short-kebab-tag"],"rationale":"max 20 words"}]}
 
-One verdict per input index, same order. `effective_pct` is your estimate of the true cash-equivalent
-discount percentage for this party. Use short kebab-case flags such as: capped-up-to, min-spend-tight,
+One verdict per input index, same order. `effective_pct` is the cash-equivalent discount at
+`bill_reference_inr` for a party that can meet the conditions — a card or advance booking does not
+reduce it; record those in `flags` and in `score`. Use short kebab-case flags such as: capped-up-to, min-spend-tight,
 min-spend-above-party-budget, weekend-excluded, weekday-only, lunch-only, not-valid-at-requested-time,
 card-required, food-only, non-stackable, advance-booking, one-per-table, unparsed-offer."""
 
@@ -63,6 +75,7 @@ def build_user_prompt(offers: list[Offer], ctx: QueryContext) -> str:
                 "parsed_value": offer.value,
                 "parsed_min_spend_inr": offer.min_spend,
                 "restaurant_per_person_inr": offer.per_person_ref,
+                "bill_reference_inr": ctx.expected_bill(offer.per_person_ref),
                 "detected_conditions": offer.conditions,
             }
             for index, offer in enumerate(offers)

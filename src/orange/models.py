@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import dataclasses
+import datetime
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -110,7 +111,8 @@ class Restaurant:
 
     @property
     def best_offer(self) -> Offer | None:
-        return max(self.offers, key=lambda o: (o.score, -o.provider_rank), default=None)
+        """The offer worth the most cash at this party's reference bill."""
+        return max(self.offers, key=lambda o: (o.effective_pct, o.score, -o.provider_rank), default=None)
 
     def to_dict(self, include_raw: bool = False) -> dict[str, Any]:
         data = {
@@ -154,6 +156,8 @@ class QueryContext:
     duration_min: int = 90
     cuisines: list[str] = field(default_factory=list)
     require_availability: bool = False
+    # Expected spend per person. None means "use the provider's cost for two ÷ 2".
+    spend_per_person: float | None = None
 
     @property
     def is_dinner(self) -> bool:
@@ -163,6 +167,30 @@ class QueryContext:
     @property
     def budget_for_party(self) -> float:
         return self.budget_per_person * self.party_size
+
+    def expected_bill(self, per_person: float | None) -> float:
+        """Party bill at the restaurant's average spend.
+
+        The real bill is unknown before ordering, so offers are valued against a stated
+        reference: the provider's cost-for-two (per person × party), or ``--spend`` when
+        the caller supplies an expectation.
+        """
+        reference = self.spend_per_person or per_person or self.budget_per_person
+        return round(max(reference, 1.0) * self.party_size, 2)
+
+    @property
+    def weekday(self) -> str | None:
+        try:
+            return datetime.date.fromisoformat(self.date).strftime("%A")
+        except ValueError:
+            return None
+
+    @property
+    def is_weekend(self) -> bool | None:
+        try:
+            return datetime.date.fromisoformat(self.date).weekday() >= 5
+        except ValueError:
+            return None
 
     @property
     def start_minutes(self) -> int | None:
@@ -200,10 +228,13 @@ class QueryContext:
             "party_size": self.party_size,
             "budget_for_party_inr": self.budget_for_party,
             "requested_date": self.date,
+            "requested_weekday": self.weekday,
+            "is_weekend": self.is_weekend,
             "requested_time": self.time,
             "requested_time_end": self.time_end,
             "window": self.window_label,
             "meal": "dinner" if self.is_dinner else "lunch",
             "cuisines": list(self.cuisines),
             "require_availability": self.require_availability,
+            "spend_per_person_inr": self.spend_per_person,
         }

@@ -36,6 +36,13 @@ class OfferParsingTests(unittest.TestCase):
     def test_weekday_window(self):
         self.assertIn("weekday-only", extract_conditions("Mon-Thu, 8 AM to 6 PM"))
 
+    def test_daytime_window(self):
+        self.assertIn("daytime-only", extract_conditions("Mon-Thu, 8 AM to 6 PM"))
+        self.assertIn("daytime-only", extract_conditions("Valid for dine-in till 6 PM on weekdays."))
+
+    def test_breakfast_window(self):
+        self.assertIn("breakfast-only", extract_conditions("20% off on breakfast combos. Valid till 11 AM."))
+
     def test_lunch_only(self):
         self.assertIn("lunch-only", extract_conditions("Lunch only as per restaurant policy."))
 

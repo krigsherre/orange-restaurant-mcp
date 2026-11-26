@@ -20,6 +20,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--lat", type=float, default=12.9352, help="Koramangala centre latitude (Swiggy's reference)")
     parser.add_argument("--lng", type=float, default=77.6245, help="Koramangala centre longitude")
     parser.add_argument("--budget", type=float, default=1000.0, help="INR per person")
+    parser.add_argument(
+        "--spend",
+        type=float,
+        help="expected spend per person used to value offers (default: the provider's cost for two ÷ 2)",
+    )
     parser.add_argument("--radius", type=float, default=5.0, help="km")
     parser.add_argument("--party", type=int, default=2)
     parser.add_argument(
@@ -92,7 +97,11 @@ def main(argv: list[str] | None = None) -> int:
         duration_min=args.duration,
         cuisines=parse_cuisine_args(args.cuisine),
         require_availability=args.require_available,
+        spend_per_person=args.spend,
     )
+    if args.spend is not None and args.spend <= 0:
+        print("--spend must be greater than zero.", file=sys.stderr)
+        return 2
     selection = _selection(args)
     if args.book and selection is None:
         print("--book needs --auto (top pick) or --select RANK|NAME (your pick).", file=sys.stderr)
@@ -138,18 +147,24 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Window: {ctx.date} {ctx.window_label} · party {ctx.party_size} · ≤₹{ctx.budget_per_person:,.0f}/person")
     if ctx.cuisines:
         print(f"Cuisine filter: {', '.join(ctx.cuisines)}")
+    if ctx.spend_per_person:
+        print(f"Bill reference: ₹{ctx.spend_per_person:,.0f}/person × {ctx.party_size} (--spend)")
     print()
 
-    header = f"{'#':>2}  {'Restaurant':<26} {'Provider':<16} {'Offer':<34} {'Score':>5} {'₹/p':>6} {'Dist':>5}  {'Slot':<20}"
+    header = (
+        f"{'#':>2}  {'Restaurant':<26} {'Provider':<16} {'Offer':<30} "
+        f"{'Cash%':>6} {'Score':>5} {'₹/p':>6} {'Dist':>5}  {'Slot':<20}"
+    )
     print(header)
     print("-" * len(header))
     for row in result.rows[: args.top]:
         best = row["best_offer"] or {}
-        offer = (best.get("title") or "—")[:33]
+        offer = (best.get("title") or "—")[:29]
         slot = (row["availability"].get("slot") or {}).get("window") or "—"
         print(
-            f"{row['rank']:>2}  {row['name'][:26]:<26} {row['provider']:<16} {offer:<34} "
-            f"{row['offer_score']:>5.0f} {row['per_person']:>6,.0f} {row['distance_km']:>5.1f}  {slot:<20}"
+            f"{row['rank']:>2}  {row['name'][:26]:<26} {row['provider']:<16} {offer:<30} "
+            f"{row['cash_pct']:>6.1f} {row['offer_score']:>5.0f} {row['per_person']:>6,.0f} "
+            f"{row['distance_km']:>5.1f}  {slot:<20}"
         )
     print()
     print(f"Wrote {args.out}/ranked.{{md,csv,json}}")

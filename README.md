@@ -9,7 +9,7 @@ Ties go to the closer restaurant, then alphabetically.
 ./run.py --require-available            # 6 bookable places, 8–10 PM
 ```
 
-- **Status**: fixture-backed (no live MCP token here) · **112 tests**, no network · **9-command** reproducible runbook
+- **Status**: fixture-backed (no live MCP token here) · **125 tests**, no network · **9-command** reproducible runbook
 - **Outputs**: [out/ranked.md](out/ranked.md) · [out/ranked.csv](out/ranked.csv) · [out/ranked.json](out/ranked.json) · [out/commands.json](out/commands.json)
 
 ---
@@ -19,22 +19,24 @@ Ties go to the closer restaurant, then alphabetically.
 Fixture run, `rubric` judge. Anchor **12.9352, 77.6245** (Koramangala centre — the coordinate
 Swiggy's own docs publish). 30 discovered → 26 pass filters → **6 bookable** in the 8–10 PM window.
 
-| # | Restaurant | Provider | Best offer | Score | ₹/person | Dist | Slot | Booking |
-|---:|---|---|---|---:|---:|---:|---|---|
-| 1 | Beijing Bites | swiggy_dineout | Flat ₹300 off on total bill | 35 | 600 | 1.1 km | — | no data |
-| 2 | Meghana Foods | district | Flat ₹250 off | 30 | 750 | 0.7 km | — | District link |
-| 3 | Meghana Foods | swiggy_dineout | Flat ₹200 off on bills above ₹1,200 | 29 | 700 | 0.9 km | 8:00–9:30 PM | free |
-| 4 | Biryani Blues | district | Flat ₹150 off | 27 | 550 | 3.6 km | — | District link |
-| 5 | Third Wave Coffee | swiggy_dineout | Buy 1 Get 1 on all coffees | 20 | 450 | 0.8 km | — | no slot |
-| 6 | Greenland Veg | swiggy_dineout | Flat ₹100 off on bills above ₹800 | 17 | 350 | 2.0 km | — | no data |
-| 7 | Third Wave Coffee | district | 20% off on all beverages | 14 | 425 | 0.6 km | — | District link |
-| 8 | Toit | swiggy_dineout | Free dessert on bills above ₹1,500 | 12 | 1,000 | 1.1 km | 8:00–9:30 PM | ₹500 prebook |
-| 9 | Gilly's Restobar | district | Flat 12% off on food | 12 | 825 | 1.8 km | — | District link |
-| 10 | Spice Elephant | swiggy_dineout | Complimentary dessert platter | 12 | 900 | 1.9 km | — | no data |
+| # | Restaurant | Provider | Best offer | Cash % | Score | ₹/person | Dist | Slot | Booking |
+|---:|---|---|---|---:|---:|---:|---:|---|---|
+| 1 | Beijing Bites | swiggy_dineout | Flat ₹300 off on total bill | 25% | 10 | 600 | 1.1 km | — | no data |
+| 2 | Fenny's Lounge | district | Buy 1 Get 1 on cocktails | 20% | 20 | 850 | 1.2 km | — | District link |
+| 3 | Fenny's Lounge | swiggy_dineout | Happy hours: 1+1 on all drinks | 20% | 20 | 800 | 1.4 km | — | no slot |
+| 4 | Onesta | swiggy_dineout | 1+1 on all pizzas | 20% | 20 | 500 | 1.5 km | 8:30–10:00 PM | free |
+| 5 | Toit | swiggy_dineout | Flat 20% off on total bill | 20% | 17 | 1,000 | 1.1 km | 8:00–9:30 PM | ₹500 prebook |
+| 6 | Chulha Chauki Da Dhaba | swiggy_dineout | 20% off up to ₹400 | 20% | 11 | 650 | 1.2 km | 8:00–9:30 PM | free |
+| 7 | Meghana Foods | district | Flat ₹250 off | 17% | 14 | 750 | 0.7 km | — | District link |
+| 8 | Truffles | swiggy_dineout | Flat 15% off on total bill | 15% | 15 | 400 | 2.1 km | 8:15–9:45 PM | free |
+| 9 | Toit | district | Flat 15% off + free dessert | 15% | 12 | 1,000 | 1.0 km | — | District link |
+| 10 | Dyu Art Cafe | district | 15% off up to ₹300 | 15% | 10 | 475 | 1.1 km | — | District link |
 
+Cash % is the discount at the reference bill (provider cost for two, or `--spend`); Score is the
+same value after usability penalties, so a card-gated 25% still tops the list but scores low.
 Slot `8:00–9:30 PM` = qualifying slot in the window · Booking `free` = bookable now ·
 `₹500 prebook` = paid deal · `District link` = bookable through District · `no slot`/`no data` =
-not bookable. Scores are 0–100 utility, not rupees saved.
+not bookable.
 
 Excluded: Prost Brew Pub (over budget), Big Brewsky (7.4 km), Windmills (5.4 km), Cafe Azzure
 (no price published). A restaurant appears **twice** when both providers list it — one row per
@@ -54,7 +56,7 @@ Every row below is reproducible with one command (see [Reproduce](#reproduce-the
 | `./run.py --budget 800 --radius 3 --out out/budget-800` | 18 | 5 | — |
 | `./run.py --cuisine "North Indian,Chinese" --budget 900 --radius 3 --time-start 19:30 --time-end 21:30 --require-available --out out/combined` | 3 | 3 | — |
 | `./run.py --book --auto --out out/auto` | 26 | 6 | `simulation` |
-| `./run.py --book --select 3 --out out/select-3` | 26 | 6 | `simulation` |
+| `./run.py --book --select "Meghana Foods" --provider swiggy_dineout --out out/select-3` | 26 | 6 | `simulation` |
 
 `--cuisine Cafe` has **0 bookable** because the cafes' only slots are 6:30 PM, outside the 20:00–22:00
 window — the two filters interact, as they should.
@@ -71,6 +73,7 @@ window — the two filters interact, as they should.
 | Cuisine | optional, OR across terms, case/accent-insensitive |
 | Window | slot start ∈ [`--time-start`, `--time-end`], inclusive |
 | Availability | hard filter via `--require-available` |
+| Bill reference | cost for two (`per_person × party`), or `--spend` — valuation only, not a filter |
 | Booking | one restaurant per run, user-selected or automated |
 
 All of it lives in `search()` (`src/orange/search.py`):
@@ -100,11 +103,11 @@ One invocation, four filters, three survivors:
          --time-start 19:30 --time-end 21:30 --require-available --out out/combined
 ```
 
-| # | Restaurant | Offer | Score | ₹/person | Dist | Slot |
-|---:|---|---|---:|---:|---:|---|
-| 1 | Meghana Foods | Flat ₹200 off (above ₹1,200) | 29 | 700 | 0.9 km | 7:30–9:00 PM |
-| 2 | Chulha Chauki Da Dhaba | 20% off up to ₹400 | 11 | 650 | 1.2 km | 8:00–9:30 PM |
-| 3 | Empire Restaurant | no offer | 0 | 500 | 1.6 km | 8:00–9:30 PM |
+| # | Restaurant | Offer | Cash % | Score | ₹/person | Dist | Slot |
+|---:|---|---|---:|---:|---:|---:|---|
+| 1 | Chulha Chauki Da Dhaba | 20% off up to ₹400 | 20% | 11 | 650 | 1.2 km | 8:00–9:30 PM |
+| 2 | Meghana Foods | Flat ₹200 off (above ₹1,200) | 14% | 14 | 700 | 0.9 km | 7:30–9:00 PM |
+| 3 | Empire Restaurant | no offer | 0% | 0 | 500 | 1.6 km | 8:00–9:30 PM |
 
 30 discovered → 3 kept. The 27 exclusions show which filter did the work:
 
@@ -159,36 +162,45 @@ returns `requires-user-action` with the restaurant's `booking_url`.
 
 ## Offer scoring
 
-Free text becomes one 0–100 number. Parse first (`normalize.parse_offer`): percent beats flat beats
-perk; minimum spends and conditions are extracted by keyword.
+Every offer gets two numbers: **cash %** (what it is worth at the reference bill) and a 0–100
+**score** (cash minus usability penalties). Ranking uses cash first, score second.
 
-| Type | Base value |
+The real bill is unknown before ordering, so offers are valued at a stated **reference bill**: the
+provider's cost for two (`per_person × party`), or `--spend` when you supply an expectation. Lower
+`--spend` makes flat discounts worth more; every percentage moves with it. Parse first
+(`normalize.parse_offer`): percent beats flat beats perk; minimum spends and conditions are
+extracted by keyword.
+
+| Type | Base cash % at the reference bill |
 |---|---|
 | percent | `min(pct, 100)` |
-| flat | `min(100, ₹off ÷ per_person × 100)` |
+| flat | `min(100, ₹off ÷ bill × 100)` |
 | perk | dessert 12 · drink 8 · 1+1 20 · unlimited 25 · generic free 10 · unmapped 6 |
 
-Then penalties only (nothing is added, so a conditional 20% can never beat a clean 20%):
+Then penalties only on the score (nothing is added, so a conditional 20% can never beat a clean 20%):
 
 | Condition | Effect |
 |---|---|
-| "up to" cap | × 0.7 |
-| min spend > party budget (₹2,000) | cap at 5 |
-| min spend > typical bill | −12 |
-| weekend excluded / weekday only | −10 / −6 |
-| lunch-only at dinner | cap at 5 |
-| card-required or bank offer | −15 |
-| non-stackable / advance booking | −3 / −4 |
+| "up to" cap | score × 0.7 |
+| min spend above party budget | **0**; rationale says what unlocks it |
+| min spend above the reference bill | bill raised to the minimum before computing % |
+| weekend/weekday rule on the day it excludes | **0** (a Friday is not a weekend) |
+| lunch / daytime / breakfast offer at dinner | **0** |
+| card required / bank offer | score −15 (cash % unchanged) |
+| non-stackable / advance booking | score −3 / −4 |
 
-Restaurant score = **max** of its offers (0 if none). Sort key:
-`(-score, distance, name.casefold(), provider, provider_id)` — deterministic to the last field.
-Flat offers scale against the restaurant's per-person spend, not the ₹1,000 cap: ₹100 off is 33% at
-a ₹300 cafe and 10% at a ₹1,000 restaurant.
+Best offer = the one with the highest cash %; rank key:
+`(-cash_pct, -score, distance, name.casefold(), provider, provider_id)`. A card-gated ₹300 on a
+₹1,200 bill is 25% and outranks a clean ₹200 on ₹1,400 (14%): the card shows in `flags` and costs
+score, but it does not erase the cash. Flat offers are measured against the bill, not per-person
+spend — ₹300 is 25% of ₹1,200, not 50% of ₹600.
 
 ### LLM scoring: on, off, auto
 
-Scoring is a switchable stage. Whatever it writes becomes the first sort key — restaurant score
-desc, then distance, then name — so the same pipeline ranks with or without the LLM.
+Scoring is a switchable stage. Both engines write the same two fields — cash % and score — so the
+sort is identical: cash value at the reference bill desc, score desc, distance, name. The DeepSeek
+prompt receives the reference bill, weekday/`is_weekend`, and per-offer terms, and is told to
+compute `effective_pct` against the bill, never the budget cap.
 
 | `--llm` | Behaviour | Network |
 |---|---|---|
@@ -283,6 +295,7 @@ Python ≥ 3.10, no third-party dependencies.
 ./run.py --cuisine "North Indian,Chinese"    # OR across cuisines
 ./run.py --llm off                           # rubric scoring, no network
 ./run.py --llm on                            # DeepSeek scoring (needs DEEPSEEK_API_KEY)
+./run.py --spend 800                         # value offers at ₹800/person instead of the average
 ./run.py --judge replay --verdicts fixtures/offer_verdicts.sample.json
 PYTHONPATH=src python3 -m orange --help
 ```
@@ -317,7 +330,7 @@ A clean run is 9 commands / 31 artifacts / 0 failures. Each run also writes its 
 ### Tests
 
 ```bash
-PYTHONPATH=src python3 -m unittest discover -s tests -t tests   # 112 tests
+PYTHONPATH=src python3 -m unittest discover -s tests -t tests   # 125 tests
 ```
 
 ### Going live
@@ -361,7 +374,7 @@ src/orange/
   report.py                  markdown / CSV / JSON writers
   pipeline.py                orchestrates discover -> search -> judge -> rank -> book
 fixtures/                    schema-accurate Koramangala payloads (synthetic)
-tests/                       112 unit tests
+tests/                       125 unit tests
 out/                         generated reports + commands.json
 ```
 
@@ -372,7 +385,10 @@ out/                         generated reports + commands.json
 1. **Fixtures, not live data.** No Swiggy/District token exists here, so every number above comes
    from synthetic but schema-accurate payloads. Restaurant names are real Koramangala places; prices
    and offers are invented for the demo.
-2. **`costForTwo ÷ 2` is a proxy** for per-person spend — not a menu-derived figure.
+2. **The bill is a reference, not a receipt.** `costForTwo ÷ 2 × party` is the provider's average
+   spend, not your order, and every % is computed against it. Pass `--spend N` to value offers at
+   your own expectation; min-spend offers above the party budget score 0 and report the spend that
+   unlocks them.
 3. **Cuisine labels are provider-supplied** and shallow (`"Cafe"`, not the menu), so cuisine is a
    discovery filter, not a dietary guarantee.
 4. **Swiggy's Dineout search returns no coordinates**, only a distance string, so the 5 km filter uses

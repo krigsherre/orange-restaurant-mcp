@@ -40,13 +40,13 @@ class PipelineTests(unittest.TestCase):
             self.assertLessEqual(row["per_person"], 1000.0, row["name"])
             self.assertLessEqual(row["distance_km"], 5.0, row["name"])
 
-    def test_sorted_by_offer_then_distance_then_name(self):
+    def test_sorted_by_cash_then_score_then_distance(self):
         for left, right in zip(self.rows, self.rows[1:]):
-            self.assertGreaterEqual(left["offer_score"], right["offer_score"])
-            if left["offer_score"] == right["offer_score"]:
-                self.assertLessEqual(left["distance_km"], right["distance_km"])
-                if left["distance_km"] == right["distance_km"]:
-                    self.assertLessEqual(left["name"].casefold(), right["name"].casefold())
+            self.assertGreaterEqual(left["cash_pct"], right["cash_pct"])
+            if left["cash_pct"] == right["cash_pct"]:
+                self.assertGreaterEqual(left["offer_score"], right["offer_score"])
+                if left["offer_score"] == right["offer_score"]:
+                    self.assertLessEqual(left["distance_km"], right["distance_km"])
 
     def test_one_row_per_provider_not_merged(self):
         pairs = [(row["name"], row["provider"]) for row in self.rows]
@@ -152,6 +152,14 @@ class CliLLMSwitchTests(unittest.TestCase):
             data = json.loads((Path(tmp) / "ranked.json").read_text())
         self.assertEqual(data["meta"]["judge"], "rubric")
         self.assertIsNone(data["meta"]["judge_fallback"])
+
+    def test_spend_override_sets_the_bill_reference(self):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(os.environ, self._env(), clear=True):
+            self.assertEqual(main(["--llm", "off", "--spend", "500", "--out", tmp]), 0)
+            data = json.loads((Path(tmp) / "ranked.json").read_text())
+        self.assertTrue(data["results"])
+        for row in data["results"]:
+            self.assertEqual(row["bill_reference"], 1000.0)  # ₹500 × party of 2
 
     def test_dotenv_supplies_the_key(self):
         # A refused local socket fails fast; if .env were ignored the key would be

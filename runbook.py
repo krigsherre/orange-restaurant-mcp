@@ -79,8 +79,16 @@ COMMANDS: list[dict[str, Any]] = [
     },
     {
         "name": "book-select",
-        "description": "User-selected booking: rank #3 from the default shortlist",
-        "args": ["--book", "--select", "3", "--out", "out/select-3"],
+        "description": "User-selected booking: the bookable Meghana Foods (Swiggy) row",
+        "args": [
+            "--book",
+            "--select",
+            "Meghana Foods",
+            "--provider",
+            "swiggy_dineout",
+            "--out",
+            "out/select-3",
+        ],
     },
 ]
 

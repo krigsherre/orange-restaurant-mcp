@@ -11,7 +11,7 @@ from orange.judge import (
     normalize_llm,
     resolve_judge_mode,
 )
-from orange.judge.llm import DeepSeekJudge
+from orange.judge.llm import DeepSeekJudge, build_user_prompt
 from orange.judge.rubric import RubricJudge, score_offer
 from orange.models import Offer, QueryContext
 
@@ -41,11 +41,60 @@ class RubricTests(unittest.TestCase):
         capped = Offer(title="20% off", offer_type="percent", value=20.0, conditions=["up-to"])
         self.assertGreater(score_offer(firm, self.ctx)[0], score_offer(capped, self.ctx)[0])
 
-    def test_flat_offer_scaled_by_budget(self):
-        small = Offer(title="₹500 off", offer_type="flat", value=500.0)
+    def test_flat_offer_scaled_by_bill(self):
+        small = Offer(title="₹500 off", offer_type="flat", value=500.0, per_person_ref=1000.0)
         score, effective, _, _ = score_offer(small, self.ctx)
-        self.assertAlmostEqual(effective, 50.0)
-        self.assertEqual(score, 50.0)
+        self.assertAlmostEqual(effective, 25.0)  # ₹500 on the ₹2,000 party bill
+        self.assertEqual(score, 25.0)
+
+    def test_spend_override_changes_the_reference_bill(self):
+        ctx = QueryContext(budget_per_person=1000.0, party_size=2, spend_per_person=400.0)
+        offer = Offer(title="₹200 off", offer_type="flat", value=200.0)
+        _, effective, _, _ = score_offer(offer, ctx)
+        self.assertAlmostEqual(effective, 25.0)  # ₹200 / ₹800 bill
+        _, default_effective, _, _ = score_offer(offer, QueryContext(budget_per_person=1000.0))
+        self.assertAlmostEqual(default_effective, 10.0)  # ₹200 / ₹2,000 budget-sized bill
+
+    def test_party_size_scales_the_bill(self):
+        ctx = QueryContext(budget_per_person=1000.0, party_size=4)
+        offer = Offer(title="₹300 off", offer_type="flat", value=300.0, per_person_ref=600.0)
+        _, effective, _, _ = score_offer(offer, ctx)
+        self.assertAlmostEqual(effective, 12.5)  # ₹300 / ₹2,400
+
+    def test_min_spend_above_budget_reports_the_unlock(self):
+        offer = Offer(title="30% off", offer_type="percent", value=30.0, min_spend=2500.0)
+        score, effective, flags, rationale = score_offer(offer, self.ctx)
+        self.assertEqual(score, 0.0)
+        self.assertEqual(effective, 0.0)
+        self.assertIn("min-spend-above-party-budget", flags)
+        self.assertIn("unlocks at ₹2,500", rationale)
+
+    def test_min_spend_above_bill_inflates_the_denominator(self):
+        ctx = QueryContext(budget_per_person=1000.0, party_size=2)
+        offer = Offer(title="₹100 off above ₹800", offer_type="flat", value=100.0, min_spend=800.0, per_person_ref=350.0)
+        _, effective, flags, _ = score_offer(offer, ctx)
+        self.assertAlmostEqual(effective, 12.5)  # ₹100 / ₹800, not / ₹700
+        self.assertIn("min-spend-tight", flags)
+
+    def test_weekend_rules_only_bite_at_weekends(self):
+        friday = QueryContext(date="2026-11-27")
+        saturday = QueryContext(date="2026-11-28")
+        weekend_only = Offer(title="15% off", offer_type="percent", value=15.0, conditions=["weekend-excluded"])
+        weekday_only = Offer(title="10% off", offer_type="percent", value=10.0, conditions=["weekday-only"])
+        self.assertEqual(score_offer(weekend_only, friday)[0], 15.0)
+        self.assertEqual(score_offer(weekend_only, saturday)[0], 0.0)
+        self.assertEqual(score_offer(weekday_only, friday)[0], 10.0)
+        self.assertEqual(score_offer(weekday_only, saturday)[0], 0.0)
+
+    def test_daytime_window_is_invalid_at_dinner(self):
+        offer = Offer(title="20% off", offer_type="percent", value=20.0, conditions=["daytime-only"])
+        self.assertEqual(score_offer(offer, self.ctx)[0], 0.0)
+        lunch = QueryContext(time="13:00", time_end="14:00")
+        self.assertEqual(score_offer(offer, lunch)[0], 20.0)
+
+    def test_breakfast_offer_is_invalid_at_dinner(self):
+        offer = Offer(title="20% off", offer_type="percent", value=20.0, conditions=["breakfast-only"])
+        self.assertEqual(score_offer(offer, self.ctx)[0], 0.0)
 
     def test_judge_mutates_offers(self):
         offers = [Offer(title="Flat 20% off", offer_type="percent", value=20.0)]
@@ -160,6 +209,14 @@ class DeepSeekJudgeTests(unittest.TestCase):
             judge = DeepSeekJudge(api_key="k")
         self.assertEqual(judge.model, "deepseek-reasoner")
         self.assertEqual(judge.endpoint, "https://proxy.test/chat/completions")
+
+    def test_prompt_carries_reference_bill_and_weekday(self):
+        ctx = QueryContext(budget_per_person=1000.0, party_size=2, date="2026-11-27")
+        offer = Offer(title="₹300 off", offer_type="flat", value=300.0, per_person_ref=600.0)
+        prompt = build_user_prompt([offer], ctx)
+        self.assertIn('"bill_reference_inr": 1200.0', prompt)
+        self.assertIn('"requested_weekday": "Friday"', prompt)
+        self.assertIn('"is_weekend": false', prompt)
 
     def test_malformed_response_becomes_judge_unavailable(self):
         payload = {"choices": [{"message": {"content": "not json"}}]}

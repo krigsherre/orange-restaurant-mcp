@@ -3,6 +3,10 @@
 It encodes the same term-and-condition reasoning the LLM is asked to perform:
 what the offer is really worth *for this booking*, after minimum spends,
 day/time validity, card requirements and caps.
+
+Values are percentages of the party's **reference bill** — the provider's cost for two
+(per person × party size), or the caller's ``--spend`` expectation. The real bill is not
+knowable before ordering, so every score is "at this assumed bill".
 """
 
 from __future__ import annotations
@@ -19,12 +23,11 @@ _PERK_BASE = (
 )
 
 
-def _base_effective_pct(offer: Offer, ctx: QueryContext) -> float:
-    per_person = max(offer.per_person_ref or ctx.budget_per_person, 1.0)
+def _base_effective_pct(offer: Offer, bill: float) -> float:
     if offer.offer_type == "percent":
         return min(offer.value, 100.0)
     if offer.offer_type == "flat":
-        return min(100.0, (offer.value / per_person) * 100.0)
+        return min(100.0, (offer.value / max(bill, 1.0)) * 100.0)
     if offer.offer_type == "perk":
         low = offer.text.lower()
         for needles, value in _PERK_BASE:
@@ -35,53 +38,80 @@ def _base_effective_pct(offer: Offer, ctx: QueryContext) -> float:
 
 
 def score_offer(offer: Offer, ctx: QueryContext) -> tuple[float, float, list[str], str]:
-    """Return (score 0-100, effective_pct, flags, rationale)."""
-    effective = _base_effective_pct(offer, ctx)
-    score = effective
+    """Return (score 0-100, effective_pct, flags, rationale).
+
+    ``effective_pct`` is the cash value at the party's reference bill. Score starts from
+    that and only loses points for conditions that make the offer harder to use.
+    """
+    if offer.offer_type == "unknown":
+        return 0.0, 0.0, ["unparsed-offer"], "Could not parse the offer value."
+
     flags: list[str] = []
     notes: list[str] = []
     conditions = set(offer.conditions)
 
-    if offer.offer_type == "unknown":
-        return 0.0, 0.0, ["unparsed-offer"], "Could not parse the offer value."
+    reference_bill = ctx.expected_bill(offer.per_person_ref)
+    bill = reference_bill
+
+    # Above the party's budget cap the offer cannot be used at all; say what unlocks it.
+    if offer.min_spend and offer.min_spend > ctx.budget_for_party:
+        return (
+            0.0,
+            0.0,
+            ["min-spend-above-party-budget"],
+            f"Needs ₹{offer.min_spend:,.0f} spend, above the ₹{ctx.budget_for_party:,.0f} party budget; "
+            f"unlocks at ₹{offer.min_spend:,.0f}.",
+        )
+
+    # A minimum you can afford still inflates the bill the discount applies to.
+    if offer.min_spend and offer.min_spend > bill:
+        bill = offer.min_spend
+        flags.append("min-spend-tight")
+        notes.append(f"₹{offer.min_spend:,.0f} minimum raises the bill from ₹{reference_bill:,.0f}")
+
+    effective = _base_effective_pct(offer, bill)
+    score = effective
 
     if "up-to" in conditions:
         score *= 0.7
         flags.append("capped-up-to")
-        notes.append("advertised as 'up to', so treat as a ceiling")
+        notes.append("'up to' is a ceiling")
 
-    per_person = max(offer.per_person_ref or ctx.budget_per_person, 1.0)
-    expected_bill = per_person * ctx.party_size
-
-    if offer.min_spend:
-        if offer.min_spend > ctx.budget_for_party:
-            score = min(score, 5.0)
-            flags.append("min-spend-above-party-budget")
-            notes.append(f"needs ₹{offer.min_spend:,.0f} spend vs ₹{ctx.budget_for_party:,.0f} party budget")
-        elif offer.min_spend > expected_bill:
-            score -= 12
-            flags.append("min-spend-tight")
-            notes.append(f"requires ₹{offer.min_spend:,.0f} minimum vs a typical ₹{expected_bill:,.0f} bill")
-
-    if "weekend-excluded" in conditions:
-        score -= 10
-        flags.append("weekend-excluded")
+    # Weekday/weekend conditions only bite on the days they actually exclude.
+    if "weekend-excluded" in conditions and ctx.is_weekend:
+        score = 0.0
+        effective = 0.0
+        flags.append("not-valid-at-requested-time")
         notes.append("not valid on weekends")
 
-    if "weekday-only" in conditions:
-        score -= 6
-        flags.append("weekday-only")
+    if "weekday-only" in conditions and ctx.is_weekend:
+        score = 0.0
+        effective = 0.0
+        flags.append("not-valid-at-requested-time")
         notes.append("weekdays only")
 
     if "lunch-only" in conditions and ctx.is_dinner:
-        score = min(score, 5.0)
+        score = 0.0
+        effective = 0.0
         flags.append("not-valid-at-requested-time")
         notes.append("lunch-only but you asked for dinner")
+
+    if "daytime-only" in conditions and ctx.is_dinner:
+        score = 0.0
+        effective = 0.0
+        flags.append("not-valid-at-requested-time")
+        notes.append("daytime-only window, invalid for dinner")
+
+    if "breakfast-only" in conditions and ctx.is_dinner:
+        score = 0.0
+        effective = 0.0
+        flags.append("not-valid-at-requested-time")
+        notes.append("breakfast offer, invalid for dinner")
 
     if "card-required" in conditions or offer.source == "bankOffers":
         score -= 15
         flags.append("card-required")
-        notes.append("needs a specific bank card")
+        notes.append("needs a specific card")
 
     if "no-alcohol" in conditions:
         flags.append("food-only")
@@ -105,14 +135,15 @@ def score_offer(offer: Offer, ctx: QueryContext) -> tuple[float, float, list[str
     effective = round(max(0.0, min(100.0, effective)), 1)
 
     if score <= 0:
-        rationale = "Not usable for this booking."
+        rationale = "Not usable for this booking." + (": " + "; ".join(notes) if notes else "")
     else:
         head = {
             "percent": f"{offer.value:.0f}% off",
             "flat": f"₹{offer.value:,.0f} off",
             "perk": "non-cash perk",
         }[offer.offer_type]
-        rationale = head + (": " + "; ".join(notes) if notes else "")
+        detail = f"{effective:g}% of a ₹{bill:,.0f} bill"
+        rationale = f"{head} = {detail}" + (f"; {'; '.join(notes)}" if notes else "")
     return score, effective, sorted(set(flags)), rationale[:160]
 
 
