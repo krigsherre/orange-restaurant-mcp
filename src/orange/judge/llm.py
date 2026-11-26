@@ -104,7 +104,8 @@ class DeepSeekJudge:
         self.api_key = api_key or os.environ.get("DEEPSEEK_API_KEY", "")
         if not self.api_key:
             raise JudgeUnavailable(
-                "DEEPSEEK_API_KEY is not set; pass --llm off to score with the deterministic rubric"
+                "DEEPSEEK_API_KEY is not set (checked the environment and .env); "
+                "add it to .env or export it, or pass --llm off to score with the deterministic rubric"
             )
         self.model = model or os.environ.get("DEEPSEEK_MODEL") or DEFAULT_MODEL
         self.base_url = (base_url or os.environ.get("DEEPSEEK_BASE_URL") or DEFAULT_BASE_URL).rstrip("/")
@@ -123,6 +124,8 @@ class DeepSeekJudge:
     def _cache_key(self, offers: list[Offer], ctx: QueryContext) -> str:
         blob = json.dumps(
             {
+                "model": self.model,
+                "base_url": self.base_url,
                 "ctx": ctx.to_judge_dict(),
                 "offers": [[o.title, o.description, o.offer_type, o.value, o.min_spend] for o in offers],
             },

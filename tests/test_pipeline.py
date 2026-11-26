@@ -121,31 +121,57 @@ class PipelineTests(unittest.TestCase):
 
 
 class CliLLMSwitchTests(unittest.TestCase):
+    def _env(self, **extra):
+        # Never pick up the developer's real .env: these tests assert on missing keys.
+        return {"ORANGE_ENV_FILE": os.devnull, **extra}
+
     def test_llm_off_runs_offline(self):
-        with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(os.environ, {}, clear=True):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(os.environ, self._env(), clear=True):
             self.assertEqual(main(["--llm", "off", "--out", tmp]), 0)
             self.assertTrue((Path(tmp) / "ranked.json").exists())
 
     def test_llm_on_without_a_key_exits_2(self):
-        with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(os.environ, {}, clear=True):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(os.environ, self._env(), clear=True):
             self.assertEqual(main(["--llm", "on", "--out", tmp]), 2)
             self.assertFalse((Path(tmp) / "ranked.json").exists())
 
     def test_conflicting_switches_exit_2(self):
-        with mock.patch.dict(os.environ, {}, clear=True):
+        with mock.patch.dict(os.environ, self._env(), clear=True):
             self.assertEqual(main(["--judge", "rubric", "--llm", "on"]), 2)
 
     def test_env_on_without_a_key_exits_2(self):
-        with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(os.environ, {"ORANGE_LLM": "on"}, clear=True):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(
+            os.environ, self._env(ORANGE_LLM="on"), clear=True
+        ):
             self.assertEqual(main(["--out", tmp]), 2)
 
     def test_env_off_with_a_key_still_runs_the_rubric(self):
-        env = {"ORANGE_LLM": "off", "DEEPSEEK_API_KEY": "fake"}
+        env = self._env(ORANGE_LLM="off", DEEPSEEK_API_KEY="fake")
         with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(os.environ, env, clear=True):
             self.assertEqual(main(["--out", tmp]), 0)
             data = json.loads((Path(tmp) / "ranked.json").read_text())
         self.assertEqual(data["meta"]["judge"], "rubric")
         self.assertIsNone(data["meta"]["judge_fallback"])
+
+    def test_dotenv_supplies_the_key(self):
+        # A refused local socket fails fast; if .env were ignored the key would be
+        # missing and the CLI would exit 2 instead of ranking with a fallback.
+        with tempfile.TemporaryDirectory() as tmp:
+            env_file = Path(tmp) / "custom.env"
+            env_file.write_text(
+                "export DEEPSEEK_API_KEY=fake\n"
+                "ORANGE_LLM=on\n"
+                "DEEPSEEK_BASE_URL=http://127.0.0.1:9\n",
+                encoding="utf-8",
+            )
+            with mock.patch.dict(os.environ, {"ORANGE_ENV_FILE": str(env_file)}, clear=True), mock.patch(
+                "orange.judge.llm.CACHE_DIR", Path(tmp) / "cache"
+            ):
+                self.assertEqual(main(["--out", tmp]), 0)
+                data = json.loads((Path(tmp) / "ranked.json").read_text())
+        self.assertEqual(data["meta"]["judge_requested"], "llm")
+        self.assertEqual(data["meta"]["judge"], "rubric")
+        self.assertIn("unreachable", data["meta"]["judge_fallback"])
 
 
 if __name__ == "__main__":

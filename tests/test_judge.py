@@ -171,6 +171,14 @@ class DeepSeekJudgeTests(unittest.TestCase):
             with self.assertRaises(JudgeUnavailable):
                 self._judge().score([Offer(title="10% off")], self.ctx)
 
+    def test_cache_key_changes_with_model_and_endpoint(self):
+        offers = [Offer(title="10% off")]
+        base = self._judge()._cache_key(offers, self.ctx)
+        other_model = DeepSeekJudge(api_key="k", model="other", cache=False, base_url="https://api.example.test")
+        other_host = DeepSeekJudge(api_key="k", model="deepseek-chat", cache=False, base_url="https://proxy.test")
+        self.assertNotEqual(base, other_model._cache_key(offers, self.ctx))
+        self.assertNotEqual(base, other_host._cache_key(offers, self.ctx))
+
 
 if __name__ == "__main__":
     unittest.main()

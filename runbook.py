@@ -9,6 +9,7 @@ Usage:
 from __future__ import annotations
 
 import json
+import os
 import shlex
 import shutil
 import subprocess
@@ -147,6 +148,15 @@ def main(argv: list[str] | None = None) -> int:
             capture_output=True,
             text=True,
             timeout=180,
+            # Canonical artifacts are the deterministic fixture+rubric snapshot: never
+            # let .env tokens turn a runbook into paid LLM calls or live requests.
+            env={
+                **os.environ,
+                "ORANGE_LLM": "off",
+                "SWIGGY_MCP_TOKEN": "",
+                "DISTRICT_MCP_ENDPOINT": "",
+                "DISTRICT_MCP_TOKEN": "",
+            },
         )
         elapsed = round((time.perf_counter() - started) * 1000)
         run_out = ROOT / args[args.index("--out") + 1]

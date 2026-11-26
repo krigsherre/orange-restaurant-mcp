@@ -9,7 +9,7 @@ Ties go to the closer restaurant, then alphabetically.
 ./run.py --require-available            # 6 bookable places, 8–10 PM
 ```
 
-- **Status**: fixture-backed (no live MCP token here) · **105 tests**, no network · **9-command** reproducible runbook
+- **Status**: fixture-backed (no live MCP token here) · **112 tests**, no network · **9-command** reproducible runbook
 - **Outputs**: [out/ranked.md](out/ranked.md) · [out/ranked.csv](out/ranked.csv) · [out/ranked.json](out/ranked.json) · [out/commands.json](out/commands.json)
 
 ---
@@ -197,10 +197,15 @@ desc, then distance, then name — so the same pipeline ranks with or without th
 | `auto` (default) | `on` when the key is set, else `off`; `ORANGE_LLM` overrides | only with a key |
 
 ```bash
-export DEEPSEEK_API_KEY=sk-...
-./run.py --llm on      # DeepSeek verdicts -> scores -> sorted shortlist
-./run.py --llm off     # rubric verdicts   -> scores -> the same sort
+cp .env.example .env    # then fill DEEPSEEK_API_KEY
+./run.py --llm on       # DeepSeek verdicts -> scores -> sorted shortlist
+./run.py --llm off      # rubric verdicts   -> scores -> the same sort
 ```
+
+`orange` loads `.env` from the working directory on every CLI run (variables already exported in
+the shell win), so putting the key in the file is enough — no `export` needed. The canonical
+runbook pins `ORANGE_LLM=off` and blank provider tokens, so artifact regeneration stays the free,
+offline fixture+rubric snapshot even when `.env` is configured.
 
 If the call itself fails, the run still produces a shortlist: it falls back to the rubric, prints a
 warning on stderr, and records `judge_fallback` in `ranked.json` / `ranked.md`. `--llm on` without a
@@ -312,7 +317,7 @@ A clean run is 9 commands / 31 artifacts / 0 failures. Each run also writes its 
 ### Tests
 
 ```bash
-PYTHONPATH=src python3 -m unittest discover -s tests -t tests   # 105 tests
+PYTHONPATH=src python3 -m unittest discover -s tests -t tests   # 112 tests
 ```
 
 ### Going live
@@ -321,6 +326,9 @@ PYTHONPATH=src python3 -m unittest discover -s tests -t tests   # 105 tests
 cp .env.example .env
 # SWIGGY_MCP_TOKEN=...   from Swiggy Builders Club access
 ```
+
+`orange` reads `.env` in the working directory automatically (`ORANGE_ENV_FILE` points elsewhere if
+needed); exported shell variables take precedence over the file.
 
 The Swiggy adapter then calls the real endpoint: `initialize` → `tools/list` →
 `search_restaurants_dineout` across seed queries with pagination → `get_available_slots` per
@@ -353,7 +361,7 @@ src/orange/
   report.py                  markdown / CSV / JSON writers
   pipeline.py                orchestrates discover -> search -> judge -> rank -> book
 fixtures/                    schema-accurate Koramangala payloads (synthetic)
-tests/                       105 unit tests
+tests/                       112 unit tests
 out/                         generated reports + commands.json
 ```
 

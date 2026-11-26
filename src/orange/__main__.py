@@ -8,6 +8,7 @@ from typing import Any
 
 from .booking import SelectionError, select_row
 from .cuisine import parse_cuisine_args
+from .env import load_env
 from .judge import JudgeUnavailable, llm_demanded, resolve_judge_mode
 from .models import QueryContext
 from .pipeline import run
@@ -75,6 +76,8 @@ def _selection(args: argparse.Namespace) -> dict[str, Any] | None:
 
 
 def main(argv: list[str] | None = None) -> int:
+    # .env is the documented way to configure tokens; real env vars still win.
+    load_env()
     args = build_parser().parse_args(argv)
     ctx = QueryContext(
         area=args.area,
