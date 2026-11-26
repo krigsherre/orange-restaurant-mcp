@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orange-ranker"
+version = "0.1.0"
+description = "Rank Koramangala restaurants across Swiggy Dineout and District by real offer value"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+orange = "orange.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

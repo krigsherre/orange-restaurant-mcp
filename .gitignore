@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Environments
+.venv/
+venv/
+.env
+.env.local
+
+# Tooling
+.pytest_cache/
+.DS_Store
+
+# Generated reports stay tracked (README links them); out/ is intentionally not ignored.
