@@ -1,1 +1,1 @@
-"""Inbound adapters: CLI."""
+"""Inbound adapters: CLI and chat."""
