@@ -1,0 +1,635 @@
+{
+  "success": true,
+  "data": {
+    "restaurants": [
+      {
+        "id": "sw_toit",
+        "name": "Toit",
+        "cuisine": [
+          "Continental",
+          "European",
+          "Pizza"
+        ],
+        "locality": "Koramangala 5th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.6",
+          "count": 18420
+        },
+        "costForTwo": "₹2,000 for two",
+        "distance": "1.1 km",
+        "offers": [
+          {
+            "offerTitle": "Flat 20% off on total bill",
+            "offerDescription": "Valid on dine-in, Mon-Thu. Cannot be clubbed with other offers."
+          }
+        ],
+        "bankOffers": [
+          {
+            "offerTitle": "10% off with HDFC Bank credit cards"
+          }
+        ],
+        "availableDeals": [
+          {
+            "dealTitle": "Free dessert on bills above ₹1,500",
+            "ticketId": 9911
+          }
+        ]
+      },
+      {
+        "id": "sw_meghana",
+        "name": "Meghana Foods",
+        "cuisine": [
+          "Biryani",
+          "Andhra",
+          "North Indian"
+        ],
+        "locality": "Koramangala 5th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.5",
+          "count": 26110
+        },
+        "costForTwo": "₹1,400 for two",
+        "distance": "0.9 km",
+        "offers": [
+          {
+            "offerTitle": "Flat ₹200 off on bills above ₹1,200",
+            "offerDescription": "Dine-in only. One coupon per table."
+          }
+        ],
+        "bankOffers": [
+          {
+            "offerTitle": "5% cashback with Axis Bank cards"
+          }
+        ],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_thirdwave",
+        "name": "Third Wave Coffee",
+        "cuisine": [
+          "Cafe",
+          "Coffee",
+          "Desserts"
+        ],
+        "locality": "Koramangala 6th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.4",
+          "count": 7320
+        },
+        "costForTwo": "₹900 for two",
+        "distance": "0.8 km",
+        "offers": [
+          {
+            "offerTitle": "Buy 1 Get 1 on all coffees",
+            "offerDescription": "Valid for dine-in till 6 PM on weekdays."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": [
+          {
+            "dealTitle": "20% off on breakfast combos",
+            "ticketId": 4412
+          }
+        ]
+      },
+      {
+        "id": "sw_cornerhouse",
+        "name": "Corner House Ice Cream",
+        "cuisine": [
+          "Desserts",
+          "Ice Cream"
+        ],
+        "locality": "Koramangala 5th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.7",
+          "count": 15980
+        },
+        "costForTwo": "₹600 for two",
+        "distance": "0.5 km",
+        "offers": [
+          {
+            "offerTitle": "Free extra topping on every sundae",
+            "offerDescription": "Dine-in only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_truffles",
+        "name": "Truffles",
+        "cuisine": [
+          "Burgers",
+          "American",
+          "Fast Food"
+        ],
+        "locality": "Koramangala 4th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.3",
+          "count": 31240
+        },
+        "costForTwo": "₹800 for two",
+        "distance": "2.1 km",
+        "offers": [
+          {
+            "offerTitle": "Flat 15% off on total bill",
+            "offerDescription": "Not valid on weekends."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_empire",
+        "name": "Empire Restaurant",
+        "cuisine": [
+          "Biryani",
+          "North Indian",
+          "Mughlai"
+        ],
+        "locality": "Koramangala 4th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.1",
+          "count": 9840
+        },
+        "costForTwo": "₹1,000 for two",
+        "distance": "1.6 km",
+        "offers": [],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_dyu",
+        "name": "Dyu Art Cafe",
+        "cuisine": [
+          "Cafe",
+          "Continental"
+        ],
+        "locality": "Koramangala 8th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.4",
+          "count": 4210
+        },
+        "costForTwo": "₹900 for two",
+        "distance": "1.3 km",
+        "offers": [
+          {
+            "offerTitle": "Up to 30% off on total bill",
+            "offerDescription": "On bills above ₹2,500. Dine-in only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_brahmins",
+        "name": "Brahmins Coffee Bar",
+        "cuisine": [
+          "South Indian",
+          "Breakfast"
+        ],
+        "locality": "Koramangala 5th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.5",
+          "count": 6210
+        },
+        "costForTwo": "₹400 for two",
+        "distance": "1.0 km",
+        "offers": [
+          {
+            "offerTitle": "10% off on breakfast",
+            "offerDescription": "Lunch only as per restaurant policy."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_beijing",
+        "name": "Beijing Bites",
+        "cuisine": [
+          "Chinese",
+          "Thai"
+        ],
+        "locality": "Koramangala 6th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.0",
+          "count": 3120
+        },
+        "costForTwo": "₹1,200 for two",
+        "distance": "1.1 km",
+        "offers": [
+          {
+            "offerTitle": "Flat ₹300 off on total bill",
+            "offerDescription": "Valid with HDFC Bank credit card only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_chulha",
+        "name": "Chulha Chauki Da Dhaba",
+        "cuisine": [
+          "North Indian",
+          "Punjabi"
+        ],
+        "locality": "Koramangala 6th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.2",
+          "count": 5410
+        },
+        "costForTwo": "₹1,300 for two",
+        "distance": "1.2 km",
+        "offers": [
+          {
+            "offerTitle": "20% off up to ₹400",
+            "offerDescription": "Dine-in only. Cannot be clubbed with other offers."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_prost",
+        "name": "Prost Brew Pub",
+        "cuisine": [
+          "Pub",
+          "Brewery",
+          "Continental"
+        ],
+        "locality": "Koramangala 7th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.5",
+          "count": 8120
+        },
+        "costForTwo": "₹2,200 for two",
+        "distance": "1.9 km",
+        "offers": [
+          {
+            "offerTitle": "Flat 25% off on food",
+            "offerDescription": "Dine-in only, Mon-Thu."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_onesta",
+        "name": "Onesta",
+        "cuisine": [
+          "Italian",
+          "Pizza",
+          "Pasta"
+        ],
+        "locality": "Koramangala 5th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.2",
+          "count": 11290
+        },
+        "costForTwo": "₹1,000 for two",
+        "distance": "1.5 km",
+        "offers": [
+          {
+            "offerTitle": "1+1 on all pizzas",
+            "offerDescription": "Dine-in only. Not valid on weekends."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_nandhana",
+        "name": "Nandhana Palace",
+        "cuisine": [
+          "Andhra",
+          "Biryani",
+          "South Indian"
+        ],
+        "locality": "Koramangala 4th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.1",
+          "count": 4410
+        },
+        "costForTwo": "₹1,500 for two",
+        "distance": "2.2 km",
+        "offers": [
+          {
+            "offerTitle": "Flat 25% off on total bill",
+            "offerDescription": "Mon-Thu lunch only. Not valid on weekends."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_bigbrewsky",
+        "name": "Big Brewsky",
+        "cuisine": [
+          "Pub",
+          "Brewery",
+          "Continental"
+        ],
+        "locality": "Sarjapur Road",
+        "area": "Sarjapur",
+        "rating": {
+          "value": "4.4",
+          "count": 13210
+        },
+        "costForTwo": "₹2,400 for two",
+        "distance": "7.4 km",
+        "offers": [
+          {
+            "offerTitle": "Flat 30% off on total bill",
+            "offerDescription": "Dine-in only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_spice",
+        "name": "Spice Elephant",
+        "cuisine": [
+          "North Indian",
+          "Mughlai"
+        ],
+        "locality": "Koramangala 7th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.0",
+          "count": 2210
+        },
+        "costForTwo": "₹1,800 for two",
+        "distance": "1.9 km",
+        "offers": [
+          {
+            "offerTitle": "Complimentary dessert platter",
+            "offerDescription": "On bills above ₹1,800. Dine-in only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_greenland",
+        "name": "Greenland Veg",
+        "cuisine": [
+          "South Indian",
+          "Vegetarian"
+        ],
+        "locality": "Koramangala 8th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "3.9",
+          "count": 1810
+        },
+        "costForTwo": "₹700 for two",
+        "distance": "2.0 km",
+        "offers": [
+          {
+            "offerTitle": "Flat ₹100 off on bills above ₹800",
+            "offerDescription": "Dine-in only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_fenny",
+        "name": "Fenny's Lounge",
+        "cuisine": [
+          "Lounge",
+          "Continental",
+          "Finger Food"
+        ],
+        "locality": "Koramangala 7th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.3",
+          "count": 5310
+        },
+        "costForTwo": "₹1,600 for two",
+        "distance": "1.4 km",
+        "offers": [
+          {
+            "offerTitle": "Happy hours: 1+1 on all drinks",
+            "offerDescription": "Not valid on weekends. Dine-in only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_gillys",
+        "name": "Gilly's Restobar",
+        "cuisine": [
+          "Restobar",
+          "North Indian",
+          "Continental"
+        ],
+        "locality": "Koramangala 6th Block",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.2",
+          "count": 6710
+        },
+        "costForTwo": "₹1,700 for two",
+        "distance": "2.3 km",
+        "offers": [
+          {
+            "offerTitle": "Flat 10% off on food",
+            "offerDescription": "Weekdays only. One coupon per table."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      }
+    ],
+    "total": 18,
+    "latitude": 12.9352,
+    "longitude": 77.6245,
+    "offset": 0
+  },
+  "slots": {
+    "sw_meghana": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "7:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 6,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 4000,
+        "itemId": "sw_meghana-ticket_5000",
+        "reservationTime": 1795788000
+      },
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 4001,
+        "itemId": "sw_meghana-ticket_5001",
+        "reservationTime": 1795789800
+      },
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "9:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 2,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 4002,
+        "itemId": "sw_meghana-ticket_5002",
+        "reservationTime": 1795793400
+      }
+    ],
+    "sw_toit": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 2,
+        "deals": [
+          {
+            "isFree": false,
+            "bookingPrice": 500
+          }
+        ],
+        "slotId": 4000,
+        "itemId": "sw_toit-ticket_5000",
+        "reservationTime": 1795789800
+      }
+    ],
+    "sw_thirdwave": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "6:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 8,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 4000,
+        "itemId": "sw_thirdwave-ticket_5000",
+        "reservationTime": 1795784400
+      }
+    ],
+    "sw_onesta": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "8:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 10,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 4000,
+        "itemId": "sw_onesta-ticket_5000",
+        "reservationTime": 1795791600
+      }
+    ],
+    "sw_chulha": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 5,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 4000,
+        "itemId": "sw_chulha-ticket_5000",
+        "reservationTime": 1795789800
+      }
+    ],
+    "sw_fenny": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "7:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 12,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 4000,
+        "itemId": "sw_fenny-ticket_5000",
+        "reservationTime": 1795786200
+      }
+    ],
+    "sw_truffles": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "8:15 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 3,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 4000,
+        "itemId": "sw_truffles-ticket_5000",
+        "reservationTime": 1795790700
+      }
+    ],
+    "sw_empire": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 20,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 4000,
+        "itemId": "sw_empire-ticket_5000",
+        "reservationTime": 1795789800
+      }
+    ]
+  }
+}

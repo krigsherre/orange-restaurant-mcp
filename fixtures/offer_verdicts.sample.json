@@ -1,0 +1,23 @@
+{
+  "_comment": "Example of the verdict file produced by --judge llm and consumed by --judge replay. Keys are offer headlines; values follow the judge schema.",
+  "verdicts": {
+    "Flat 20% off on total bill": {
+      "score": 11,
+      "effective_pct": 20,
+      "flags": ["weekday-only", "non-stackable"],
+      "rationale": "Real 20% but Mon-Thu only and cannot be clubbed; weekend booking excluded."
+    },
+    "Flat ₹300 off on total bill": {
+      "score": 35,
+      "effective_pct": 50,
+      "flags": ["card-required"],
+      "rationale": "Half off at this price point, but only with an HDFC credit card."
+    },
+    "20% off up to ₹400": {
+      "score": 11,
+      "effective_pct": 20,
+      "flags": ["capped-up-to", "non-stackable"],
+      "rationale": "₹400 cap at ₹650/person is reachable, but no stacking."
+    }
+  }
+}
