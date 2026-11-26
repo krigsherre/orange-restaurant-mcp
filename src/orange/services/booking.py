@@ -4,7 +4,11 @@ Two entry paths:
   * interactive  — the user picks a rank/name from the listed shortlist
   * automated    — the highest-ranked restaurant that actually has a slot in the window
 
-Nothing is booked unless ``confirm=True``; fixture mode always simulates.
+Rows with a provider booking link (District) carry no slot to reserve, so ``--auto``
+skips them and the skip is reported; selecting one explicitly hands the link back
+instead of pretending to book it.
+
+Nothing is booked unless ``confirm=True``; fixture mode always simulates a slot booking.
 """
 
 from __future__ import annotations
@@ -42,6 +46,39 @@ def _outcome(restaurant: Restaurant, slot: Slot, ctx: QueryContext, status: str,
     )
 
 
+# A row can be acted on when it has a slot to reserve — or when the provider hands the
+# reservation back to the user through a booking link (District has no booking API).
+ACTIONABLE_STATUSES = frozenset({"available", "via-booking-link"})
+RESERVABLE_STATUS = "available"
+
+
+def availability_status(row: dict[str, Any]) -> str:
+    return (row.get("availability") or {}).get("status", "")
+
+
+def auto_skips(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Rows ``--auto`` passes over before the first reservable one, each with its reason.
+
+    Auto books the highest-ranked row it can actually reserve, so link-only rows are
+    skipped; this makes the skip auditable instead of silent.
+    """
+    skipped: list[dict[str, Any]] = []
+    for row in rows:
+        status = availability_status(row)
+        if status == RESERVABLE_STATUS:
+            break
+        skipped.append(
+            {
+                "rank": row["rank"],
+                "name": row["name"],
+                "provider": row["provider"],
+                "status": status,
+                "detail": (row.get("availability") or {}).get("detail", ""),
+            }
+        )
+    return skipped
+
+
 def select_row(
     rows: list[dict[str, Any]],
     *,
@@ -51,18 +88,18 @@ def select_row(
     provider: str | None = None,
 ) -> dict[str, Any]:
     """Resolve the user's choice to exactly one ranked row."""
-    bookable = [row for row in rows if row["availability"].get("status") == "available"]
+    bookable = [row for row in rows if availability_status(row) == RESERVABLE_STATUS]
 
     if auto:
         if not bookable:
-            raise SelectionError("No restaurant has a bookable slot in the requested window.")
+            raise SelectionError("No restaurant has a reservable slot in the requested window.")
         return bookable[0]
 
     if rank is not None:
         if not 1 <= rank <= len(rows):
             raise SelectionError(f"Rank {rank} is out of range (1–{len(rows)}).")
         row = rows[rank - 1]
-        if row["availability"].get("status") != "available":
+        if availability_status(row) not in ACTIONABLE_STATUSES:
             alternatives = ", ".join(f"#{r['rank']} {r['name']}" for r in bookable[:5]) or "none"
             raise SelectionError(
                 f"#{rank} {row['name']} is not bookable — {row['availability'].get('detail', 'no slot')}. "
@@ -82,7 +119,7 @@ def select_row(
             options = "; ".join(f"#{r['rank']} {r['name']} ({r['provider']})" for r in matches)
             raise SelectionError(f"{name!r} is ambiguous — pick a rank or add a provider. Options: {options}")
         row = matches[0]
-        if row["availability"].get("status") != "available":
+        if availability_status(row) not in ACTIONABLE_STATUSES:
             raise SelectionError(
                 f"{row['name']} is not bookable — {row['availability'].get('detail', 'no slot')}."
             )
@@ -102,6 +139,23 @@ def book_restaurant(
 ) -> BookingOutcome:
     """Book (or simulate) one slot. Never mutates unless confirm is true and mode is live."""
     if slot is None:
+        # District publishes no slot API: the honest outcome is the restaurant's own
+        # booking link. There is nothing to reserve, so ``simulate`` cannot fake one.
+        if getattr(provider, "books_via_link", False):
+            try:
+                return provider.book(restaurant, None, ctx)
+            except Exception as exc:  # noqa: BLE001 - surface provider errors as a status
+                return BookingOutcome(
+                    status="failed",
+                    provider=restaurant.provider,
+                    restaurant=restaurant.name,
+                    provider_id=restaurant.provider_id,
+                    date=ctx.date,
+                    start_time="",
+                    end_time="",
+                    party=ctx.party_size,
+                    message=f"{type(exc).__name__}: {exc}",
+                )
         return BookingOutcome(
             status="unavailable",
             provider=restaurant.provider,
@@ -139,4 +193,3 @@ def book_restaurant(
         return provider.book(restaurant, slot, ctx)
     except Exception as exc:  # noqa: BLE001 - surface provider errors as a status, not a crash
         return _outcome(restaurant, slot, ctx, "failed", f"{type(exc).__name__}: {exc}")
-

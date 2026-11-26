@@ -4,7 +4,7 @@ from pathlib import Path
 
 import _path  # noqa: F401
 from orange.app.reporting import write_booking
-from orange.services.booking import SelectionError, book_restaurant, select_row
+from orange.services.booking import SelectionError, auto_skips, book_restaurant, select_row
 from orange.domain.models import QueryContext, Restaurant, Slot
 from orange.services.ranking import pick_slot
 from orange.services.search import search
@@ -46,12 +46,24 @@ class SelectionTests(unittest.TestCase):
     def test_auto_skips_unbookable_and_takes_top(self):
         self.assertEqual(select_row(self.rows, auto=True)["rank"], 3)
 
+    def test_auto_reports_the_rows_it_skipped(self):
+        skipped = auto_skips(self.rows)
+        self.assertEqual([row["rank"] for row in skipped], [1, 2])
+        self.assertEqual([row["status"] for row in skipped], ["no-slot-in-window", "via-booking-link"])
+
+    def test_auto_skips_nothing_when_the_top_row_is_reservable(self):
+        self.assertEqual(auto_skips([row(1, "Toit", slot=slot_at())]), [])
+
     def test_auto_with_nothing_available_errors(self):
         with self.assertRaises(SelectionError):
             select_row([row(1, "A", status="no-slot-in-window")], auto=True)
 
     def test_rank_selection(self):
         self.assertEqual(select_row(self.rows, rank=4)["name"], "Toit")
+
+    def test_rank_selection_of_link_row_is_allowed(self):
+        picked = select_row(self.rows, rank=2)
+        self.assertEqual((picked["rank"], picked["provider"], picked["availability"]["status"]), (2, "district", "via-booking-link"))
 
     def test_rank_of_unbookable_row_explains_alternatives(self):
         with self.assertRaises(SelectionError) as ctx:
@@ -72,10 +84,9 @@ class SelectionTests(unittest.TestCase):
         picked = select_row(self.rows, name="Meghana Foods", provider="swiggy_dineout")
         self.assertEqual((picked["rank"], picked["provider"]), (3, "swiggy_dineout"))
 
-    def test_district_link_only_row_explains_itself(self):
-        with self.assertRaises(SelectionError) as ctx:
-            select_row(self.rows, name="Meghana Foods", provider="district")
-        self.assertIn("not bookable", str(ctx.exception))
+    def test_district_link_only_row_is_selectable(self):
+        picked = select_row(self.rows, name="Meghana Foods", provider="district")
+        self.assertEqual(picked["rank"], 2)
 
     def test_name_not_bookable_is_explicit(self):
         with self.assertRaises(SelectionError) as ctx:
@@ -186,6 +197,52 @@ class BookingTests(unittest.TestCase):
         provider = type("P", (), {"mode": "fixture", "name": "swiggy_dineout"})()
         outcome = book_restaurant(provider, self.restaurant, None, self.ctx)
         self.assertEqual(outcome.status, "unavailable")
+
+    def test_link_provider_hands_back_url_instead_of_a_fake_slot(self):
+        from orange.repositories.district import DistrictProvider
+
+        restaurant = Restaurant(
+            provider="district",
+            provider_id="dt_social",
+            name="Koramangala Social",
+            distance_km=0.4,
+            cost_for_two=1800,
+            booking_url="https://www.district.in/bengaluru/social-koramangala",
+        )
+        outcome = book_restaurant(DistrictProvider(self.ctx), restaurant, None, self.ctx, confirm=True)
+        self.assertEqual(outcome.status, "requires-user-action")
+        self.assertEqual(outcome.booking_url, restaurant.booking_url)
+        self.assertFalse(outcome.simulated)
+        self.assertEqual((outcome.start_time, outcome.end_time), ("", ""))
+
+    def test_simulate_cannot_fake_a_link_booking(self):
+        from orange.repositories.district import DistrictProvider
+
+        restaurant = Restaurant(
+            provider="district",
+            provider_id="dt_social",
+            name="Koramangala Social",
+            booking_url="https://www.district.in/bengaluru/social-koramangala",
+        )
+        outcome = book_restaurant(DistrictProvider(self.ctx), restaurant, None, self.ctx, simulate=True)
+        self.assertEqual(outcome.status, "requires-user-action")
+        self.assertFalse(outcome.simulated)
+
+    def test_link_booking_markdown_says_where_to_reserve(self):
+        from orange.repositories.district import DistrictProvider
+
+        restaurant = Restaurant(
+            provider="district",
+            provider_id="dt_social",
+            name="Koramangala Social",
+            booking_url="https://www.district.in/bengaluru/social-koramangala",
+        )
+        outcome = book_restaurant(DistrictProvider(self.ctx), restaurant, None, self.ctx)
+        with tempfile.TemporaryDirectory() as tmp:
+            _, md_path = write_booking(tmp, outcome)
+            text = md_path.read_text()
+        self.assertIn("reserve through the provider link", text)
+        self.assertIn(restaurant.booking_url, text)
 
     def test_write_booking_outputs(self):
         provider = type("P", (), {"mode": "fixture", "name": "swiggy_dineout"})()

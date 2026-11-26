@@ -77,6 +77,8 @@ def from_district_payload(payload: dict[str, Any], ctx: QueryContext) -> list[Re
 class DistrictRepository:
     name = "district"
     server = "https://mcp.district.in/dining"  # placeholder: District publishes no stable public endpoint
+    # No reservation API: booking hands the user the restaurant's District link.
+    books_via_link = True
 
     def __init__(
         self,

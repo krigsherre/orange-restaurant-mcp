@@ -457,9 +457,347 @@
         ],
         "bankOffers": [],
         "availableDeals": []
+      },
+      {
+        "id": "sw_social",
+        "name": "Koramangala Social",
+        "cuisine": [
+          "Pub",
+          "Continental",
+          "Finger Food"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.4",
+          "count": 8100
+        },
+        "costForTwo": "₹1,800 for two",
+        "distance": "0.4 km",
+        "offers": [
+          {
+            "offerTitle": "Flat 20% off on total bill",
+            "offerDescription": "Valid on dine-in, Mon-Thu. Cannot be clubbed with other offers."
+          }
+        ],
+        "bankOffers": [
+          {
+            "offerTitle": "10% off with HDFC Bank cards"
+          }
+        ],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_rameshwaram",
+        "name": "Rameshwaram Cafe",
+        "cuisine": [
+          "South Indian",
+          "Breakfast"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.6",
+          "count": 21400
+        },
+        "costForTwo": "₹600 for two",
+        "distance": "1.0 km",
+        "offers": [
+          {
+            "offerTitle": "10% off on total bill",
+            "offerDescription": "Dine-in only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_nagarjuna",
+        "name": "Nagarjuna",
+        "cuisine": [
+          "Andhra",
+          "Biryani"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.3",
+          "count": 7600
+        },
+        "costForTwo": "₹1,500 for two",
+        "distance": "1.0 km",
+        "offers": [
+          {
+            "offerTitle": "Flat ₹250 off on bills above ₹1,200",
+            "offerDescription": "Dine-in only. One coupon per table."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_pizzahut",
+        "name": "Pizza Hut",
+        "cuisine": [
+          "Pizza",
+          "Italian",
+          "Fast Food"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.0",
+          "count": 12300
+        },
+        "costForTwo": "₹1,200 for two",
+        "distance": "1.3 km",
+        "offers": [
+          {
+            "offerTitle": "Buy 1 Get 1 on medium pizzas",
+            "offerDescription": "Dine-in only, not valid on weekends."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_chaipoint",
+        "name": "Chai Point",
+        "cuisine": [
+          "Cafe",
+          "Beverages"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.2",
+          "count": 3900
+        },
+        "costForTwo": "₹400 for two",
+        "distance": "0.7 km",
+        "offers": [
+          {
+            "offerTitle": "Buy 1 Get 1 on all chai",
+            "offerDescription": "Valid till 6 PM on weekdays."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_mtr",
+        "name": "MTR",
+        "cuisine": [
+          "South Indian",
+          "Breakfast"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.5",
+          "count": 15200
+        },
+        "costForTwo": "₹800 for two",
+        "distance": "1.9 km",
+        "offers": [],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_bygbrewski",
+        "name": "Byg Brewski",
+        "cuisine": [
+          "Brewery",
+          "Continental",
+          "Pub"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.5",
+          "count": 9200
+        },
+        "costForTwo": "₹2,800 for two",
+        "distance": "7.7 km",
+        "offers": [
+          {
+            "offerTitle": "Flat 30% off on food",
+            "offerDescription": "Dine-in only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_toscano",
+        "name": "Toscano",
+        "cuisine": [
+          "Italian",
+          "Continental"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.4",
+          "count": 5100
+        },
+        "costForTwo": "₹2,200 for two",
+        "distance": "1.0 km",
+        "offers": [
+          {
+            "offerTitle": "Complimentary dessert platter",
+            "offerDescription": "On bills above ₹2,000. Dine-in only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_hakka",
+        "name": "Hakka Legend",
+        "cuisine": [
+          "Chinese",
+          "Thai"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.0",
+          "count": 2700
+        },
+        "costForTwo": "₹1,100 for two",
+        "distance": "1.4 km",
+        "offers": [
+          {
+            "offerTitle": "20% off up to ₹300",
+            "offerDescription": "On bills above ₹1,000. Cannot be clubbed."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_sweetchariot",
+        "name": "Sweet Chariot",
+        "cuisine": [
+          "Bakery",
+          "Desserts"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.1",
+          "count": 1900
+        },
+        "costForTwo": "₹450 for two",
+        "distance": "0.7 km",
+        "offers": [
+          {
+            "offerTitle": "10% off on total bill",
+            "offerDescription": "Dine-in only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_blackpearl",
+        "name": "The Black Pearl",
+        "cuisine": [
+          "Continental",
+          "Lounge"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.3",
+          "count": 6400
+        },
+        "costForTwo": "₹1,600 for two",
+        "distance": "1.2 km",
+        "offers": [
+          {
+            "offerTitle": "Flat ₹150 off on bills above ₹1,500",
+            "offerDescription": "Dine-in only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_aldaaz",
+        "name": "Al Daaz",
+        "cuisine": [
+          "North Indian",
+          "Mughlai"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.2",
+          "count": 4800
+        },
+        "costForTwo": "₹1,400 for two",
+        "distance": "0.9 km",
+        "offers": [
+          {
+            "offerTitle": "Flat ₹300 off on bills above ₹1,000",
+            "offerDescription": "Dine-in only, one coupon per table."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_kfc",
+        "name": "KFC",
+        "cuisine": [
+          "Fast Food",
+          "Burgers"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.0",
+          "count": 9800
+        },
+        "costForTwo": "₹900 for two",
+        "distance": "1.2 km",
+        "offers": [
+          {
+            "offerTitle": "Flat ₹100 off on bills above ₹500",
+            "offerDescription": "Dine-in only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
+      },
+      {
+        "id": "sw_anandsweets",
+        "name": "Anand Sweets",
+        "cuisine": [
+          "Desserts",
+          "South Indian"
+        ],
+        "locality": "Koramangala",
+        "area": "Koramangala",
+        "rating": {
+          "value": "4.4",
+          "count": 3600
+        },
+        "costForTwo": "₹500 for two",
+        "distance": "1.0 km",
+        "offers": [
+          {
+            "offerTitle": "Free sweet box on bills above ₹500",
+            "offerDescription": "Dine-in only."
+          }
+        ],
+        "bankOffers": [],
+        "availableDeals": []
       }
     ],
-    "total": 18,
+    "total": 32,
     "latitude": 12.9352,
     "longitude": 77.6245,
     "offset": 0
@@ -510,6 +848,51 @@
         "slotId": 4002,
         "itemId": "sw_meghana-ticket_5002",
         "reservationTime": 1795793400
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "7:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 6,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 5000,
+        "itemId": "sw_meghana-ticket26_5000",
+        "reservationTime": 1795701600
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 5001,
+        "itemId": "sw_meghana-ticket26_5001",
+        "reservationTime": 1795703400
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "9:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 2,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 5002,
+        "itemId": "sw_meghana-ticket26_5002",
+        "reservationTime": 1795707000
       }
     ],
     "sw_toit": [
@@ -527,6 +910,21 @@
         "slotId": 4000,
         "itemId": "sw_toit-ticket_5000",
         "reservationTime": 1795789800
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 2,
+        "deals": [
+          {
+            "isFree": false,
+            "bookingPrice": 500
+          }
+        ],
+        "slotId": 5000,
+        "itemId": "sw_toit-ticket26_5000",
+        "reservationTime": 1795703400
       }
     ],
     "sw_thirdwave": [
@@ -544,6 +942,21 @@
         "slotId": 4000,
         "itemId": "sw_thirdwave-ticket_5000",
         "reservationTime": 1795784400
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "6:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 8,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 5000,
+        "itemId": "sw_thirdwave-ticket26_5000",
+        "reservationTime": 1795698000
       }
     ],
     "sw_onesta": [
@@ -561,6 +974,21 @@
         "slotId": 4000,
         "itemId": "sw_onesta-ticket_5000",
         "reservationTime": 1795791600
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "8:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 10,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 5000,
+        "itemId": "sw_onesta-ticket26_5000",
+        "reservationTime": 1795705200
       }
     ],
     "sw_chulha": [
@@ -578,6 +1006,21 @@
         "slotId": 4000,
         "itemId": "sw_chulha-ticket_5000",
         "reservationTime": 1795789800
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 5,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 5000,
+        "itemId": "sw_chulha-ticket26_5000",
+        "reservationTime": 1795703400
       }
     ],
     "sw_fenny": [
@@ -595,6 +1038,21 @@
         "slotId": 4000,
         "itemId": "sw_fenny-ticket_5000",
         "reservationTime": 1795786200
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "7:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 12,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 5000,
+        "itemId": "sw_fenny-ticket26_5000",
+        "reservationTime": 1795699800
       }
     ],
     "sw_truffles": [
@@ -612,6 +1070,21 @@
         "slotId": 4000,
         "itemId": "sw_truffles-ticket_5000",
         "reservationTime": 1795790700
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "8:15 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 3,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 5000,
+        "itemId": "sw_truffles-ticket26_5000",
+        "reservationTime": 1795704300
       }
     ],
     "sw_empire": [
@@ -629,6 +1102,369 @@
         "slotId": 4000,
         "itemId": "sw_empire-ticket_5000",
         "reservationTime": 1795789800
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 20,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 5000,
+        "itemId": "sw_empire-ticket26_5000",
+        "reservationTime": 1795703400
+      }
+    ],
+    "sw_social": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 7000,
+        "itemId": "sw_social-ticket_8000",
+        "reservationTime": 1795789800
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 8000,
+        "itemId": "sw_social-ticket26_8000",
+        "reservationTime": 1795703400
+      }
+    ],
+    "sw_rameshwaram": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "7:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 7000,
+        "itemId": "sw_rameshwaram-ticket_8000",
+        "reservationTime": 1795788000
+      },
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "8:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 5,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 7001,
+        "itemId": "sw_rameshwaram-ticket_8001",
+        "reservationTime": 1795791600
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "7:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 8000,
+        "itemId": "sw_rameshwaram-ticket26_8000",
+        "reservationTime": 1795701600
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "8:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 5,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 8001,
+        "itemId": "sw_rameshwaram-ticket26_8001",
+        "reservationTime": 1795705200
+      }
+    ],
+    "sw_nagarjuna": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 7000,
+        "itemId": "sw_nagarjuna-ticket_8000",
+        "reservationTime": 1795789800
+      },
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "9:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 5,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 7001,
+        "itemId": "sw_nagarjuna-ticket_8001",
+        "reservationTime": 1795793400
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 8000,
+        "itemId": "sw_nagarjuna-ticket26_8000",
+        "reservationTime": 1795703400
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "9:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 5,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 8001,
+        "itemId": "sw_nagarjuna-ticket26_8001",
+        "reservationTime": 1795707000
+      }
+    ],
+    "sw_pizzahut": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "8:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 7000,
+        "itemId": "sw_pizzahut-ticket_8000",
+        "reservationTime": 1795791600
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "8:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 8000,
+        "itemId": "sw_pizzahut-ticket26_8000",
+        "reservationTime": 1795705200
+      }
+    ],
+    "sw_chaipoint": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "6:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 7000,
+        "itemId": "sw_chaipoint-ticket_8000",
+        "reservationTime": 1795782600
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "6:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 8000,
+        "itemId": "sw_chaipoint-ticket26_8000",
+        "reservationTime": 1795696200
+      }
+    ],
+    "sw_mtr": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 7000,
+        "itemId": "sw_mtr-ticket_8000",
+        "reservationTime": 1795789800
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 8000,
+        "itemId": "sw_mtr-ticket26_8000",
+        "reservationTime": 1795703400
+      }
+    ],
+    "sw_aldaaz": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "9:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 7000,
+        "itemId": "sw_aldaaz-ticket_8000",
+        "reservationTime": 1795793400
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "9:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 8000,
+        "itemId": "sw_aldaaz-ticket26_8000",
+        "reservationTime": 1795707000
+      }
+    ],
+    "sw_kfc": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "7:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 7000,
+        "itemId": "sw_kfc-ticket_8000",
+        "reservationTime": 1795788000
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "7:30 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 8000,
+        "itemId": "sw_kfc-ticket26_8000",
+        "reservationTime": 1795701600
+      }
+    ],
+    "sw_sweetchariot": [
+      {
+        "dateStr": "2026-11-27",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 7000,
+        "itemId": "sw_sweetchariot-ticket_8000",
+        "reservationTime": 1795789800
+      },
+      {
+        "dateStr": "2026-11-26",
+        "displayTime": "8:00 PM",
+        "slotGroupName": "Dinner",
+        "availableInventory": 4,
+        "deals": [
+          {
+            "isFree": true,
+            "bookingPrice": 0
+          }
+        ],
+        "slotId": 8000,
+        "itemId": "sw_sweetchariot-ticket26_8000",
+        "reservationTime": 1795703400
       }
     ]
   }

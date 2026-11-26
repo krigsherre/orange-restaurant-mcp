@@ -180,12 +180,17 @@ def write_booking(out_dir: str | Path, outcome: BookingOutcome) -> tuple[Path, P
     json_path.write_text(json.dumps(outcome.to_dict(), indent=2, ensure_ascii=False), encoding="utf-8")
 
     md_path = out / "booking.md"
+    slot = (
+        f"{outcome.start_time}–{outcome.end_time}"
+        if outcome.start_time or outcome.end_time
+        else "— (reserve through the provider link)"
+    )
     lines = [
         f"# Booking — {outcome.restaurant}",
         "",
         f"- **Status**: `{outcome.status}`",
         f"- **Provider**: `{outcome.provider}` (`{outcome.provider_id}`)",
-        f"- **Slot**: {outcome.start_time}–{outcome.end_time} on {outcome.date}",
+        f"- **Slot**: {slot} on {outcome.date}",
         f"- **Party**: {outcome.party}",
         f"- **Order**: `{outcome.order_id or '—'}`" + (" _(simulated)_" if outcome.simulated else ""),
         f"- **Message**: {outcome.message}",

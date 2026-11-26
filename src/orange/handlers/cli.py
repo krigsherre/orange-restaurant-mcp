@@ -80,6 +80,20 @@ def _selection(args: argparse.Namespace) -> dict[str, Any] | None:
     return None
 
 
+_SKIP_REASONS = {
+    "via-booking-link": "booking link only — cannot reserve online",
+    "unknown": "no slot data",
+    "no-slot-in-window": "no slot inside the window",
+}
+
+
+def _skip_label(row: dict[str, Any]) -> str:
+    reason = _SKIP_REASONS.get(
+        row.get("status", ""), row.get("detail") or row.get("status") or "not bookable"
+    )
+    return f"#{row['rank']} {row['name']} ({reason})"
+
+
 def main(argv: list[str] | None = None) -> int:
     # .env is the documented way to configure tokens; real env vars still win.
     load_env()
@@ -169,6 +183,10 @@ def main(argv: list[str] | None = None) -> int:
     print()
     print(f"Wrote {args.out}/ranked.{{md,csv,json}}")
 
+    skipped = result.meta.get("auto_skipped") or []
+    if skipped:
+        print("\nAuto skipped: " + " · ".join(_skip_label(row) for row in skipped))
+
     if selection and not args.book:
         try:
             row = select_row(result.rows, **selection)
@@ -176,13 +194,21 @@ def main(argv: list[str] | None = None) -> int:
             print(f"\nSelection failed: {exc}", file=sys.stderr)
             return 1
         slot = row["availability"].get("slot") or {}
+        if slot.get("window"):
+            where, action = f"at {slot['window']}", "Re-run with --book to reserve."
+        else:
+            where, action = "via the provider booking link", "Re-run with --book to get the link."
         print(
-            f"\nDry run: would book #{row['rank']} {row['name']} ({row['provider']}) "
-            f"at {slot.get('window', '?')}. Re-run with --book to reserve."
+            f"\nDry run: would book #{row['rank']} {row['name']} ({row['provider']}) {where}. {action}"
         )
     elif result.booking:
         booking = result.booking
-        print(f"\nBooking: {booking.status.upper()} · {booking.restaurant} · {booking.start_time}–{booking.end_time}")
+        window = (
+            f"{booking.start_time}–{booking.end_time}"
+            if booking.start_time or booking.end_time
+            else "link hand-off"
+        )
+        print(f"\nBooking: {booking.status.upper()} · {booking.restaurant} · {window}")
         print(f"  order: {booking.order_id or '—'} · {booking.message}")
         if booking.booking_url:
             print(f"  link: {booking.booking_url}")

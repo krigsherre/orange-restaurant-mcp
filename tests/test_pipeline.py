@@ -83,6 +83,20 @@ class PipelineTests(unittest.TestCase):
         self.assertIsNotNone(result.booking)
         self.assertEqual(result.booking.status, "simulation")
         self.assertTrue(result.booking.order_id.startswith("SIM-"))
+        # Link-only rows outrank the booked one, so the skip is recorded and auditable.
+        self.assertTrue(result.meta["auto_skipped"])
+        self.assertEqual(result.meta["auto_skipped"][0]["rank"], 1)
+        self.assertEqual(result.meta["auto_skipped"][0]["status"], "via-booking-link")
+
+    def test_selecting_a_link_only_row_hands_back_the_url(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = run(self.ctx, judge_mode="rubric", out_dir=tmp, live=False, selection={"rank": 1})
+        top = self.rows[0]
+        self.assertEqual(top["availability"]["status"], "via-booking-link")
+        self.assertEqual(result.booking.status, "requires-user-action")
+        self.assertEqual(result.booking.restaurant, top["name"])
+        self.assertEqual(result.booking.booking_url, top["booking_url"])
+        self.assertEqual(result.meta["auto_skipped"], [])
 
     def test_require_available_keeps_only_bookable(self):
         import dataclasses

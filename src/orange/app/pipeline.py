@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from ..domain.models import BookingOutcome
-from ..services.booking import book_restaurant, select_row
+from ..services.booking import auto_skips, book_restaurant, select_row
 from ..services.judge import JudgeUnavailable, build_judge
 from ..domain.models import QueryContext, Restaurant
 from ..repositories.factory import build_repositories
@@ -89,7 +89,10 @@ def run(
     rows = rank_rows(kept, ctx)
 
     booking = None
+    auto_skipped: list[dict[str, Any]] = []
     if selection:
+        if selection.get("auto"):
+            auto_skipped = auto_skips(rows)
         row = select_row(rows, **selection)
         restaurant = next(r for r in kept if (r.provider, r.provider_id) == (row["provider"], row["provider_id"]))
         booking = book_restaurant(
@@ -107,6 +110,7 @@ def run(
         "judge_requested": judge_mode,
         "judge_fallback": fallback,
         "booking": booking.status if booking else None,
+        "auto_skipped": auto_skipped,
         "require_availability": ctx.require_availability,
         "sources": [f"{p.name} ({p.mode})" for p in providers],
         "notes": notes,
