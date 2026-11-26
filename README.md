@@ -6,31 +6,63 @@ window — then offers are scored on what they are actually worth after their te
 Ties go to the closer restaurant, then alphabetically.
 
 ```bash
-./run.py --require-available            # 6 bookable places, 8–10 PM
+./run.py --require-available            # 13 bookable places, 8–10 PM
 ```
 
-- **Status**: fixture-backed (no live MCP token here) · **125 tests**, no network · **9-command** reproducible runbook
+- **Status**: fixture-backed (no live MCP token here) · **165 tests**, loopback only · **9-command** reproducible runbook
+- **Architecture**: handlers → services → repositories → domain ([ARCHITECTURE.md](ARCHITECTURE.md))
 - **Outputs**: [out/ranked.md](out/ranked.md) · [out/ranked.csv](out/ranked.csv) · [out/ranked.json](out/ranked.json) · [out/commands.json](out/commands.json)
+
+## Talk to it
+
+Prefer a conversation? `./chat.py` runs the same engine behind tool calls — it asks for what it is
+missing, searches, and books after you confirm.
+
+```console
+$ ./chat.py
+Orange — Koramangala concierge · 2026-11-26 · bookings simulated
+Try: "show me cafes for tonight under 800" · /help · /quit
+
+you> show me restaurants
+bot> Which cuisine, what time window, and budget per person?
+
+you> any, tonight 8 to 10, 1000 per person for 2
+bot> 1. Koramangala Social · 25% off · ₹900/person · 0.4 km · District link
+     2. Beijing Bites · flat ₹300 off · ₹600/person · 1.1 km · no slot
+     3. Al Daaz · flat ₹300 off · ₹700/person · 0.9 km · 9:00–10:30 PM · free
+
+you> book Al Daaz
+bot> Al Daaz · 9:00–10:30 PM · party of 2 · free booking. Confirm and I'll lock it in?
+
+you> yes
+bot> Booked — order SIM-71D3497D67. (simulated)
+
+you> /quit
+bye.
+```
+
+`--once "..."` for a single message, `--live-book` to arm real reservations. Full command list:
+[COMMANDS.md](COMMANDS.md).
 
 ---
 
 ## Result snapshot
 
 Fixture run, `rubric` judge. Anchor **12.9352, 77.6245** (Koramangala centre — the coordinate
-Swiggy's own docs publish). 30 discovered → 26 pass filters → **6 bookable** in the 8–10 PM window.
+Swiggy's own docs publish). 53 discovered → 45 pass filters → **13 bookable** in the 8–10 PM window.
 
 | # | Restaurant | Provider | Best offer | Cash % | Score | ₹/person | Dist | Slot | Booking |
 |---:|---|---|---|---:|---:|---:|---:|---|---|
-| 1 | Beijing Bites | swiggy_dineout | Flat ₹300 off on total bill | 25% | 10 | 600 | 1.1 km | — | no data |
-| 2 | Fenny's Lounge | district | Buy 1 Get 1 on cocktails | 20% | 20 | 850 | 1.2 km | — | District link |
-| 3 | Fenny's Lounge | swiggy_dineout | Happy hours: 1+1 on all drinks | 20% | 20 | 800 | 1.4 km | — | no slot |
-| 4 | Onesta | swiggy_dineout | 1+1 on all pizzas | 20% | 20 | 500 | 1.5 km | 8:30–10:00 PM | free |
-| 5 | Toit | swiggy_dineout | Flat 20% off on total bill | 20% | 17 | 1,000 | 1.1 km | 8:00–9:30 PM | ₹500 prebook |
-| 6 | Chulha Chauki Da Dhaba | swiggy_dineout | 20% off up to ₹400 | 20% | 11 | 650 | 1.2 km | 8:00–9:30 PM | free |
-| 7 | Meghana Foods | district | Flat ₹250 off | 17% | 14 | 750 | 0.7 km | — | District link |
-| 8 | Truffles | swiggy_dineout | Flat 15% off on total bill | 15% | 15 | 400 | 2.1 km | 8:15–9:45 PM | free |
-| 9 | Toit | district | Flat 15% off + free dessert | 15% | 12 | 1,000 | 1.0 km | — | District link |
-| 10 | Dyu Art Cafe | district | 15% off up to ₹300 | 15% | 10 | 475 | 1.1 km | — | District link |
+| 1 | Koramangala Social | district | 25% off on food | 25% | 25 | 900 | 0.4 km | — | District link |
+| 2 | Beijing Bites | swiggy_dineout | Flat ₹300 off on total bill | 25% | 10 | 600 | 1.1 km | — | no data |
+| 3 | Al Daaz | swiggy_dineout | Flat ₹300 off (above ₹1,000) | 21% | 21 | 700 | 0.9 km | 9:00–10:30 PM | free |
+| 4 | Fenny's Lounge | district | Buy 1 Get 1 on cocktails | 20% | 20 | 850 | 1.2 km | — | District link |
+| 5 | Pizza Hut | swiggy_dineout | Buy 1 Get 1 on medium pizzas | 20% | 20 | 600 | 1.3 km | 8:30–10:00 PM | free |
+| 6 | Fenny's Lounge | swiggy_dineout | Happy hours: 1+1 on all drinks | 20% | 20 | 800 | 1.4 km | — | no slot |
+| 7 | Onesta | swiggy_dineout | 1+1 on all pizzas | 20% | 20 | 500 | 1.5 km | 8:30–10:00 PM | free |
+| 8 | Koramangala Social | swiggy_dineout | Flat 20% off on total bill | 20% | 17 | 900 | 0.4 km | 8:00–9:30 PM | free |
+| 9 | Toit | swiggy_dineout | Flat 20% off on total bill | 20% | 17 | 1,000 | 1.1 km | 8:00–9:30 PM | ₹500 prebook |
+| 10 | Chulha Chauki Da Dhaba | swiggy_dineout | 20% off up to ₹400 | 20% | 11 | 650 | 1.2 km | 8:00–9:30 PM | free |
 
 Cash % is the discount at the reference bill (provider cost for two, or `--spend`); Score is the
 same value after usability penalties, so a card-gated 25% still tops the list but scores low.
@@ -38,8 +70,8 @@ Slot `8:00–9:30 PM` = qualifying slot in the window · Booking `free` = bookab
 `₹500 prebook` = paid deal · `District link` = bookable through District · `no slot`/`no data` =
 not bookable.
 
-Excluded: Prost Brew Pub (over budget), Big Brewsky (7.4 km), Windmills (5.4 km), Cafe Azzure
-(no price published). A restaurant appears **twice** when both providers list it — one row per
+Excluded: 3 over budget (Prost, Toscano twice), 4 beyond 5 km (Big Brewsky, Byg Brewski twice,
+Windmills), 1 with no published price (Cafe Azzure). A restaurant appears **twice** when both providers list it — one row per
 provider, as specified, not a merge.
 
 ## Canonical runs
@@ -48,17 +80,17 @@ Every row below is reproducible with one command (see [Reproduce](#reproduce-the
 
 | Command | Ranked | Bookable | Booking |
 |---|---:|---:|---|
-| `./run.py --out out` | 26 | 6 | — |
-| `./run.py --require-available --out out/available` | 6 | 6 | — |
-| `./run.py --time-start 19:30 --time-end 21:00 --require-available --out out/window-1930-2100` | 6 | 6 | — |
-| `./run.py --cuisine Cafe --out out/cafe` | 4 | 0 | — |
-| `./run.py --cuisine "North Indian,Chinese" --out out/north-indian-chinese` | 8 | 3 | — |
-| `./run.py --budget 800 --radius 3 --out out/budget-800` | 18 | 5 | — |
-| `./run.py --cuisine "North Indian,Chinese" --budget 900 --radius 3 --time-start 19:30 --time-end 21:30 --require-available --out out/combined` | 3 | 3 | — |
-| `./run.py --book --auto --out out/auto` | 26 | 6 | `simulation` |
-| `./run.py --book --select "Meghana Foods" --provider swiggy_dineout --out out/select-3` | 26 | 6 | `simulation` |
+| `./run.py --out out` | 45 | 13 | — |
+| `./run.py --require-available --out out/available` | 13 | 13 | — |
+| `./run.py --time-start 19:30 --time-end 21:00 --require-available --out out/window-1930-2100` | 14 | 14 | — |
+| `./run.py --cuisine Cafe --out out/cafe` | 6 | 0 | — |
+| `./run.py --cuisine "North Indian,Chinese" --out out/north-indian-chinese` | 10 | 4 | — |
+| `./run.py --budget 800 --radius 3 --out out/budget-800` | 35 | 11 | — |
+| `./run.py --cuisine "North Indian,Chinese" --budget 900 --radius 3 --time-start 19:30 --time-end 21:30 --require-available --out out/combined` | 4 | 4 | — |
+| `./run.py --book --auto --out out/auto` | 45 | 13 | `simulation` |
+| `./run.py --book --select "Meghana Foods" --provider swiggy_dineout --out out/select-3` | 45 | 13 | `simulation` |
 
-`--cuisine Cafe` has **0 bookable** because the cafes' only slots are 6:30 PM, outside the 20:00–22:00
+`--cuisine Cafe` has **0 bookable** because the cafes' slots are 6:00–6:30 PM, before the 20:00
 window — the two filters interact, as they should.
 
 ---
@@ -96,7 +128,7 @@ Rejection precedence: `missing-name`, `unverifiable-proximity`, `beyond-radius`,
 
 ### Combined example: cuisine + window + budget + radius
 
-One invocation, four filters, three survivors:
+One invocation, four filters, four survivors:
 
 ```bash
 ./run.py --cuisine "North Indian,Chinese" --budget 900 --radius 3 \
@@ -105,18 +137,19 @@ One invocation, four filters, three survivors:
 
 | # | Restaurant | Offer | Cash % | Score | ₹/person | Dist | Slot |
 |---:|---|---|---:|---:|---:|---:|---|
-| 1 | Chulha Chauki Da Dhaba | 20% off up to ₹400 | 20% | 11 | 650 | 1.2 km | 8:00–9:30 PM |
-| 2 | Meghana Foods | Flat ₹200 off (above ₹1,200) | 14% | 14 | 700 | 0.9 km | 7:30–9:00 PM |
-| 3 | Empire Restaurant | no offer | 0% | 0 | 500 | 1.6 km | 8:00–9:30 PM |
+| 1 | Al Daaz | Flat ₹300 off (above ₹1,000) | 21% | 21 | 700 | 0.9 km | 9:00–10:30 PM |
+| 2 | Chulha Chauki Da Dhaba | 20% off up to ₹400 | 20% | 11 | 650 | 1.2 km | 8:00–9:30 PM |
+| 3 | Meghana Foods | Flat ₹200 off (above ₹1,200) | 14% | 14 | 700 | 0.9 km | 7:30–9:00 PM |
+| 4 | Empire Restaurant | no offer | 0% | 0 | 500 | 1.6 km | 8:00–9:30 PM |
 
-30 discovered → 3 kept. The 27 exclusions show which filter did the work:
+53 discovered → 4 kept. The 49 exclusions show which filter did the work:
 
 | Reason | Count | Example |
 |---|---:|---|
-| `cuisine-mismatch` | 15 | Onesta (Italian) |
-| `beyond-radius` | 4 | Biryani Blues (3.6 km > 3 km) |
-| `no-availability` | 4 | Beijing Bites (no slot 7:30–9:30 PM) |
-| `over-budget` | 3 | Toit (₹1,000 > ₹900) |
+| `cuisine-mismatch` | 32 | Onesta (Italian) |
+| `beyond-radius` | 6 | Biryani Blues (3.6 km > 3 km) |
+| `no-availability` | 5 | Beijing Bites (no slot 7:30–9:30 PM) |
+| `over-budget` | 5 | Toit (₹1,000 > ₹900) |
 | `unknown-cost` | 1 | Cafe Azzure (no price) |
 
 Three things worth noticing:
@@ -135,8 +168,8 @@ Three things worth noticing:
 Matching is case/accent-insensitive substring on provider labels plus a small alias set
 (`cafe↔coffee`, `veg↔vegetarian`, `dessert↔ice cream`). `"South Indian"` never matches `"North Indian"`.
 
-`--cuisine Cafe` keeps 4 rows; of its 26 exclusions, 22 are `cuisine-mismatch` and 4 are the physical
-constraints (radius/budget/price), because cuisine is evaluated **after** them.
+`--cuisine Cafe` keeps 6 rows; of its 47 exclusions, 39 are `cuisine-mismatch` and 8 are the physical
+constraints (3 over budget, 4 beyond radius, 1 no price), because cuisine is evaluated **after** them.
 
 ### Availability & booking
 
@@ -146,8 +179,8 @@ Availability is a **window**, not a point: a slot qualifies only when it starts 
 
 | Case | Command | Behaviour |
 |---|---|---|
-| **User selects** | `--book --select 3` / `--book --select "Meghana Foods" --provider swiggy_dineout` | resolves that row, verifies it has a slot, books it; ambiguous names list every option |
-| **Automated** | `--book --auto` | skips unbookable rows, books the highest-ranked restaurant with a slot |
+| **User selects** | `--book --select 3` / `--book --select "Meghana Foods" --provider swiggy_dineout` | resolves that row; a row with a slot is booked, a District link-only row returns `requires-user-action` with its `booking_url`; ambiguous names list every option |
+| **Automated** | `--book --auto` | books the highest-ranked row it can actually reserve; link-only rows it passes over are printed as `Auto skipped:` and recorded as `auto_skipped` in `ranked.json` |
 
 Without `--book` the same flags are a dry run. Live mode additionally needs `--yes`, otherwise the
 status is `confirmation-required` and no request is sent. Fixture mode returns `simulation` with a
@@ -156,7 +189,12 @@ deterministic `SIM-…` order id.
 Statuses: `simulation` · `confirmed` · `pending-payment` · `requires-user-action` ·
 `confirmation-required` · `unavailable` · `failed`. Paid Swiggy prebook deals never auto-charge —
 `create_cart` builds the deal cart and stops for UPI approval. District has no booking API, so it
-returns `requires-user-action` with the restaurant's `booking_url`.
+returns `requires-user-action` with the restaurant's `booking_url` — never a simulated slot, even
+under `--simulate`.
+
+`--auto` never skips silently: with Koramangala Social (District) ranked #1 and Al Daaz ranked #3,
+it reserves Al Daaz and prints `Auto skipped: #1 Koramangala Social (booking link only — cannot
+reserve online)`. Pick that row explicitly (`--select 1`) to get its link.
 
 ---
 
@@ -283,13 +321,38 @@ unrelated personal-notes tool.
 
 ---
 
+## How the chat works
+
+`./chat.py` turns the same stack into a conversation. The model gets four tools and drives them:
+
+```bash
+./chat.py                                       # REPL
+./chat.py --once "show me cafes for tonight under 800"
+./chat.py --live-book                           # arm real reservations (default: simulate)
+./chat.py --judge llm                           # LLM offer scoring too, not just the conversation
+```
+
+Tools: `search_restaurants`, `restaurant_details`, `book_table`, `reset_filters`. Filters persist
+between turns, so "make it cheaper" only sends the budget.
+
+Two guarantees are enforced in code, not just the prompt:
+
+- **Ask first.** The first unfiltered search returns `needs_clarification`; the model has to ask for
+  cuisine/time/budget before it can list anything. A filter supplied in the first message skips the gate.
+- **Confirm first.** `book_table` without `confirm` only returns a card. `confirm=true` is required to
+  reserve, and chat simulates unless `--live-book` is passed. District rows return their link, never a
+  fake confirmation.
+
+`/help`, `/filters`, `/reset`, `/quit` work in the REPL. Chat needs `DEEPSEEK_API_KEY`; the default
+offer judge is the rubric for latency, with `--judge llm` to use the model for scoring as well.
+
 ## Run it
 
 Python ≥ 3.10, no third-party dependencies.
 
 ```bash
 ./run.py --require-available                 # only places with a slot in 8–10 PM
-./run.py --book --auto                       # book the top-ranked bookable restaurant
+./run.py --book --auto                       # reserve the top row with a slot (reports skipped link-only rows)
 ./run.py --book --select 3                   # book the row you picked
 ./run.py --cuisine Cafe                      # cafes (matches "Coffee" too)
 ./run.py --cuisine "North Indian,Chinese"    # OR across cuisines
@@ -299,6 +362,8 @@ Python ≥ 3.10, no third-party dependencies.
 ./run.py --judge replay --verdicts fixtures/offer_verdicts.sample.json
 PYTHONPATH=src python3 -m orange --help
 ```
+
+Full reference: [COMMANDS.md](COMMANDS.md).
 
 ### Reproduce the whole result set
 
@@ -316,9 +381,9 @@ python3 runbook.py --keep   # re-run without deleting existing artifacts
   "exit_code": 0,
   "duration_ms": 82,
   "result": {
-    "counts": { "ranked": 26, "rejected": 4 },
-    "bookable": 6,
-    "booking": { "status": "simulation", "restaurant": "Meghana Foods", "order_id": "SIM-472E415FBC" }
+    "counts": { "ranked": 45, "rejected": 8 },
+    "bookable": 13,
+    "booking": { "status": "simulation", "restaurant": "Al Daaz", "order_id": "SIM-46E8CE86BB" }
   },
   "artifacts": ["out/auto/booking.json", "out/auto/ranked.md"]
 }
@@ -330,7 +395,7 @@ A clean run is 9 commands / 31 artifacts / 0 failures. Each run also writes its 
 ### Tests
 
 ```bash
-PYTHONPATH=src python3 -m unittest discover -s tests -t tests   # 125 tests
+PYTHONPATH=src python3 -m unittest discover -s tests -t tests   # 165 tests
 ```
 
 ### Going live
@@ -354,27 +419,40 @@ a **provisional adapter** — fixtures are the supported path until partner acce
 ## Files
 
 ```
-run.py                       zero-install CLI
+run.py                       zero-install CLI -> handlers.cli
+chat.py                      conversational agent -> handlers.chat
+COMMANDS.md                  every command, flag and env var
+ARCHITECTURE.md              layers, dependency rule, extension points
 runbook.py                   canonical command set -> out/commands.json
 src/orange/
-  models.py                  Offer / Slot / Restaurant / QueryContext
-  normalize.py               offer parsing, cost & distance parsing, haversine
-  mcpl.py                    MCP JSON-RPC streamable-HTTP client (tools/list, tools/call)
-  search.py                  THE filter: radius + budget + cuisine + availability window
-  cuisine.py                 alias table, cuisine matching, CLI parsing
-  timeutil.py                12h/24h parsing, window labels
-  booking.py                 selection (auto/user), booking outcomes, reports
-  providers/
-    swiggy_dineout.py        Dineout tools, multi-query discovery, book_table/create_cart
-    district.py              District dining tools, booking_url availability
-  judge/
-    rubric.py                deterministic T&C rubric (default + fallback)
-    llm.py                   DeepSeek judge, verdict cache, replay judge
-  rank.py                    slot picking, availability labels, comparator
-  report.py                  markdown / CSV / JSON writers
-  pipeline.py                orchestrates discover -> search -> judge -> rank -> book
+  __main__.py                python -m orange entry point
+  env.py                     .env loader
+  domain/                    pure rules, no I/O
+    models.py                Offer / Slot / Restaurant / QueryContext / BookingOutcome
+    normalize.py             offer parsing, cost & distance parsing, haversine
+    cuisine.py               aliases, matching, CLI cuisine parsing
+    timeutil.py              12h/24h parsing, window labels
+  repositories/              data access ports + MCP adapters
+    base.py                  RestaurantRepository / ReservationRepository protocols
+    mcp.py                   MCP JSON-RPC streamable-HTTP client
+    swiggy.py                Swiggy Dineout repository
+    district.py              District repository
+    factory.py               live-vs-fixture wiring
+  services/                  business logic
+    search.py                radius + budget + cuisine + availability window
+    ranking.py               judge glue, slot choice, deterministic comparator
+    booking.py               selection, confirm gate, booking orchestration
+    judge/
+      rubric.py              deterministic T&C rubric (default + fallback)
+      llm.py                 DeepSeek judge, verdict cache, replay judge
+  app/                       application service + output adapters
+    pipeline.py              one discover -> search -> judge -> rank -> book run
+    reporting.py             markdown / CSV / JSON / booking writers
+  handlers/                  inbound adapters
+    cli.py                   argparse + console rendering
+    chat/                    session, tools, tool-calling agent, prompt, client
 fixtures/                    schema-accurate Koramangala payloads (synthetic)
-tests/                       125 unit tests
+tests/                       165 unit tests
 out/                         generated reports + commands.json
 ```
 
