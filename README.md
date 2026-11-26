@@ -9,7 +9,7 @@ Ties go to the closer restaurant, then alphabetically.
 ./run.py --require-available            # 6 bookable places, 8–10 PM
 ```
 
-- **Status**: fixture-backed (no live MCP token here) · **86 tests**, no network · **9-command** reproducible runbook
+- **Status**: fixture-backed (no live MCP token here) · **102 tests**, no network · **9-command** reproducible runbook
 - **Outputs**: [out/ranked.md](out/ranked.md) · [out/ranked.csv](out/ranked.csv) · [out/ranked.json](out/ranked.json) · [out/commands.json](out/commands.json)
 
 ---
@@ -185,8 +185,34 @@ Restaurant score = **max** of its offers (0 if none). Sort key:
 Flat offers scale against the restaurant's per-person spend, not the ₹1,000 cap: ₹100 off is 33% at
 a ₹300 cafe and 10% at a ₹1,000 restaurant.
 
-Judges: `rubric` (deterministic, always available), `llm` (DeepSeek, strict JSON, cached), `replay` (saved
-verdicts, rubric fills gaps). `--judge auto` uses the LLM only when `DEEPSEEK_API_KEY` is set.
+### LLM scoring: on, off, auto
+
+Scoring is a switchable stage. Whatever it writes becomes the first sort key — restaurant score
+desc, then distance, then name — so the same pipeline ranks with or without the LLM.
+
+| `--llm` | Behaviour | Network |
+|---|---|---|
+| `off` | deterministic rubric scores every offer | none |
+| `on` | DeepSeek chat completions; a missing `DEEPSEEK_API_KEY` is a hard error | yes |
+| `auto` (default) | `on` when the key is set, else `off`; `ORANGE_LLM` overrides | only with a key |
+
+```bash
+export DEEPSEEK_API_KEY=sk-...
+./run.py --llm on      # DeepSeek verdicts -> scores -> sorted shortlist
+./run.py --llm off     # rubric verdicts   -> scores -> the same sort
+```
+
+If the call itself fails, the run still produces a shortlist: it falls back to the rubric, prints a
+warning on stderr, and records `judge_fallback` in `ranked.json` / `ranked.md`. `--llm on` without a
+key exits 2 instead of silently downgrading. `--judge` still selects the exact engines —
+
+- `rubric` deterministic, always available
+- `llm` DeepSeek, strict JSON, cached in `.cache/offer_judge.json`
+- `replay` saved verdicts (`--judge replay --verdicts fixtures/offer_verdicts.sample.json`), rubric
+  fills any gaps
+
+`DEEPSEEK_MODEL` and `DEEPSEEK_BASE_URL` override the API defaults; `DEEPSEEK_TIMEOUT` sets the
+request timeout in seconds.
 
 ---
 
@@ -250,7 +276,8 @@ Python ≥ 3.10, no third-party dependencies.
 ./run.py --book --select 3                   # book the row you picked
 ./run.py --cuisine Cafe                      # cafes (matches "Coffee" too)
 ./run.py --cuisine "North Indian,Chinese"    # OR across cuisines
-./run.py --judge rubric                      # force the deterministic rubric
+./run.py --llm off                           # rubric scoring, no network
+./run.py --llm on                            # DeepSeek scoring (needs DEEPSEEK_API_KEY)
 ./run.py --judge replay --verdicts fixtures/offer_verdicts.sample.json
 PYTHONPATH=src python3 -m orange --help
 ```
@@ -285,7 +312,7 @@ A clean run is 9 commands / 31 artifacts / 0 failures. Each run also writes its 
 ### Tests
 
 ```bash
-PYTHONPATH=src python3 -m unittest discover -s tests -t tests   # 86 tests
+PYTHONPATH=src python3 -m unittest discover -s tests -t tests   # 102 tests
 ```
 
 ### Going live
@@ -326,7 +353,7 @@ src/orange/
   report.py                  markdown / CSV / JSON writers
   pipeline.py                orchestrates discover -> search -> judge -> rank -> book
 fixtures/                    schema-accurate Koramangala payloads (synthetic)
-tests/                       86 unit tests
+tests/                       102 unit tests
 out/                         generated reports + commands.json
 ```
 

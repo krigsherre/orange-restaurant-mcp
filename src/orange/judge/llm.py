@@ -13,8 +13,9 @@ from typing import Any
 from ..models import Offer, QueryContext
 from . import JudgeUnavailable
 
-DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
+DEFAULT_BASE_URL = "https://api.deepseek.com"
 DEFAULT_MODEL = "deepseek-chat"
+DEFAULT_TIMEOUT = 60.0
 CACHE_DIR = Path(".cache")
 
 SYSTEM_PROMPT = """You are the offer adjudicator for a restaurant table-booking agent in Bengaluru, India.
@@ -95,16 +96,28 @@ class DeepSeekJudge:
     def __init__(
         self,
         api_key: str | None = None,
-        model: str = DEFAULT_MODEL,
-        timeout: float = 60.0,
+        model: str | None = None,
+        timeout: float | None = None,
         cache: bool = True,
+        base_url: str | None = None,
     ) -> None:
         self.api_key = api_key or os.environ.get("DEEPSEEK_API_KEY", "")
         if not self.api_key:
-            raise JudgeUnavailable("DEEPSEEK_API_KEY is not set; use --judge rubric")
-        self.model = model
-        self.timeout = timeout
+            raise JudgeUnavailable(
+                "DEEPSEEK_API_KEY is not set; pass --llm off to score with the deterministic rubric"
+            )
+        self.model = model or os.environ.get("DEEPSEEK_MODEL") or DEFAULT_MODEL
+        self.base_url = (base_url or os.environ.get("DEEPSEEK_BASE_URL") or DEFAULT_BASE_URL).rstrip("/")
+        default_timeout = os.environ.get("DEEPSEEK_TIMEOUT") or DEFAULT_TIMEOUT
+        try:
+            self.timeout = float(timeout if timeout is not None else default_timeout)
+        except ValueError as exc:
+            raise JudgeUnavailable(f"invalid DEEPSEEK_TIMEOUT: {exc}") from exc
         self.cache = cache
+
+    @property
+    def endpoint(self) -> str:
+        return f"{self.base_url}/chat/completions"
 
     # ------------------------------------------------------------------ cache
     def _cache_key(self, offers: list[Offer], ctx: QueryContext) -> str:
@@ -152,7 +165,7 @@ class DeepSeekJudge:
             ],
         }
         request = urllib.request.Request(
-            DEEPSEEK_URL,
+            self.endpoint,
             data=json.dumps(body).encode("utf-8"),
             headers={
                 "Content-Type": "application/json",
@@ -168,11 +181,16 @@ class DeepSeekJudge:
         except (urllib.error.URLError, TimeoutError) as exc:  # pragma: no cover - network path
             raise JudgeUnavailable(f"DeepSeek unreachable: {exc}") from exc
 
-        content = payload["choices"][0]["message"]["content"]
-        parsed = json.loads(content)
-        verdicts = parsed.get("verdicts")
+        try:
+            content = payload["choices"][0]["message"]["content"]
+            parsed = json.loads(content)
+        except (KeyError, IndexError, TypeError, json.JSONDecodeError) as exc:
+            raise JudgeUnavailable(f"DeepSeek returned an unexpected payload: {exc}") from exc
+        verdicts = parsed.get("verdicts") if isinstance(parsed, dict) else None
         if not isinstance(verdicts, list) or len(verdicts) != len(offers):
             raise JudgeUnavailable("DeepSeek returned a malformed verdict list")
+        if not all(isinstance(verdict, dict) for verdict in verdicts):
+            raise JudgeUnavailable("DeepSeek returned a non-object verdict")
         return verdicts
 
     def score(self, offers: list[Offer], ctx: QueryContext) -> None:

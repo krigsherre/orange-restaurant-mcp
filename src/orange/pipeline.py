@@ -31,6 +31,7 @@ def run(
     *,
     fixtures_dir: str | Path | None = None,
     judge_mode: str = "auto",
+    judge_strict: bool = False,
     verdicts: str | None = None,
     out_dir: str | Path = "out",
     live: bool = True,
@@ -57,17 +58,32 @@ def run(
     rejected = outcome.rejected
     notes.append(f"availability probed: {outcome.probed}")
 
-    judge = build_judge(judge_mode, verdicts_path=verdicts)
-    judge_name = judge.name
+    # Scoring is a switchable stage; ranking below consumes whatever scores it wrote.
+    fallback: str | None = None
     try:
-        judge_all(kept, ctx, judge)
+        judge = build_judge(judge_mode, verdicts_path=verdicts)
     except JudgeUnavailable as exc:
+        # A missing key when the caller demanded the LLM is a config error, not a downgrade.
+        if judge_strict or judge_mode == "replay":
+            raise
         notes.append(f"judge fallback -> rubric ({exc})")
+        fallback = str(exc)
         from .judge.rubric import RubricJudge
 
         judge = RubricJudge()
-        judge_name = judge.name
         judge_all(kept, ctx, judge)
+    else:
+        try:
+            judge_all(kept, ctx, judge)
+        except JudgeUnavailable as exc:
+            # Runtime API failure still yields a ranked list, but it says so loudly.
+            notes.append(f"judge fallback -> rubric ({exc})")
+            fallback = str(exc)
+            from .judge.rubric import RubricJudge
+
+            judge = RubricJudge()
+            judge_all(kept, ctx, judge)
+    judge_name = judge.name
 
     rows = rank_rows(kept, ctx)
 
@@ -87,6 +103,8 @@ def run(
 
     meta = {
         "judge": judge_name,
+        "judge_requested": judge_mode,
+        "judge_fallback": fallback,
         "booking": booking.status if booking else None,
         "require_availability": ctx.require_availability,
         "sources": [f"{p.name} ({p.mode})" for p in providers],

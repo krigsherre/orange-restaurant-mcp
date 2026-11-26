@@ -13,6 +13,7 @@ venv/
 
 # Tooling
 .pytest_cache/
+.cache/
 .DS_Store
 
 # Generated reports stay tracked (README links them); out/ is intentionally not ignored.

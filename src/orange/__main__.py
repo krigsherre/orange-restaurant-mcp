@@ -8,6 +8,7 @@ from typing import Any
 
 from .booking import SelectionError, select_row
 from .cuisine import parse_cuisine_args
+from .judge import JudgeUnavailable, resolve_judge_mode
 from .models import QueryContext
 from .pipeline import run
 
@@ -42,7 +43,18 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--book", action="store_true", help="actually reserve (fixtures simulate)")
     parser.add_argument("--yes", action="store_true", help="skip the confirmation gate for a live booking")
     parser.add_argument("--simulate", action="store_true", help="force simulated booking even in live mode")
-    parser.add_argument("--judge", choices=["auto", "llm", "rubric", "replay"], default="auto")
+    parser.add_argument(
+        "--judge",
+        choices=["auto", "llm", "rubric", "replay"],
+        default="auto",
+        help="exact scoring engine; auto = llm when DEEPSEEK_API_KEY is set, else rubric",
+    )
+    parser.add_argument(
+        "--llm",
+        choices=["auto", "on", "off"],
+        default=None,
+        help="LLM scoring switch: on requires DEEPSEEK_API_KEY, off forces the rubric, auto follows the key (env: ORANGE_LLM)",
+    )
     parser.add_argument("--verdicts", help="JSON verdict file for --judge replay")
     parser.add_argument("--fixtures", help="fixtures directory")
     parser.add_argument("--out", default="out")
@@ -84,10 +96,19 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     try:
+        judge_mode = resolve_judge_mode(args.judge, args.llm)
+    except ValueError as exc:
+        print(f"Judge config: {exc}", file=sys.stderr)
+        return 2
+    # An explicit on (or --judge llm) must not quietly degrade to the rubric.
+    judge_strict = args.llm == "on" or args.judge == "llm"
+
+    try:
         result = run(
             ctx,
             fixtures_dir=args.fixtures,
-            judge_mode=args.judge,
+            judge_mode=judge_mode,
+            judge_strict=judge_strict,
             verdicts=args.verdicts,
             out_dir=args.out,
             live=not args.no_live,
@@ -98,13 +119,19 @@ def main(argv: list[str] | None = None) -> int:
     except SelectionError as exc:
         print(f"Selection failed: {exc}", file=sys.stderr)
         return 1
+    except JudgeUnavailable as exc:
+        print(f"LLM judge unavailable: {exc}", file=sys.stderr)
+        return 2
 
     counts = result.meta["counts"]
+    if result.meta.get("judge_fallback"):
+        print(f"warning: LLM judge failed, ranked with the rubric: {result.meta['judge_fallback']}", file=sys.stderr)
     print(
         f"Discovered {counts['discovered']} · after filters {counts['after_filters']} · "
         f"ranked {len(result.rows)} · bookable {counts['bookable']}"
     )
-    print(f"Judge: {result.meta['judge']} · Sources: {', '.join(result.meta['sources'])}")
+    judge_line = result.meta["judge"] + (" (fallback)" if result.meta.get("judge_fallback") else "")
+    print(f"Judge: {judge_line} · Sources: {', '.join(result.meta['sources'])}")
     print(f"Window: {ctx.date} {ctx.window_label} · party {ctx.party_size} · ≤₹{ctx.budget_per_person:,.0f}/person")
     if ctx.cuisines:
         print(f"Cuisine filter: {', '.join(ctx.cuisines)}")

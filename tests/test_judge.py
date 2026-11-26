@@ -1,6 +1,16 @@
+import json
+import os
 import unittest
+from unittest import mock
 
 import _path  # noqa: F401
+from orange.judge import (
+    JudgeUnavailable,
+    build_judge,
+    normalize_llm,
+    resolve_judge_mode,
+)
+from orange.judge.llm import DeepSeekJudge
 from orange.judge.rubric import RubricJudge, score_offer
 from orange.models import Offer, QueryContext
 
@@ -41,6 +51,116 @@ class RubricTests(unittest.TestCase):
         RubricJudge().score(offers, self.ctx)
         self.assertEqual(offers[0].judged_by, "rubric")
         self.assertGreater(offers[0].score, 0)
+
+
+class _FakeResponse:
+    def __init__(self, payload):
+        self._payload = payload
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+    def read(self):
+        return json.dumps(self._payload).encode("utf-8")
+
+
+class LLMSwitchTests(unittest.TestCase):
+    def test_normalize_accepts_on_off_auto(self):
+        self.assertEqual(normalize_llm("on"), "on")
+        self.assertEqual(normalize_llm(" OFF "), "off")
+        self.assertEqual(normalize_llm(None), "auto")
+        self.assertEqual(normalize_llm(""), "auto")
+        with self.assertRaises(ValueError):
+            normalize_llm("maybe")
+
+    def test_auto_follows_the_key(self):
+        self.assertEqual(resolve_judge_mode("auto", None, environ={}), "rubric")
+        self.assertEqual(resolve_judge_mode("auto", None, environ={"DEEPSEEK_API_KEY": "k"}), "llm")
+
+    def test_off_beats_a_configured_key(self):
+        env = {"DEEPSEEK_API_KEY": "k", "ORANGE_LLM": "off"}
+        self.assertEqual(resolve_judge_mode("auto", None, environ=env), "rubric")
+        with mock.patch.dict(os.environ, env, clear=True):
+            self.assertIsInstance(build_judge("auto"), RubricJudge)
+
+    def test_on_without_key_raises_at_build_time(self):
+        self.assertEqual(resolve_judge_mode("auto", "on", environ={}), "llm")
+        with mock.patch.dict(os.environ, {}, clear=True):
+            with self.assertRaises(JudgeUnavailable) as caught:
+                build_judge("llm")
+        self.assertIn("DEEPSEEK_API_KEY", str(caught.exception))
+        self.assertIn("--llm off", str(caught.exception))
+
+    def test_env_switch_overrides_the_key(self):
+        self.assertEqual(resolve_judge_mode("auto", None, environ={"ORANGE_LLM": "on"}), "llm")
+        both = {"ORANGE_LLM": "off", "DEEPSEEK_API_KEY": "k"}
+        self.assertEqual(resolve_judge_mode("auto", None, environ=both), "rubric")
+
+    def test_contradictions_are_errors(self):
+        for judge, llm in (("rubric", "on"), ("llm", "off"), ("replay", "on")):
+            with self.assertRaises(ValueError):
+                resolve_judge_mode(judge, llm, environ={})
+
+    def test_replay_stays_offline(self):
+        self.assertEqual(resolve_judge_mode("replay", None, environ={"DEEPSEEK_API_KEY": "k"}), "replay")
+
+
+class DeepSeekJudgeTests(unittest.TestCase):
+    def setUp(self):
+        self.ctx = QueryContext(budget_per_person=1000.0, party_size=2, time="20:00")
+
+    def _judge(self, **kwargs):
+        return DeepSeekJudge(
+            api_key="test-key",
+            model="deepseek-chat",
+            cache=False,
+            base_url="https://api.example.test",
+            **kwargs,
+        )
+
+    def test_request_scores_offers_and_uses_configured_model(self):
+        verdicts = [{"index": 0, "score": 42, "effective_pct": 33.5, "flags": ["capped-up-to"], "rationale": "ok"}]
+        payload = {"choices": [{"message": {"content": json.dumps({"verdicts": verdicts})}}]}
+        captured = {}
+
+        def fake_urlopen(request, timeout=None):
+            captured["request"] = request
+            return _FakeResponse(payload)
+
+        offers = [Offer(title="20% off up to ₹300", offer_type="percent", value=20.0)]
+        with mock.patch("orange.judge.llm.urllib.request.urlopen", fake_urlopen):
+            self._judge().score(offers, self.ctx)
+
+        self.assertEqual(offers[0].score, 42.0)
+        self.assertEqual(offers[0].effective_pct, 33.5)
+        self.assertEqual(offers[0].flags, ["capped-up-to"])
+        self.assertEqual(offers[0].judged_by, "llm")
+        request = captured["request"]
+        self.assertEqual(request.full_url, "https://api.example.test/chat/completions")
+        self.assertEqual(request.headers["Authorization"], "Bearer test-key")
+        body = json.loads(request.data)
+        self.assertEqual(body["model"], "deepseek-chat")
+        self.assertEqual(body["response_format"], {"type": "json_object"})
+
+    def test_env_overrides_model_and_base_url(self):
+        env = {"DEEPSEEK_MODEL": "deepseek-reasoner", "DEEPSEEK_BASE_URL": "https://proxy.test/"}
+        with mock.patch.dict(os.environ, env, clear=True):
+            judge = DeepSeekJudge(api_key="k")
+        self.assertEqual(judge.model, "deepseek-reasoner")
+        self.assertEqual(judge.endpoint, "https://proxy.test/chat/completions")
+
+    def test_malformed_response_becomes_judge_unavailable(self):
+        payload = {"choices": [{"message": {"content": "not json"}}]}
+
+        def fake_urlopen(request, timeout=None):
+            return _FakeResponse(payload)
+
+        with mock.patch("orange.judge.llm.urllib.request.urlopen", fake_urlopen):
+            with self.assertRaises(JudgeUnavailable):
+                self._judge().score([Offer(title="10% off")], self.ctx)
 
 
 if __name__ == "__main__":

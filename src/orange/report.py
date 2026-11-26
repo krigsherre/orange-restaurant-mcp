@@ -88,6 +88,8 @@ def write_markdown(
     if ctx.cuisines:
         lines.append(f"**Cuisine** {', '.join(ctx.cuisines)} (any match)")
     lines.append(f"**Offer judge**: `{judge_name}` · **Sources**: {', '.join(meta.get('sources', []))}")
+    if meta.get("judge_fallback"):
+        lines.append(f"**Scoring fallback**: `{judge_name}` — {meta['judge_fallback']}")
     lines.append("")
     lines.append("Sorted by: offer strength ↓, distance ↑, name A–Z (then provider/id).")
     if rows:

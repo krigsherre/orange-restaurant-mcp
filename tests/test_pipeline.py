@@ -1,8 +1,12 @@
+import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import _path  # noqa: F401
+from orange.__main__ import main
+from orange.judge import JudgeUnavailable
 from orange.models import QueryContext
 from orange.pipeline import run
 
@@ -94,6 +98,41 @@ class PipelineTests(unittest.TestCase):
         empire = next(row for row in self.rows if row["name"] == "Empire Restaurant")
         self.assertEqual(empire["offer_score"], 0.0)
         self.assertIsNone(empire["best_offer"])
+
+    def test_rubric_run_records_no_fallback(self):
+        self.assertEqual(self.result.meta["judge"], "rubric")
+        self.assertEqual(self.result.meta["judge_requested"], "rubric")
+        self.assertIsNone(self.result.meta["judge_fallback"])
+
+    def test_llm_api_failure_falls_back_to_rubric(self):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch(
+            "orange.pipeline.build_judge", side_effect=JudgeUnavailable("boom")
+        ):
+            result = run(self.ctx, judge_mode="llm", out_dir=tmp, live=False)
+        self.assertEqual(result.meta["judge"], "rubric")
+        self.assertIn("boom", result.meta["judge_fallback"])
+        self.assertTrue(result.rows)
+
+    def test_strict_llm_does_not_silently_fall_back(self):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(os.environ, {}, clear=True):
+            with self.assertRaises(JudgeUnavailable):
+                run(self.ctx, judge_mode="llm", judge_strict=True, out_dir=tmp, live=False)
+
+
+class CliLLMSwitchTests(unittest.TestCase):
+    def test_llm_off_runs_offline(self):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(os.environ, {}, clear=True):
+            self.assertEqual(main(["--llm", "off", "--out", tmp]), 0)
+            self.assertTrue((Path(tmp) / "ranked.json").exists())
+
+    def test_llm_on_without_a_key_exits_2(self):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(os.environ, {}, clear=True):
+            self.assertEqual(main(["--llm", "on", "--out", tmp]), 2)
+            self.assertFalse((Path(tmp) / "ranked.json").exists())
+
+    def test_conflicting_switches_exit_2(self):
+        with mock.patch.dict(os.environ, {}, clear=True):
+            self.assertEqual(main(["--judge", "rubric", "--llm", "on"]), 2)
 
 
 if __name__ == "__main__":
