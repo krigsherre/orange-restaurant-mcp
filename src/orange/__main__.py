@@ -8,7 +8,7 @@ from typing import Any
 
 from .booking import SelectionError, select_row
 from .cuisine import parse_cuisine_args
-from .judge import JudgeUnavailable, resolve_judge_mode
+from .judge import JudgeUnavailable, llm_demanded, resolve_judge_mode
 from .models import QueryContext
 from .pipeline import run
 
@@ -100,8 +100,8 @@ def main(argv: list[str] | None = None) -> int:
     except ValueError as exc:
         print(f"Judge config: {exc}", file=sys.stderr)
         return 2
-    # An explicit on (or --judge llm) must not quietly degrade to the rubric.
-    judge_strict = args.llm == "on" or args.judge == "llm"
+    # An explicit on (--llm on, ORANGE_LLM=on or --judge llm) must not quietly degrade.
+    judge_strict = llm_demanded(args.judge, args.llm)
 
     try:
         result = run(

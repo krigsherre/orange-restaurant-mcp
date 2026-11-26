@@ -1,3 +1,4 @@
+import json
 import os
 import tempfile
 import unittest
@@ -133,6 +134,18 @@ class CliLLMSwitchTests(unittest.TestCase):
     def test_conflicting_switches_exit_2(self):
         with mock.patch.dict(os.environ, {}, clear=True):
             self.assertEqual(main(["--judge", "rubric", "--llm", "on"]), 2)
+
+    def test_env_on_without_a_key_exits_2(self):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(os.environ, {"ORANGE_LLM": "on"}, clear=True):
+            self.assertEqual(main(["--out", tmp]), 2)
+
+    def test_env_off_with_a_key_still_runs_the_rubric(self):
+        env = {"ORANGE_LLM": "off", "DEEPSEEK_API_KEY": "fake"}
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.dict(os.environ, env, clear=True):
+            self.assertEqual(main(["--out", tmp]), 0)
+            data = json.loads((Path(tmp) / "ranked.json").read_text())
+        self.assertEqual(data["meta"]["judge"], "rubric")
+        self.assertIsNone(data["meta"]["judge_fallback"])
 
 
 if __name__ == "__main__":

@@ -7,6 +7,7 @@ import _path  # noqa: F401
 from orange.judge import (
     JudgeUnavailable,
     build_judge,
+    llm_demanded,
     normalize_llm,
     resolve_judge_mode,
 )
@@ -106,6 +107,14 @@ class LLMSwitchTests(unittest.TestCase):
 
     def test_replay_stays_offline(self):
         self.assertEqual(resolve_judge_mode("replay", None, environ={"DEEPSEEK_API_KEY": "k"}), "replay")
+
+    def test_llm_demanded_tracks_explicit_requests(self):
+        self.assertTrue(llm_demanded("auto", "on", environ={}))
+        self.assertTrue(llm_demanded("auto", None, environ={"ORANGE_LLM": "on"}))
+        self.assertTrue(llm_demanded("llm", None, environ={}))
+        # auto + a key is implicit, not a demand: API failures may fall back.
+        self.assertFalse(llm_demanded("auto", None, environ={"DEEPSEEK_API_KEY": "k"}))
+        self.assertFalse(llm_demanded("rubric", None, environ={}))
 
 
 class DeepSeekJudgeTests(unittest.TestCase):

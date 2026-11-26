@@ -75,6 +75,13 @@ def resolve_judge_mode(
     return "llm" if env.get("DEEPSEEK_API_KEY") else "rubric"
 
 
+def llm_demanded(judge_mode: str = "auto", llm: str | None = None, *, environ: dict[str, str] | None = None) -> bool:
+    """True when the caller explicitly asked for the LLM (flag, env or --judge llm)."""
+    env = os.environ if environ is None else environ
+    switch = normalize_llm(llm if llm is not None else env.get(LLM_ENV))
+    return switch == "on" or (judge_mode or "").strip().lower() == "llm"
+
+
 def build_judge(mode: str = "auto", *, verdicts_path: str | None = None) -> OfferJudge:
     from .rubric import RubricJudge
 

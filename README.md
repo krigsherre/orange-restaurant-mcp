@@ -9,7 +9,7 @@ Ties go to the closer restaurant, then alphabetically.
 ./run.py --require-available            # 6 bookable places, 8–10 PM
 ```
 
-- **Status**: fixture-backed (no live MCP token here) · **102 tests**, no network · **9-command** reproducible runbook
+- **Status**: fixture-backed (no live MCP token here) · **105 tests**, no network · **9-command** reproducible runbook
 - **Outputs**: [out/ranked.md](out/ranked.md) · [out/ranked.csv](out/ranked.csv) · [out/ranked.json](out/ranked.json) · [out/commands.json](out/commands.json)
 
 ---
@@ -312,7 +312,7 @@ A clean run is 9 commands / 31 artifacts / 0 failures. Each run also writes its 
 ### Tests
 
 ```bash
-PYTHONPATH=src python3 -m unittest discover -s tests -t tests   # 102 tests
+PYTHONPATH=src python3 -m unittest discover -s tests -t tests   # 105 tests
 ```
 
 ### Going live
@@ -353,7 +353,7 @@ src/orange/
   report.py                  markdown / CSV / JSON writers
   pipeline.py                orchestrates discover -> search -> judge -> rank -> book
 fixtures/                    schema-accurate Koramangala payloads (synthetic)
-tests/                       102 unit tests
+tests/                       105 unit tests
 out/                         generated reports + commands.json
 ```
 
