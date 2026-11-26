@@ -135,8 +135,11 @@ class DeepSeekJudge:
 
     # ------------------------------------------------------------------ cache
     def _cache_key(self, offers: list[Offer], ctx: QueryContext) -> str:
+        # The prompt is part of the input: editing the rubric must invalidate cached verdicts.
+        prompt_fingerprint = hashlib.sha256(SYSTEM_PROMPT.encode("utf-8")).hexdigest()[:12]
         blob = json.dumps(
             {
+                "prompt": prompt_fingerprint,
                 "model": self.model,
                 "base_url": self.base_url,
                 "ctx": ctx.to_judge_dict(),
@@ -205,8 +208,13 @@ class DeepSeekJudge:
         verdicts = parsed.get("verdicts") if isinstance(parsed, dict) else None
         if not isinstance(verdicts, list) or len(verdicts) != len(offers):
             raise JudgeUnavailable("DeepSeek returned a malformed verdict list")
-        if not all(isinstance(verdict, dict) for verdict in verdicts):
-            raise JudgeUnavailable("DeepSeek returned a non-object verdict")
+        for index, verdict in enumerate(verdicts):
+            if not isinstance(verdict, dict):
+                raise JudgeUnavailable(f"DeepSeek verdict {index} is not an object")
+            score = verdict.get("score")
+            # An empty verdict must not look like a confident 0.
+            if isinstance(score, bool) or not isinstance(score, (int, float)):
+                raise JudgeUnavailable(f"DeepSeek verdict {index} has no numeric score")
         return verdicts
 
     def score(self, offers: list[Offer], ctx: QueryContext) -> None:

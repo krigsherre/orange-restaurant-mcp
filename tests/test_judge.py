@@ -240,3 +240,119 @@ class DeepSeekJudgeTests(unittest.TestCase):
 if __name__ == "__main__":
     unittest.main()
 
+
+class DeepSeekIntegrationTests(unittest.TestCase):
+    """Wire-level check: a real localhost HTTP server, no urllib mocking."""
+
+    @classmethod
+    def setUpClass(cls):
+        import threading
+        from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+
+        class Handler(BaseHTTPRequestHandler):
+            seen = []
+
+            def do_POST(self):  # noqa: N802 - stdlib naming
+                length = int(self.headers.get("Content-Length", 0))
+                body = json.loads(self.rfile.read(length))
+                prompt = body["messages"][1]["content"]
+                offers = json.loads(prompt.split("\n\n", 1)[1])["offers"]
+                Handler.seen.append(
+                    {"path": self.path, "auth": self.headers.get("Authorization"), "body": body, "offers": len(offers)}
+                )
+                verdicts = [
+                    {
+                        "index": i,
+                        "score": 88,
+                        "effective_pct": 50,
+                        "flags": ["loopback"],
+                        "rationale": "loopback verdict",
+                    }
+                    for i in range(len(offers))
+                ]
+                payload = json.dumps({"choices": [{"message": {"content": json.dumps({"verdicts": verdicts})}}]})
+                data = payload.encode()
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Content-Length", str(len(data)))
+                self.end_headers()
+                self.wfile.write(data)
+
+            def log_message(self, *args):
+                pass
+
+        cls.Handler = Handler
+        cls.server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+        cls.port = cls.server.server_address[1]
+        cls.thread = threading.Thread(target=cls.server.serve_forever, daemon=True)
+        cls.thread.start()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.server.shutdown()
+        cls.server.server_close()
+        cls.thread.join(timeout=2)
+
+    def setUp(self):
+        self.Handler.seen.clear()
+        self.ctx = QueryContext(budget_per_person=1000.0, party_size=2, time="20:00")
+        self.judge = DeepSeekJudge(
+            api_key="test-key", model="deepseek-chat", cache=False, base_url=f"http://127.0.0.1:{self.port}"
+        )
+
+    def test_full_request_response_cycle(self):
+        offers = [
+            Offer(title="Flat ₹200 off", offer_type="flat", value=200.0, per_person_ref=600.0),
+            Offer(title="Free dessert", offer_type="perk"),
+        ]
+        self.judge.score(offers, self.ctx)
+
+        self.assertEqual([o.score for o in offers], [88.0, 88.0])
+        self.assertEqual([o.judged_by for o in offers], ["llm", "llm"])
+        self.assertEqual(offers[0].flags, ["loopback"])
+
+        seen = self.Handler.seen[0]
+        self.assertEqual(seen["path"], "/chat/completions")
+        self.assertEqual(seen["auth"], "Bearer test-key")
+        self.assertEqual(seen["body"]["response_format"], {"type": "json_object"})
+        self.assertEqual(seen["offers"], 2)
+
+    def test_verdict_without_numeric_score_is_rejected(self):
+        payload = {"choices": [{"message": {"content": json.dumps({"verdicts": [{"index": 0, "effective_pct": 10}]})}}]}
+
+        def fake_urlopen(request, timeout=None):
+            return _FakeResponse(payload)
+
+        with mock.patch("orange.services.judge.llm.urllib.request.urlopen", fake_urlopen):
+            with self.assertRaises(JudgeUnavailable) as caught:
+                self.judge.score([Offer(title="10% off")], self.ctx)
+        self.assertIn("numeric score", str(caught.exception))
+
+
+class CacheKeyTests(unittest.TestCase):
+    def test_prompt_change_invalidates_cache(self):
+        from orange.services.judge import llm as llm_module
+
+        ctx = QueryContext()
+        offers = [Offer(title="10% off", offer_type="percent", value=10.0)]
+        judge = DeepSeekJudge(api_key="k", cache=False, base_url="https://api.example.test")
+        before = judge._cache_key(offers, ctx)
+        with mock.patch.object(llm_module, "SYSTEM_PROMPT", llm_module.SYSTEM_PROMPT + "\nNew rule."):
+            after = judge._cache_key(offers, ctx)
+        self.assertNotEqual(before, after)
+
+    def test_cache_round_trip(self):
+        import tempfile
+        from pathlib import Path
+
+        from orange.services.judge import llm as llm_module
+
+        ctx = QueryContext()
+        offers = [Offer(title="10% off", offer_type="percent", value=10.0)]
+        judge = DeepSeekJudge(api_key="k", base_url="https://api.example.test")
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.object(llm_module, "CACHE_DIR", Path(tmp)):
+                key = judge._cache_key(offers, ctx)
+                judge._write_cache(key, [{"score": 33}])
+                self.assertEqual(judge._read_cache(key), [{"score": 33}])
+        self.assertIsNone(judge._read_cache(key))
