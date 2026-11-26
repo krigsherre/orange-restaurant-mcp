@@ -16,9 +16,9 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from ..mcpl import McpHttpClient, extract_envelope
-from ..models import QueryContext, Restaurant, Slot
-from ..normalize import attach_offer_context, normalize_distance, parse_cost_for_two, parse_distance, parse_offer, parse_rating
+from .mcp import McpHttpClient, extract_envelope
+from ..domain.models import QueryContext, Restaurant, Slot
+from ..domain.normalize import attach_offer_context, normalize_distance, parse_cost_for_two, parse_distance, parse_offer, parse_rating
 from .base import load_json
 
 SEED_QUERIES = ("Koramangala", "dining", "cafe", "bar")
@@ -74,7 +74,7 @@ def from_district_payload(payload: dict[str, Any], ctx: QueryContext) -> list[Re
     return restaurants
 
 
-class DistrictProvider:
+class DistrictRepository:
     name = "district"
     server = "https://mcp.district.in/dining"  # placeholder: District publishes no stable public endpoint
 
@@ -119,7 +119,7 @@ class DistrictProvider:
         return []  # availability is only exposed through booking_url
 
     def book(self, restaurant: Restaurant, slot: "Slot", ctx: QueryContext) -> "BookingOutcome":
-        from ..booking import BookingOutcome
+        from ..domain.models import BookingOutcome
 
         return BookingOutcome(
             status="requires-user-action",
@@ -133,3 +133,7 @@ class DistrictProvider:
             booking_url=restaurant.booking_url,
             message="District exposes no booking API; finish the reservation at booking_url.",
         )
+
+
+# Historical alias: the object is a repository, the old name said provider.
+DistrictProvider = DistrictRepository

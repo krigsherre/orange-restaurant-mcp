@@ -6,10 +6,10 @@ from pathlib import Path
 from unittest import mock
 
 import _path  # noqa: F401
-from orange.__main__ import main
-from orange.judge import JudgeUnavailable
-from orange.models import QueryContext
-from orange.pipeline import run
+from orange.handlers.cli import main
+from orange.services.judge import JudgeUnavailable
+from orange.domain.models import QueryContext
+from orange.app.pipeline import run
 
 
 class PipelineTests(unittest.TestCase):
@@ -107,7 +107,7 @@ class PipelineTests(unittest.TestCase):
 
     def test_llm_api_failure_falls_back_to_rubric(self):
         with tempfile.TemporaryDirectory() as tmp, mock.patch(
-            "orange.pipeline.build_judge", side_effect=JudgeUnavailable("boom")
+            "orange.app.pipeline.build_judge", side_effect=JudgeUnavailable("boom")
         ):
             result = run(self.ctx, judge_mode="llm", out_dir=tmp, live=False)
         self.assertEqual(result.meta["judge"], "rubric")
@@ -173,7 +173,7 @@ class CliLLMSwitchTests(unittest.TestCase):
                 encoding="utf-8",
             )
             with mock.patch.dict(os.environ, {"ORANGE_ENV_FILE": str(env_file)}, clear=True), mock.patch(
-                "orange.judge.llm.CACHE_DIR", Path(tmp) / "cache"
+                "orange.services.judge.llm.CACHE_DIR", Path(tmp) / "cache"
             ):
                 self.assertEqual(main(["--out", tmp]), 0)
                 data = json.loads((Path(tmp) / "ranked.json").read_text())

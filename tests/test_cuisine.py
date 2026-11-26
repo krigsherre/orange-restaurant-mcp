@@ -2,10 +2,10 @@ import tempfile
 import unittest
 
 import _path  # noqa: F401
-from orange.cuisine import matches, parse_cuisine_args
-from orange.models import QueryContext, Restaurant
-from orange.pipeline import run
-from orange.search import search
+from orange.domain.cuisine import matches, parse_cuisine_args
+from orange.domain.models import QueryContext, Restaurant
+from orange.app.pipeline import run
+from orange.services.search import search
 
 
 class CuisineMatchingTests(unittest.TestCase):

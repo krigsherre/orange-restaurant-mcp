@@ -3,10 +3,11 @@ import unittest
 from pathlib import Path
 
 import _path  # noqa: F401
-from orange.booking import SelectionError, book_restaurant, select_row, write_booking
-from orange.models import QueryContext, Restaurant, Slot
-from orange.rank import pick_slot
-from orange.search import search
+from orange.app.reporting import write_booking
+from orange.services.booking import SelectionError, book_restaurant, select_row
+from orange.domain.models import QueryContext, Restaurant, Slot
+from orange.services.ranking import pick_slot
+from orange.services.search import search
 
 
 def row(rank, name, provider="swiggy_dineout", status="available", slot=None):
@@ -140,7 +141,7 @@ class BookingTests(unittest.TestCase):
         self.assertFalse(outcome.booked)
 
     def test_live_with_confirm_delegates(self):
-        from orange.booking import BookingOutcome
+        from orange.domain.models import BookingOutcome
 
         class Provider:
             mode = "live"
@@ -244,7 +245,7 @@ class SwiggyBookTableTests(unittest.TestCase):
             return self.responses[name]
 
     def setUp(self):
-        from orange.providers.swiggy_dineout import SwiggyDineoutProvider
+        from orange.repositories.swiggy import SwiggyDineoutProvider
 
         self.ctx = QueryContext(time="20:00", time_end="22:00", party_size=2)
         self.restaurant = Restaurant(provider="swiggy_dineout", provider_id="sw_1", name="Toit", distance_km=1.0, cost_for_two=2000)
@@ -290,7 +291,7 @@ class SwiggyBookTableTests(unittest.TestCase):
 
 class DistrictBookingTests(unittest.TestCase):
     def test_district_hands_back_the_link(self):
-        from orange.providers.district import DistrictProvider
+        from orange.repositories.district import DistrictProvider
 
         ctx = QueryContext(time="20:00", time_end="22:00")
         provider = DistrictProvider(ctx)

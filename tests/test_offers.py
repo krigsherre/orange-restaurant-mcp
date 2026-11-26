@@ -1,7 +1,7 @@
 import unittest
 
 import _path  # noqa: F401
-from orange.normalize import extract_conditions, parse_cost_for_two, parse_distance, parse_offer
+from orange.domain.normalize import extract_conditions, parse_cost_for_two, parse_distance, parse_offer
 
 
 class OfferParsingTests(unittest.TestCase):

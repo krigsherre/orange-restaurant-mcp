@@ -11,7 +11,7 @@ knowable before ordering, so every score is "at this assumed bill".
 
 from __future__ import annotations
 
-from ..models import Offer, QueryContext
+from ...domain.models import Offer, QueryContext
 
 # Typical perceived value of a non-cash perk, in "effective percent" terms.
 _PERK_BASE = (

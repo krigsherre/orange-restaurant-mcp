@@ -6,13 +6,14 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from .booking import BookingOutcome, book_restaurant, select_row, write_booking
-from .judge import JudgeUnavailable, build_judge
-from .models import QueryContext, Restaurant
-from .providers import build_providers
-from .rank import judge_all, pick_slot, rank_rows
-from .report import write_csv, write_json, write_markdown
-from .search import search
+from ..domain.models import BookingOutcome
+from ..services.booking import book_restaurant, select_row
+from ..services.judge import JudgeUnavailable, build_judge
+from ..domain.models import QueryContext, Restaurant
+from ..repositories.factory import build_repositories
+from ..services.ranking import judge_all, pick_slot, rank_rows
+from .reporting import write_booking, write_csv, write_json, write_markdown
+from ..services.search import search
 
 
 @dataclass(slots=True)
@@ -39,7 +40,7 @@ def run(
     confirm: bool = False,
     simulate: bool = False,
 ) -> RunResult:
-    providers, notes = build_providers(ctx, fixtures_dir=fixtures_dir, live=live)
+    providers, notes = build_repositories(ctx, fixtures_dir=fixtures_dir, live=live)
 
     discovered: list[Restaurant] = []
     for provider in providers:
@@ -68,7 +69,7 @@ def run(
             raise
         notes.append(f"judge fallback -> rubric ({exc})")
         fallback = str(exc)
-        from .judge.rubric import RubricJudge
+        from ..services.judge.rubric import RubricJudge
 
         judge = RubricJudge()
         judge_all(kept, ctx, judge)
@@ -79,7 +80,7 @@ def run(
             # Runtime API failure still yields a ranked list, but it says so loudly.
             notes.append(f"judge fallback -> rubric ({exc})")
             fallback = str(exc)
-            from .judge.rubric import RubricJudge
+            from ..services.judge.rubric import RubricJudge
 
             judge = RubricJudge()
             judge_all(kept, ctx, judge)

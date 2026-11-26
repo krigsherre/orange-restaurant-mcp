@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import dataclasses
-import datetime
+import datetime as dt
+from datetime import datetime
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -181,14 +182,14 @@ class QueryContext:
     @property
     def weekday(self) -> str | None:
         try:
-            return datetime.date.fromisoformat(self.date).strftime("%A")
+            return dt.date.fromisoformat(self.date).strftime("%A")
         except ValueError:
             return None
 
     @property
     def is_weekend(self) -> bool | None:
         try:
-            return datetime.date.fromisoformat(self.date).weekday() >= 5
+            return dt.date.fromisoformat(self.date).weekday() >= 5
         except ValueError:
             return None
 
@@ -238,3 +239,45 @@ class QueryContext:
             "require_availability": self.require_availability,
             "spend_per_person_inr": self.spend_per_person,
         }
+
+
+@dataclass(slots=True)
+class BookingOutcome:
+    status: str  # confirmed | pending-payment | requires-user-action | confirmation-required | unavailable | simulation | failed
+    provider: str
+    restaurant: str
+    provider_id: str
+    date: str
+    start_time: str
+    end_time: str
+    party: int
+    slot_id: str = ""
+    order_id: str = ""
+    message: str = ""
+    booking_url: str = ""
+    simulated: bool = False
+    created_at: str = field(default_factory=lambda: datetime.now().isoformat(timespec="seconds"))
+    raw: dict[str, Any] = field(default_factory=dict)
+
+    @property
+    def booked(self) -> bool:
+        return self.status in {"confirmed", "simulation"}
+
+    def to_dict(self) -> dict[str, Any]:
+        data = {
+            "status": self.status,
+            "provider": self.provider,
+            "restaurant": self.restaurant,
+            "provider_id": self.provider_id,
+            "date": self.date,
+            "start_time": self.start_time,
+            "end_time": self.end_time,
+            "party": self.party,
+            "slot_id": self.slot_id,
+            "order_id": self.order_id,
+            "message": self.message,
+            "booking_url": self.booking_url,
+            "simulated": self.simulated,
+            "created_at": self.created_at,
+        }
+        return data

@@ -1,10 +1,10 @@
 import unittest
 
 import _path  # noqa: F401
-from orange.models import Offer, QueryContext, Restaurant
-from orange.normalize import haversine_km
-from orange.rank import pick_slot, rank_rows
-from orange.search import search
+from orange.domain.models import Offer, QueryContext, Restaurant
+from orange.domain.normalize import haversine_km
+from orange.services.ranking import pick_slot, rank_rows
+from orange.services.search import search
 
 
 def restaurant(name, *, distance=1.0, cost=1000, provider="swiggy_dineout", score=None, pid=None):
@@ -112,7 +112,7 @@ class ComparatorTests(unittest.TestCase):
 
 class SlotTests(unittest.TestCase):
     def test_picks_closest_slot(self):
-        from orange.models import Slot
+        from orange.domain.models import Slot
 
         slots = [
             Slot(date="2026-11-27", display_time="7:00 PM", group="Dinner"),

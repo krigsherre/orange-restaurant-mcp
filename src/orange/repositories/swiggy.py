@@ -11,9 +11,9 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from ..mcpl import McpHttpClient, extract_envelope
-from ..models import Offer, QueryContext, Restaurant, Slot
-from ..normalize import attach_offer_context, normalize_distance, parse_cost_for_two, parse_distance, parse_offer, parse_rating
+from .mcp import McpHttpClient, extract_envelope
+from ..domain.models import Offer, QueryContext, Restaurant, Slot
+from ..domain.normalize import attach_offer_context, normalize_distance, parse_cost_for_two, parse_distance, parse_offer, parse_rating
 from .base import load_json
 
 # Broad seed queries: Swiggy's search resolves one term at a time, so we fan out
@@ -99,7 +99,7 @@ def from_dineout_payload(payload: dict[str, Any], ctx: QueryContext) -> list[Res
     return restaurants
 
 
-class SwiggyDineoutProvider:
+class SwiggyDineoutRepository:
     name = "swiggy_dineout"
     server = "https://mcp.swiggy.com/dineout"
 
@@ -176,7 +176,7 @@ class SwiggyDineoutProvider:
 
     # ------------------------------------------------------------------ booking
     def book(self, restaurant: Restaurant, slot: Slot, ctx: QueryContext) -> "BookingOutcome":
-        from ..booking import BookingOutcome
+        from ..domain.models import BookingOutcome
 
         if not self.client:  # pragma: no cover - guarded by book_restaurant
             raise RuntimeError("live booking requires an MCP client")
@@ -254,3 +254,7 @@ class SwiggyDineoutProvider:
             message=str(data.get("status") or "Reservation confirmed."),
             raw=data,
         )
+
+
+# Historical alias: the object is a repository, the old name said provider.
+SwiggyDineoutProvider = SwiggyDineoutRepository

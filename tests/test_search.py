@@ -1,8 +1,8 @@
 import unittest
 
 import _path  # noqa: F401
-from orange.models import QueryContext, Restaurant, Slot
-from orange.search import search
+from orange.domain.models import QueryContext, Restaurant, Slot
+from orange.services.search import search
 
 
 def restaurant(name, *, cuisines=("North Indian",), distance=1.0, cost=1000, provider="swiggy_dineout", pid=None):

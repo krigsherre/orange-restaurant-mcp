@@ -12,9 +12,9 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Callable
 
-from .cuisine import matches as cuisine_matches
-from .models import QueryContext, Restaurant, Slot
-from .rank import pick_slot
+from ..domain.cuisine import matches as cuisine_matches
+from ..domain.models import QueryContext, Restaurant, Slot
+from .ranking import pick_slot
 
 SlotLoader = Callable[[Restaurant], list[Slot]]
 

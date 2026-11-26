@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 from .judge import OfferJudge
-from .models import QueryContext, Restaurant, Slot
+from ..domain.models import QueryContext, Restaurant, Slot
 
 
 def pick_slot(slots: list[Slot], ctx: QueryContext) -> Slot | None:

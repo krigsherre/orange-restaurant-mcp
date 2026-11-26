@@ -4,16 +4,16 @@ import unittest
 from unittest import mock
 
 import _path  # noqa: F401
-from orange.judge import (
+from orange.services.judge import (
     JudgeUnavailable,
     build_judge,
     llm_demanded,
     normalize_llm,
     resolve_judge_mode,
 )
-from orange.judge.llm import DeepSeekJudge, build_user_prompt
-from orange.judge.rubric import RubricJudge, score_offer
-from orange.models import Offer, QueryContext
+from orange.services.judge.llm import DeepSeekJudge, build_user_prompt
+from orange.services.judge.rubric import RubricJudge, score_offer
+from orange.domain.models import Offer, QueryContext
 
 
 class RubricTests(unittest.TestCase):
@@ -189,7 +189,7 @@ class DeepSeekJudgeTests(unittest.TestCase):
             return _FakeResponse(payload)
 
         offers = [Offer(title="20% off up to ₹300", offer_type="percent", value=20.0)]
-        with mock.patch("orange.judge.llm.urllib.request.urlopen", fake_urlopen):
+        with mock.patch("orange.services.judge.llm.urllib.request.urlopen", fake_urlopen):
             self._judge().score(offers, self.ctx)
 
         self.assertEqual(offers[0].score, 42.0)
@@ -224,7 +224,7 @@ class DeepSeekJudgeTests(unittest.TestCase):
         def fake_urlopen(request, timeout=None):
             return _FakeResponse(payload)
 
-        with mock.patch("orange.judge.llm.urllib.request.urlopen", fake_urlopen):
+        with mock.patch("orange.services.judge.llm.urllib.request.urlopen", fake_urlopen):
             with self.assertRaises(JudgeUnavailable):
                 self._judge().score([Offer(title="10% off")], self.ctx)
 
@@ -239,3 +239,4 @@ class DeepSeekJudgeTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

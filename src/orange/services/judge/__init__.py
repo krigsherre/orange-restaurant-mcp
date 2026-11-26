@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 from typing import Protocol
 
-from ..models import Offer, QueryContext
+from ...domain.models import Offer, QueryContext
 
 
 LLM_ENV = "ORANGE_LLM"

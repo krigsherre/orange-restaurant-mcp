@@ -10,61 +10,15 @@ Nothing is booked unless ``confirm=True``; fixture mode always simulates.
 from __future__ import annotations
 
 import hashlib
-import json
-from dataclasses import dataclass, field
-from datetime import datetime
-from pathlib import Path
 from typing import Any
 
-from .models import QueryContext, Restaurant, Slot
+from ..domain.models import BookingOutcome, QueryContext, Restaurant, Slot
 
 SIM_PREFIX = "SIM-"
 
 
 class SelectionError(RuntimeError):
     """The requested restaurant cannot be booked (bad rank/name, or no slot)."""
-
-
-@dataclass(slots=True)
-class BookingOutcome:
-    status: str  # confirmed | pending-payment | requires-user-action | confirmation-required | unavailable | simulation | failed
-    provider: str
-    restaurant: str
-    provider_id: str
-    date: str
-    start_time: str
-    end_time: str
-    party: int
-    slot_id: str = ""
-    order_id: str = ""
-    message: str = ""
-    booking_url: str = ""
-    simulated: bool = False
-    created_at: str = field(default_factory=lambda: datetime.now().isoformat(timespec="seconds"))
-    raw: dict[str, Any] = field(default_factory=dict)
-
-    @property
-    def booked(self) -> bool:
-        return self.status in {"confirmed", "simulation"}
-
-    def to_dict(self) -> dict[str, Any]:
-        data = {
-            "status": self.status,
-            "provider": self.provider,
-            "restaurant": self.restaurant,
-            "provider_id": self.provider_id,
-            "date": self.date,
-            "start_time": self.start_time,
-            "end_time": self.end_time,
-            "party": self.party,
-            "slot_id": self.slot_id,
-            "order_id": self.order_id,
-            "message": self.message,
-            "booking_url": self.booking_url,
-            "simulated": self.simulated,
-            "created_at": self.created_at,
-        }
-        return data
 
 
 def _simulated_order_id(restaurant: Restaurant, slot: Slot, ctx: QueryContext) -> str:
@@ -186,26 +140,3 @@ def book_restaurant(
     except Exception as exc:  # noqa: BLE001 - surface provider errors as a status, not a crash
         return _outcome(restaurant, slot, ctx, "failed", f"{type(exc).__name__}: {exc}")
 
-
-def write_booking(out_dir: str | Path, outcome: BookingOutcome) -> tuple[Path, Path]:
-    out = Path(out_dir)
-    out.mkdir(parents=True, exist_ok=True)
-    json_path = out / "booking.json"
-    json_path.write_text(json.dumps(outcome.to_dict(), indent=2, ensure_ascii=False), encoding="utf-8")
-
-    md_path = out / "booking.md"
-    lines = [
-        f"# Booking — {outcome.restaurant}",
-        "",
-        f"- **Status**: `{outcome.status}`",
-        f"- **Provider**: `{outcome.provider}` (`{outcome.provider_id}`)",
-        f"- **Slot**: {outcome.start_time}–{outcome.end_time} on {outcome.date}",
-        f"- **Party**: {outcome.party}",
-        f"- **Order**: `{outcome.order_id or '—'}`" + (" _(simulated)_" if outcome.simulated else ""),
-        f"- **Message**: {outcome.message}",
-    ]
-    if outcome.booking_url:
-        lines.append(f"- **Booking link**: {outcome.booking_url}")
-    lines.append("")
-    md_path.write_text("\n".join(lines), encoding="utf-8")
-    return json_path, md_path

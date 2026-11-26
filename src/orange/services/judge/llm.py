@@ -10,7 +10,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
-from ..models import Offer, QueryContext
+from ...domain.models import Offer, QueryContext
 from . import JudgeUnavailable
 
 DEFAULT_BASE_URL = "https://api.deepseek.com"
