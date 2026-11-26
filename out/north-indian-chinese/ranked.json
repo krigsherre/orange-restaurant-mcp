@@ -23,12 +23,13 @@
     "lng": 77.6245,
     "radius_km": 5.0
   },
-  "generated_at": "2026-11-26T16:24:39",
+  "generated_at": "2026-11-26T17:15:56",
   "meta": {
     "judge": "rubric",
     "judge_requested": "rubric",
     "judge_fallback": null,
     "booking": null,
+    "auto_skipped": [],
     "require_availability": false,
     "sources": [
       "swiggy_dineout (fixture)",
@@ -37,16 +38,16 @@
     "notes": [
       "swiggy_dineout: fixture (set SWIGGY_MCP_TOKEN for live)",
       "district: fixture (set DISTRICT_MCP_ENDPOINT + DISTRICT_MCP_TOKEN for live)",
-      "swiggy_dineout: discovered 18",
-      "district: discovered 12",
-      "availability probed: 8"
+      "swiggy_dineout: discovered 32",
+      "district: discovered 21",
+      "availability probed: 10"
     ],
     "counts": {
-      "discovered": 30,
-      "after_filters": 8,
-      "rejected": 22,
-      "with_offers": 7,
-      "bookable": 3
+      "discovered": 53,
+      "after_filters": 10,
+      "rejected": 43,
+      "with_offers": 9,
+      "bookable": 4
     },
     "constraints": {
       "radius_km": 5.0,
@@ -61,8 +62,8 @@
     }
   },
   "counts": {
-    "ranked": 8,
-    "rejected": 22
+    "ranked": 10,
+    "rejected": 43
   },
   "results": [
     {
@@ -104,6 +105,59 @@
       },
       "booking_url": "",
       "rank": 1
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_aldaaz",
+      "name": "Al Daaz",
+      "cuisines": [
+        "North Indian",
+        "Mughlai"
+      ],
+      "locality": "Koramangala",
+      "distance_km": 0.9,
+      "distance_source": "provider",
+      "cost_for_two": 1400.0,
+      "per_person": 700.0,
+      "bill_reference": 1400.0,
+      "rating": 4.2,
+      "rating_count": 4800,
+      "cash_pct": 21.4,
+      "offer_score": 21.4,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Flat ₹300 off on bills above ₹1,000",
+        "source": "offers",
+        "type": "flat",
+        "value": 300.0,
+        "min_spend": 1000.0,
+        "score": 21.4,
+        "effective_pct": 21.4,
+        "flags": [
+          "one-per-table"
+        ],
+        "rationale": "₹300 off = 21.4% of a ₹1,400 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "available",
+        "detail": "9:00 PM–10:30 PM · Dinner · 4 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "9:00 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 4,
+          "slot_id": "7000",
+          "item_id": "sw_aldaaz-ticket_8000",
+          "reservation_time": 1795793400,
+          "duration_min": 90,
+          "window": "9:00 PM–10:30 PM"
+        }
+      },
+      "booking_url": "",
+      "rank": 2
     },
     {
       "provider": "swiggy_dineout",
@@ -157,7 +211,48 @@
         }
       },
       "booking_url": "",
-      "rank": 2
+      "rank": 3
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_hakka",
+      "name": "Hakka Legend",
+      "cuisines": [
+        "Chinese",
+        "Thai"
+      ],
+      "locality": "Koramangala",
+      "distance_km": 1.4,
+      "distance_source": "provider",
+      "cost_for_two": 1100.0,
+      "per_person": 550.0,
+      "bill_reference": 1100.0,
+      "rating": 4.0,
+      "rating_count": 2700,
+      "cash_pct": 20.0,
+      "offer_score": 11.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "20% off up to ₹300",
+        "source": "offers",
+        "type": "percent",
+        "value": 20.0,
+        "min_spend": 1000.0,
+        "score": 11.0,
+        "effective_pct": 20.0,
+        "flags": [
+          "capped-up-to",
+          "non-stackable"
+        ],
+        "rationale": "20% off = 20% of a ₹1,100 bill; 'up to' is a ceiling",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "unknown",
+        "detail": "No slot data returned"
+      },
+      "booking_url": "",
+      "rank": 4
     },
     {
       "provider": "swiggy_dineout",
@@ -211,7 +306,7 @@
         }
       },
       "booking_url": "",
-      "rank": 3
+      "rank": 5
     },
     {
       "provider": "district",
@@ -249,7 +344,7 @@
         "detail": "Book via District link"
       },
       "booking_url": "https://www.district.in/bengaluru/biryani-blues-hsr",
-      "rank": 4
+      "rank": 6
     },
     {
       "provider": "district",
@@ -289,7 +384,7 @@
         "detail": "Book via District link"
       },
       "booking_url": "https://www.district.in/bengaluru/gillys-restobar-koramangala",
-      "rank": 5
+      "rank": 7
     },
     {
       "provider": "swiggy_dineout",
@@ -327,7 +422,7 @@
         "detail": "No slot data returned"
       },
       "booking_url": "",
-      "rank": 6
+      "rank": 8
     },
     {
       "provider": "swiggy_dineout",
@@ -368,7 +463,7 @@
         "detail": "No slot data returned"
       },
       "booking_url": "",
-      "rank": 7
+      "rank": 9
     },
     {
       "provider": "swiggy_dineout",
@@ -409,7 +504,7 @@
         }
       },
       "booking_url": "",
-      "rank": 8
+      "rank": 10
     }
   ],
   "rejected": [
@@ -510,6 +605,102 @@
       "per_person": 800.0
     },
     {
+      "provider": "swiggy_dineout",
+      "name": "Koramangala Social",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Pub, Continental, Finger Food",
+      "distance_km": 0.4,
+      "per_person": 900.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Rameshwaram Cafe",
+      "reason": "cuisine-mismatch",
+      "detail": "serves South Indian, Breakfast",
+      "distance_km": 1.0,
+      "per_person": 300.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Nagarjuna",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Andhra, Biryani",
+      "distance_km": 1.0,
+      "per_person": 750.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Pizza Hut",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Pizza, Italian, Fast Food",
+      "distance_km": 1.3,
+      "per_person": 600.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Chai Point",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Cafe, Beverages",
+      "distance_km": 0.7,
+      "per_person": 200.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "MTR",
+      "reason": "cuisine-mismatch",
+      "detail": "serves South Indian, Breakfast",
+      "distance_km": 1.9,
+      "per_person": 400.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Byg Brewski",
+      "reason": "beyond-radius",
+      "detail": "",
+      "distance_km": 7.7,
+      "per_person": 1400.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Toscano",
+      "reason": "over-budget",
+      "detail": "",
+      "distance_km": 1.0,
+      "per_person": 1100.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Sweet Chariot",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Bakery, Desserts",
+      "distance_km": 0.7,
+      "per_person": 225.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "The Black Pearl",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Continental, Lounge",
+      "distance_km": 1.2,
+      "per_person": 800.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "KFC",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Fast Food, Burgers",
+      "distance_km": 1.2,
+      "per_person": 450.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Anand Sweets",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Desserts, South Indian",
+      "distance_km": 1.0,
+      "per_person": 250.0
+    },
+    {
       "provider": "district",
       "name": "Toit",
       "reason": "cuisine-mismatch",
@@ -588,6 +779,78 @@
       "detail": "",
       "distance_km": 1.573,
       "per_person": null
+    },
+    {
+      "provider": "district",
+      "name": "Koramangala Social",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Pub, Continental",
+      "distance_km": 0.4,
+      "per_person": 900.0
+    },
+    {
+      "provider": "district",
+      "name": "Rameshwaram Cafe",
+      "reason": "cuisine-mismatch",
+      "detail": "serves South Indian, Breakfast",
+      "distance_km": 1.0,
+      "per_person": 275.0
+    },
+    {
+      "provider": "district",
+      "name": "Nagarjuna",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Andhra, Biryani",
+      "distance_km": 1.0,
+      "per_person": 750.0
+    },
+    {
+      "provider": "district",
+      "name": "Pizza Hut",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Pizza, Italian",
+      "distance_km": 1.3,
+      "per_person": 575.0
+    },
+    {
+      "provider": "district",
+      "name": "Chai Point",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Cafe, Beverages",
+      "distance_km": 0.7,
+      "per_person": 175.0
+    },
+    {
+      "provider": "district",
+      "name": "MTR",
+      "reason": "cuisine-mismatch",
+      "detail": "serves South Indian, Breakfast",
+      "distance_km": 1.9,
+      "per_person": 425.0
+    },
+    {
+      "provider": "district",
+      "name": "Byg Brewski",
+      "reason": "beyond-radius",
+      "detail": "",
+      "distance_km": 7.7,
+      "per_person": 1300.0
+    },
+    {
+      "provider": "district",
+      "name": "Toscano",
+      "reason": "over-budget",
+      "detail": "",
+      "distance_km": 1.0,
+      "per_person": 1050.0
+    },
+    {
+      "provider": "district",
+      "name": "The Black Pearl",
+      "reason": "cuisine-mismatch",
+      "detail": "serves Continental, Lounge",
+      "distance_km": 1.2,
+      "per_person": 800.0
     }
   ]
 }

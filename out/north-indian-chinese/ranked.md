@@ -1,4 +1,4 @@
-# Koramangala restaurants — offer-ranked (8 results)
+# Koramangala restaurants — offer-ranked (10 results)
 
 **Anchor** 12.9352, 77.6245 · **radius** ≤ 5 km · **budget** ≤ ₹1,000/person · **party** 2 · **when** 2026-11-27 8:00 PM–10:00 PM
 **Cuisine** North Indian, Chinese (any match)
@@ -6,23 +6,27 @@
 **Bill reference**: each restaurant's cost for two (per person × party)
 
 Sorted by: cash value at the reference bill ↓, score ↓, distance ↑, name A–Z (then provider/id).
-**Top 3:** **Beijing Bites** (Flat ₹300 off on total bill, 25% of bill) · **Chulha Chauki Da Dhaba** (20% off up to ₹400, 20% of bill) · **Meghana Foods** (Flat ₹200 off on bills above ₹1,200, 14% of bill)
+**Top 3:** **Beijing Bites** (Flat ₹300 off on total bill, 25% of bill) · **Al Daaz** (Flat ₹300 off on bills above ₹1,000, 21% of bill) · **Chulha Chauki Da Dhaba** (20% off up to ₹400, 20% of bill)
 
 | # | Restaurant | Provider | Best offer | Cash % | Score | ₹/person | Dist | Slot (start–end) | Booking |
 |---:|---|---|---|---:|---:|---:|---:|---|---|
 | 1 | **Beijing Bites** | `swiggy_dineout` | Flat ₹300 off on total bill *(10)* | 25% | 10 | ₹600 | 1.1 km | — | no data |
-| 2 | **Chulha Chauki Da Dhaba** | `swiggy_dineout` | 20% off up to ₹400 *(11)* | 20% | 11 | ₹650 | 1.2 km | 8:00 PM–9:30 PM | free |
-| 3 | **Meghana Foods** | `swiggy_dineout` | Flat ₹200 off on bills above ₹1,200 *(14)* | 14% | 14 | ₹700 | 0.9 km | 8:00 PM–9:30 PM | free |
-| 4 | **Biryani Blues** | `district` | Flat ₹150 off *(14)* | 14% | 14 | ₹550 | 3.6 km | — | District link |
-| 5 | **Gilly's Restobar** | `district` | Flat 12% off on food *(12)* | 12% | 12 | ₹825 | 1.8 km | — | District link |
-| 6 | **Spice Elephant** | `swiggy_dineout` | Complimentary dessert platter *(12)* | 12% | 12 | ₹900 | 1.9 km | — | no data |
-| 7 | **Gilly's Restobar** | `swiggy_dineout` | Flat 10% off on food *(10)* | 10% | 10 | ₹850 | 2.3 km | — | no data |
-| 8 | **Empire Restaurant** | `swiggy_dineout` | No offer | 0% | 0 | ₹500 | 1.6 km | 8:00 PM–9:30 PM | free |
+| 2 | **Al Daaz** | `swiggy_dineout` | Flat ₹300 off on bills above ₹1,000 *(21)* | 21% | 21 | ₹700 | 0.9 km | 9:00 PM–10:30 PM | free |
+| 3 | **Chulha Chauki Da Dhaba** | `swiggy_dineout` | 20% off up to ₹400 *(11)* | 20% | 11 | ₹650 | 1.2 km | 8:00 PM–9:30 PM | free |
+| 4 | **Hakka Legend** | `swiggy_dineout` | 20% off up to ₹300 *(11)* | 20% | 11 | ₹550 | 1.4 km | — | no data |
+| 5 | **Meghana Foods** | `swiggy_dineout` | Flat ₹200 off on bills above ₹1,200 *(14)* | 14% | 14 | ₹700 | 0.9 km | 8:00 PM–9:30 PM | free |
+| 6 | **Biryani Blues** | `district` | Flat ₹150 off *(14)* | 14% | 14 | ₹550 | 3.6 km | — | District link |
+| 7 | **Gilly's Restobar** | `district` | Flat 12% off on food *(12)* | 12% | 12 | ₹825 | 1.8 km | — | District link |
+| 8 | **Spice Elephant** | `swiggy_dineout` | Complimentary dessert platter *(12)* | 12% | 12 | ₹900 | 1.9 km | — | no data |
+| 9 | **Gilly's Restobar** | `swiggy_dineout` | Flat 10% off on food *(10)* | 10% | 10 | ₹850 | 2.3 km | — | no data |
+| 10 | **Empire Restaurant** | `swiggy_dineout` | No offer | 0% | 0 | ₹500 | 1.6 km | 8:00 PM–9:30 PM | free |
 
 ## Why each offer scored that way
 
 - **Beijing Bites** — Flat ₹300 off on total bill → 25% of a ₹1,200 bill, score 10, flags: card-required. ₹300 off = 25% of a ₹1,200 bill; needs a specific card
+- **Al Daaz** — Flat ₹300 off on bills above ₹1,000 → 21% of a ₹1,400 bill, score 21, flags: one-per-table. ₹300 off = 21.4% of a ₹1,400 bill
 - **Chulha Chauki Da Dhaba** — 20% off up to ₹400 → 20% of a ₹1,300 bill, score 11, flags: capped-up-to, non-stackable. 20% off = 20% of a ₹1,300 bill; 'up to' is a ceiling
+- **Hakka Legend** — 20% off up to ₹300 → 20% of a ₹1,100 bill, score 11, flags: capped-up-to, non-stackable. 20% off = 20% of a ₹1,100 bill; 'up to' is a ceiling
 - **Meghana Foods** — Flat ₹200 off on bills above ₹1,200 → 14% of a ₹1,400 bill, score 14, flags: one-per-table. ₹200 off = 14.3% of a ₹1,400 bill
 - **Biryani Blues** — Flat ₹150 off → 14% of a ₹1,100 bill, score 14, flags: none. ₹150 off = 13.6% of a ₹1,100 bill
 - **Gilly's Restobar** — Flat 12% off on food → 12% of a ₹1,650 bill, score 12, flags: one-per-table. 12% off = 12% of a ₹1,650 bill
@@ -32,9 +36,9 @@ Sorted by: cash value at the reference bill ↓, score ↓, distance ↑, name A
 
 ## Excluded before ranking
 
-- **beyond-radius** (2): Big Brewsky, Windmills Craftworks
-- **cuisine-mismatch** (18): Brahmins Coffee Bar, Corner House Ice Cream, Dyu Art Cafe, Dyu Art Cafe, Fenny's Lounge, Fenny's Lounge, Greenland Veg, Meghana Foods
-- **over-budget** (1): Prost Brew Pub
+- **beyond-radius** (4): Big Brewsky, Byg Brewski, Byg Brewski, Windmills Craftworks
+- **cuisine-mismatch** (35): Anand Sweets, Brahmins Coffee Bar, Chai Point, Chai Point, Corner House Ice Cream, Dyu Art Cafe, Dyu Art Cafe, Fenny's Lounge
+- **over-budget** (3): Prost Brew Pub, Toscano, Toscano
 - **unknown-cost** (1): Cafe Azzure
 
 ---

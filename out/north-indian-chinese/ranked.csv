@@ -1,9 +1,11 @@
 rank,name,provider,provider_id,best_offer,offer_score,effective_pct,bill_reference,per_person,distance_km,rating,availability,flags,rationale
 1,Beijing Bites,swiggy_dineout,sw_beijing,Flat ₹300 off on total bill,10.0,25.0,1200.0,600.0,1.1,4.0,No slot data returned,card-required,"₹300 off = 25% of a ₹1,200 bill; needs a specific card"
-2,Chulha Chauki Da Dhaba,swiggy_dineout,sw_chulha,20% off up to ₹400,11.0,20.0,1300.0,650.0,1.2,4.2,8:00 PM–9:30 PM · Dinner · 5 covers left,"capped-up-to, non-stackable","20% off = 20% of a ₹1,300 bill; 'up to' is a ceiling"
-3,Meghana Foods,swiggy_dineout,sw_meghana,"Flat ₹200 off on bills above ₹1,200",14.3,14.3,1400.0,700.0,0.9,4.5,8:00 PM–9:30 PM · Dinner · 4 covers left,one-per-table,"₹200 off = 14.3% of a ₹1,400 bill"
-4,Biryani Blues,district,dt_biryaniblues,Flat ₹150 off,13.6,13.6,1100.0,550.0,3.6,4.1,Book via District link,—,"₹150 off = 13.6% of a ₹1,100 bill"
-5,Gilly's Restobar,district,dt_gillys,Flat 12% off on food,12.0,12.0,1650.0,825.0,1.764,4.2,Book via District link,one-per-table,"12% off = 12% of a ₹1,650 bill"
-6,Spice Elephant,swiggy_dineout,sw_spice,Complimentary dessert platter,12.0,12.0,1800.0,900.0,1.9,4.0,No slot data returned,—,"non-cash perk = 12% of a ₹1,800 bill"
-7,Gilly's Restobar,swiggy_dineout,sw_gillys,Flat 10% off on food,10.0,10.0,1700.0,850.0,2.3,4.2,No slot data returned,one-per-table,"10% off = 10% of a ₹1,700 bill"
-8,Empire Restaurant,swiggy_dineout,sw_empire,,0.0,,1000.0,500.0,1.6,4.1,8:00 PM–9:30 PM · Dinner · 20 covers left,—,
+2,Al Daaz,swiggy_dineout,sw_aldaaz,"Flat ₹300 off on bills above ₹1,000",21.4,21.4,1400.0,700.0,0.9,4.2,9:00 PM–10:30 PM · Dinner · 4 covers left,one-per-table,"₹300 off = 21.4% of a ₹1,400 bill"
+3,Chulha Chauki Da Dhaba,swiggy_dineout,sw_chulha,20% off up to ₹400,11.0,20.0,1300.0,650.0,1.2,4.2,8:00 PM–9:30 PM · Dinner · 5 covers left,"capped-up-to, non-stackable","20% off = 20% of a ₹1,300 bill; 'up to' is a ceiling"
+4,Hakka Legend,swiggy_dineout,sw_hakka,20% off up to ₹300,11.0,20.0,1100.0,550.0,1.4,4.0,No slot data returned,"capped-up-to, non-stackable","20% off = 20% of a ₹1,100 bill; 'up to' is a ceiling"
+5,Meghana Foods,swiggy_dineout,sw_meghana,"Flat ₹200 off on bills above ₹1,200",14.3,14.3,1400.0,700.0,0.9,4.5,8:00 PM–9:30 PM · Dinner · 4 covers left,one-per-table,"₹200 off = 14.3% of a ₹1,400 bill"
+6,Biryani Blues,district,dt_biryaniblues,Flat ₹150 off,13.6,13.6,1100.0,550.0,3.6,4.1,Book via District link,—,"₹150 off = 13.6% of a ₹1,100 bill"
+7,Gilly's Restobar,district,dt_gillys,Flat 12% off on food,12.0,12.0,1650.0,825.0,1.764,4.2,Book via District link,one-per-table,"12% off = 12% of a ₹1,650 bill"
+8,Spice Elephant,swiggy_dineout,sw_spice,Complimentary dessert platter,12.0,12.0,1800.0,900.0,1.9,4.0,No slot data returned,—,"non-cash perk = 12% of a ₹1,800 bill"
+9,Gilly's Restobar,swiggy_dineout,sw_gillys,Flat 10% off on food,10.0,10.0,1700.0,850.0,2.3,4.2,No slot data returned,one-per-table,"10% off = 10% of a ₹1,700 bill"
+10,Empire Restaurant,swiggy_dineout,sw_empire,,0.0,,1000.0,500.0,1.6,4.1,8:00 PM–9:30 PM · Dinner · 20 covers left,—,

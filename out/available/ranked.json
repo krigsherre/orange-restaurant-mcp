@@ -20,12 +20,13 @@
     "lng": 77.6245,
     "radius_km": 5.0
   },
-  "generated_at": "2026-11-26T16:24:39",
+  "generated_at": "2026-11-26T17:15:55",
   "meta": {
     "judge": "rubric",
     "judge_requested": "rubric",
     "judge_fallback": null,
     "booking": null,
+    "auto_skipped": [],
     "require_availability": true,
     "sources": [
       "swiggy_dineout (fixture)",
@@ -34,16 +35,16 @@
     "notes": [
       "swiggy_dineout: fixture (set SWIGGY_MCP_TOKEN for live)",
       "district: fixture (set DISTRICT_MCP_ENDPOINT + DISTRICT_MCP_TOKEN for live)",
-      "swiggy_dineout: discovered 18",
-      "district: discovered 12",
-      "availability probed: 26"
+      "swiggy_dineout: discovered 32",
+      "district: discovered 21",
+      "availability probed: 45"
     ],
     "counts": {
-      "discovered": 30,
-      "after_filters": 6,
-      "rejected": 24,
-      "with_offers": 5,
-      "bookable": 6
+      "discovered": 53,
+      "after_filters": 13,
+      "rejected": 40,
+      "with_offers": 11,
+      "bookable": 13
     },
     "constraints": {
       "radius_km": 5.0,
@@ -55,10 +56,115 @@
     }
   },
   "counts": {
-    "ranked": 6,
-    "rejected": 24
+    "ranked": 13,
+    "rejected": 40
   },
   "results": [
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_aldaaz",
+      "name": "Al Daaz",
+      "cuisines": [
+        "North Indian",
+        "Mughlai"
+      ],
+      "locality": "Koramangala",
+      "distance_km": 0.9,
+      "distance_source": "provider",
+      "cost_for_two": 1400.0,
+      "per_person": 700.0,
+      "bill_reference": 1400.0,
+      "rating": 4.2,
+      "rating_count": 4800,
+      "cash_pct": 21.4,
+      "offer_score": 21.4,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Flat ₹300 off on bills above ₹1,000",
+        "source": "offers",
+        "type": "flat",
+        "value": 300.0,
+        "min_spend": 1000.0,
+        "score": 21.4,
+        "effective_pct": 21.4,
+        "flags": [
+          "one-per-table"
+        ],
+        "rationale": "₹300 off = 21.4% of a ₹1,400 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "available",
+        "detail": "9:00 PM–10:30 PM · Dinner · 4 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "9:00 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 4,
+          "slot_id": "7000",
+          "item_id": "sw_aldaaz-ticket_8000",
+          "reservation_time": 1795793400,
+          "duration_min": 90,
+          "window": "9:00 PM–10:30 PM"
+        }
+      },
+      "booking_url": "",
+      "rank": 1
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_pizzahut",
+      "name": "Pizza Hut",
+      "cuisines": [
+        "Pizza",
+        "Italian",
+        "Fast Food"
+      ],
+      "locality": "Koramangala",
+      "distance_km": 1.3,
+      "distance_source": "provider",
+      "cost_for_two": 1200.0,
+      "per_person": 600.0,
+      "bill_reference": 1200.0,
+      "rating": 4.0,
+      "rating_count": 12300,
+      "cash_pct": 20.0,
+      "offer_score": 20.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Buy 1 Get 1 on medium pizzas",
+        "source": "offers",
+        "type": "perk",
+        "value": 0.0,
+        "min_spend": null,
+        "score": 20.0,
+        "effective_pct": 20.0,
+        "flags": [],
+        "rationale": "non-cash perk = 20% of a ₹1,200 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "available",
+        "detail": "8:30 PM–10:00 PM · Dinner · 4 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "8:30 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 4,
+          "slot_id": "7000",
+          "item_id": "sw_pizzahut-ticket_8000",
+          "reservation_time": 1795791600,
+          "duration_min": 90,
+          "window": "8:30 PM–10:00 PM"
+        }
+      },
+      "booking_url": "",
+      "rank": 2
+    },
     {
       "provider": "swiggy_dineout",
       "provider_id": "sw_onesta",
@@ -109,7 +215,61 @@
         }
       },
       "booking_url": "",
-      "rank": 1
+      "rank": 3
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_social",
+      "name": "Koramangala Social",
+      "cuisines": [
+        "Pub",
+        "Continental",
+        "Finger Food"
+      ],
+      "locality": "Koramangala",
+      "distance_km": 0.4,
+      "distance_source": "provider",
+      "cost_for_two": 1800.0,
+      "per_person": 900.0,
+      "bill_reference": 1800.0,
+      "rating": 4.4,
+      "rating_count": 8100,
+      "cash_pct": 20.0,
+      "offer_score": 17.0,
+      "offer_count": 2,
+      "best_offer": {
+        "title": "Flat 20% off on total bill",
+        "source": "offers",
+        "type": "percent",
+        "value": 20.0,
+        "min_spend": null,
+        "score": 17.0,
+        "effective_pct": 20.0,
+        "flags": [
+          "non-stackable"
+        ],
+        "rationale": "20% off = 20% of a ₹1,800 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "available",
+        "detail": "8:00 PM–9:30 PM · Dinner · 4 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "8:00 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 4,
+          "slot_id": "7000",
+          "item_id": "sw_social-ticket_8000",
+          "reservation_time": 1795789800,
+          "duration_min": 90,
+          "window": "8:00 PM–9:30 PM"
+        }
+      },
+      "booking_url": "",
+      "rank": 4
     },
     {
       "provider": "swiggy_dineout",
@@ -163,7 +323,7 @@
         }
       },
       "booking_url": "",
-      "rank": 2
+      "rank": 5
     },
     {
       "provider": "swiggy_dineout",
@@ -217,7 +377,60 @@
         }
       },
       "booking_url": "",
-      "rank": 3
+      "rank": 6
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_nagarjuna",
+      "name": "Nagarjuna",
+      "cuisines": [
+        "Andhra",
+        "Biryani"
+      ],
+      "locality": "Koramangala",
+      "distance_km": 1.0,
+      "distance_source": "provider",
+      "cost_for_two": 1500.0,
+      "per_person": 750.0,
+      "bill_reference": 1500.0,
+      "rating": 4.3,
+      "rating_count": 7600,
+      "cash_pct": 16.7,
+      "offer_score": 16.7,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "Flat ₹250 off on bills above ₹1,200",
+        "source": "offers",
+        "type": "flat",
+        "value": 250.0,
+        "min_spend": 1200.0,
+        "score": 16.7,
+        "effective_pct": 16.7,
+        "flags": [
+          "one-per-table"
+        ],
+        "rationale": "₹250 off = 16.7% of a ₹1,500 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "available",
+        "detail": "8:00 PM–9:30 PM · Dinner · 4 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "8:00 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 4,
+          "slot_id": "7000",
+          "item_id": "sw_nagarjuna-ticket_8000",
+          "reservation_time": 1795789800,
+          "duration_min": 90,
+          "window": "8:00 PM–9:30 PM"
+        }
+      },
+      "booking_url": "",
+      "rank": 7
     },
     {
       "provider": "swiggy_dineout",
@@ -269,7 +482,7 @@
         }
       },
       "booking_url": "",
-      "rank": 4
+      "rank": 8
     },
     {
       "provider": "swiggy_dineout",
@@ -323,7 +536,109 @@
         }
       },
       "booking_url": "",
-      "rank": 5
+      "rank": 9
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_sweetchariot",
+      "name": "Sweet Chariot",
+      "cuisines": [
+        "Bakery",
+        "Desserts"
+      ],
+      "locality": "Koramangala",
+      "distance_km": 0.7,
+      "distance_source": "provider",
+      "cost_for_two": 450.0,
+      "per_person": 225.0,
+      "bill_reference": 450.0,
+      "rating": 4.1,
+      "rating_count": 1900,
+      "cash_pct": 10.0,
+      "offer_score": 10.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "10% off on total bill",
+        "source": "offers",
+        "type": "percent",
+        "value": 10.0,
+        "min_spend": null,
+        "score": 10.0,
+        "effective_pct": 10.0,
+        "flags": [],
+        "rationale": "10% off = 10% of a ₹450 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "available",
+        "detail": "8:00 PM–9:30 PM · Dinner · 4 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "8:00 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 4,
+          "slot_id": "7000",
+          "item_id": "sw_sweetchariot-ticket_8000",
+          "reservation_time": 1795789800,
+          "duration_min": 90,
+          "window": "8:00 PM–9:30 PM"
+        }
+      },
+      "booking_url": "",
+      "rank": 10
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_rameshwaram",
+      "name": "Rameshwaram Cafe",
+      "cuisines": [
+        "South Indian",
+        "Breakfast"
+      ],
+      "locality": "Koramangala",
+      "distance_km": 1.0,
+      "distance_source": "provider",
+      "cost_for_two": 600.0,
+      "per_person": 300.0,
+      "bill_reference": 600.0,
+      "rating": 4.6,
+      "rating_count": 21400,
+      "cash_pct": 10.0,
+      "offer_score": 10.0,
+      "offer_count": 1,
+      "best_offer": {
+        "title": "10% off on total bill",
+        "source": "offers",
+        "type": "percent",
+        "value": 10.0,
+        "min_spend": null,
+        "score": 10.0,
+        "effective_pct": 10.0,
+        "flags": [],
+        "rationale": "10% off = 10% of a ₹600 bill",
+        "judged_by": "rubric"
+      },
+      "availability": {
+        "status": "available",
+        "detail": "8:30 PM–10:00 PM · Dinner · 5 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "8:30 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 5,
+          "slot_id": "7001",
+          "item_id": "sw_rameshwaram-ticket_8001",
+          "reservation_time": 1795791600,
+          "duration_min": 90,
+          "window": "8:30 PM–10:00 PM"
+        }
+      },
+      "booking_url": "",
+      "rank": 11
     },
     {
       "provider": "swiggy_dineout",
@@ -364,7 +679,47 @@
         }
       },
       "booking_url": "",
-      "rank": 6
+      "rank": 12
+    },
+    {
+      "provider": "swiggy_dineout",
+      "provider_id": "sw_mtr",
+      "name": "MTR",
+      "cuisines": [
+        "South Indian",
+        "Breakfast"
+      ],
+      "locality": "Koramangala",
+      "distance_km": 1.9,
+      "distance_source": "provider",
+      "cost_for_two": 800.0,
+      "per_person": 400.0,
+      "bill_reference": 800.0,
+      "rating": 4.5,
+      "rating_count": 15200,
+      "cash_pct": 0.0,
+      "offer_score": 0.0,
+      "offer_count": 0,
+      "best_offer": null,
+      "availability": {
+        "status": "available",
+        "detail": "8:00 PM–9:30 PM · Dinner · 4 covers left",
+        "slot": {
+          "date": "2026-11-27",
+          "display_time": "8:00 PM",
+          "group": "Dinner",
+          "is_free": true,
+          "booking_price": 0.0,
+          "inventory": 4,
+          "slot_id": "7000",
+          "item_id": "sw_mtr-ticket_8000",
+          "reservation_time": 1795789800,
+          "duration_min": 90,
+          "window": "8:00 PM–9:30 PM"
+        }
+      },
+      "booking_url": "",
+      "rank": 13
     }
   ],
   "rejected": [
@@ -385,6 +740,22 @@
       "per_person": 1200.0
     },
     {
+      "provider": "swiggy_dineout",
+      "name": "Byg Brewski",
+      "reason": "beyond-radius",
+      "detail": "",
+      "distance_km": 7.7,
+      "per_person": 1400.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Toscano",
+      "reason": "over-budget",
+      "detail": "",
+      "distance_km": 1.0,
+      "per_person": 1100.0
+    },
+    {
       "provider": "district",
       "name": "Windmills Craftworks",
       "reason": "beyond-radius",
@@ -399,6 +770,22 @@
       "detail": "",
       "distance_km": 1.573,
       "per_person": null
+    },
+    {
+      "provider": "district",
+      "name": "Byg Brewski",
+      "reason": "beyond-radius",
+      "detail": "",
+      "distance_km": 7.7,
+      "per_person": 1300.0
+    },
+    {
+      "provider": "district",
+      "name": "Toscano",
+      "reason": "over-budget",
+      "detail": "",
+      "distance_km": 1.0,
+      "per_person": 1050.0
     },
     {
       "provider": "swiggy_dineout",
@@ -481,6 +868,46 @@
       "per_person": 850.0
     },
     {
+      "provider": "swiggy_dineout",
+      "name": "Chai Point",
+      "reason": "no-availability",
+      "detail": "no slot between 8:00 PM–10:00 PM",
+      "distance_km": 0.7,
+      "per_person": 200.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Hakka Legend",
+      "reason": "no-availability",
+      "detail": "no slot between 8:00 PM–10:00 PM",
+      "distance_km": 1.4,
+      "per_person": 550.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "The Black Pearl",
+      "reason": "no-availability",
+      "detail": "no slot between 8:00 PM–10:00 PM",
+      "distance_km": 1.2,
+      "per_person": 800.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "KFC",
+      "reason": "no-availability",
+      "detail": "no slot between 8:00 PM–10:00 PM",
+      "distance_km": 1.2,
+      "per_person": 450.0
+    },
+    {
+      "provider": "swiggy_dineout",
+      "name": "Anand Sweets",
+      "reason": "no-availability",
+      "detail": "no slot between 8:00 PM–10:00 PM",
+      "distance_km": 1.0,
+      "per_person": 250.0
+    },
+    {
       "provider": "district",
       "name": "Toit",
       "reason": "no-availability",
@@ -559,6 +986,62 @@
       "detail": "no slot between 8:00 PM–10:00 PM",
       "distance_km": 1.764,
       "per_person": 825.0
+    },
+    {
+      "provider": "district",
+      "name": "Koramangala Social",
+      "reason": "no-availability",
+      "detail": "no slot between 8:00 PM–10:00 PM",
+      "distance_km": 0.4,
+      "per_person": 900.0
+    },
+    {
+      "provider": "district",
+      "name": "Rameshwaram Cafe",
+      "reason": "no-availability",
+      "detail": "no slot between 8:00 PM–10:00 PM",
+      "distance_km": 1.0,
+      "per_person": 275.0
+    },
+    {
+      "provider": "district",
+      "name": "Nagarjuna",
+      "reason": "no-availability",
+      "detail": "no slot between 8:00 PM–10:00 PM",
+      "distance_km": 1.0,
+      "per_person": 750.0
+    },
+    {
+      "provider": "district",
+      "name": "Pizza Hut",
+      "reason": "no-availability",
+      "detail": "no slot between 8:00 PM–10:00 PM",
+      "distance_km": 1.3,
+      "per_person": 575.0
+    },
+    {
+      "provider": "district",
+      "name": "Chai Point",
+      "reason": "no-availability",
+      "detail": "no slot between 8:00 PM–10:00 PM",
+      "distance_km": 0.7,
+      "per_person": 175.0
+    },
+    {
+      "provider": "district",
+      "name": "MTR",
+      "reason": "no-availability",
+      "detail": "no slot between 8:00 PM–10:00 PM",
+      "distance_km": 1.9,
+      "per_person": 425.0
+    },
+    {
+      "provider": "district",
+      "name": "The Black Pearl",
+      "reason": "no-availability",
+      "detail": "no slot between 8:00 PM–10:00 PM",
+      "distance_km": 1.2,
+      "per_person": 800.0
     }
   ]
 }

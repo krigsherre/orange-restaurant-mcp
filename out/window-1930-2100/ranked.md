@@ -1,35 +1,51 @@
-# Koramangala restaurants — offer-ranked (6 results)
+# Koramangala restaurants — offer-ranked (14 results)
 
 **Anchor** 12.9352, 77.6245 · **radius** ≤ 5 km · **budget** ≤ ₹1,000/person · **party** 2 · **when** 2026-11-27 7:30 PM–9:00 PM
 **Offer judge**: `rubric` · **Sources**: swiggy_dineout (fixture), district (fixture)
 **Bill reference**: each restaurant's cost for two (per person × party)
 
 Sorted by: cash value at the reference bill ↓, score ↓, distance ↑, name A–Z (then provider/id).
-**Top 3:** **Onesta** (1+1 on all pizzas, 20% of bill) · **Toit** (Flat 20% off on total bill, 20% of bill) · **Chulha Chauki Da Dhaba** (20% off up to ₹400, 20% of bill)
+**Top 3:** **Al Daaz** (Flat ₹300 off on bills above ₹1,000, 21% of bill) · **Pizza Hut** (Buy 1 Get 1 on medium pizzas, 20% of bill) · **Onesta** (1+1 on all pizzas, 20% of bill)
 
 | # | Restaurant | Provider | Best offer | Cash % | Score | ₹/person | Dist | Slot (start–end) | Booking |
 |---:|---|---|---|---:|---:|---:|---:|---|---|
-| 1 | **Onesta** | `swiggy_dineout` | 1+1 on all pizzas *(20)* | 20% | 20 | ₹500 | 1.5 km | 8:30 PM–10:00 PM | free |
-| 2 | **Toit** | `swiggy_dineout` | Flat 20% off on total bill *(17)* | 20% | 17 | ₹1,000 | 1.1 km | 8:00 PM–9:30 PM | ₹500 prebook |
-| 3 | **Chulha Chauki Da Dhaba** | `swiggy_dineout` | 20% off up to ₹400 *(11)* | 20% | 11 | ₹650 | 1.2 km | 8:00 PM–9:30 PM | free |
-| 4 | **Truffles** | `swiggy_dineout` | Flat 15% off on total bill *(15)* | 15% | 15 | ₹400 | 2.1 km | 8:15 PM–9:45 PM | free |
-| 5 | **Meghana Foods** | `swiggy_dineout` | Flat ₹200 off on bills above ₹1,200 *(14)* | 14% | 14 | ₹700 | 0.9 km | 7:30 PM–9:00 PM | free |
-| 6 | **Empire Restaurant** | `swiggy_dineout` | No offer | 0% | 0 | ₹500 | 1.6 km | 8:00 PM–9:30 PM | free |
+| 1 | **Al Daaz** | `swiggy_dineout` | Flat ₹300 off on bills above ₹1,000 *(21)* | 21% | 21 | ₹700 | 0.9 km | 9:00 PM–10:30 PM | free |
+| 2 | **Pizza Hut** | `swiggy_dineout` | Buy 1 Get 1 on medium pizzas *(20)* | 20% | 20 | ₹600 | 1.3 km | 8:30 PM–10:00 PM | free |
+| 3 | **Onesta** | `swiggy_dineout` | 1+1 on all pizzas *(20)* | 20% | 20 | ₹500 | 1.5 km | 8:30 PM–10:00 PM | free |
+| 4 | **Koramangala Social** | `swiggy_dineout` | Flat 20% off on total bill *(17)* | 20% | 17 | ₹900 | 0.4 km | 8:00 PM–9:30 PM | free |
+| 5 | **Toit** | `swiggy_dineout` | Flat 20% off on total bill *(17)* | 20% | 17 | ₹1,000 | 1.1 km | 8:00 PM–9:30 PM | ₹500 prebook |
+| 6 | **Chulha Chauki Da Dhaba** | `swiggy_dineout` | 20% off up to ₹400 *(11)* | 20% | 11 | ₹650 | 1.2 km | 8:00 PM–9:30 PM | free |
+| 7 | **Nagarjuna** | `swiggy_dineout` | Flat ₹250 off on bills above ₹1,200 *(17)* | 17% | 17 | ₹750 | 1.0 km | 8:00 PM–9:30 PM | free |
+| 8 | **Truffles** | `swiggy_dineout` | Flat 15% off on total bill *(15)* | 15% | 15 | ₹400 | 2.1 km | 8:15 PM–9:45 PM | free |
+| 9 | **Meghana Foods** | `swiggy_dineout` | Flat ₹200 off on bills above ₹1,200 *(14)* | 14% | 14 | ₹700 | 0.9 km | 7:30 PM–9:00 PM | free |
+| 10 | **KFC** | `swiggy_dineout` | Flat ₹100 off on bills above ₹500 *(11)* | 11% | 11 | ₹450 | 1.2 km | 7:30 PM–9:00 PM | free |
+| 11 | **Sweet Chariot** | `swiggy_dineout` | 10% off on total bill *(10)* | 10% | 10 | ₹225 | 0.7 km | 8:00 PM–9:30 PM | free |
+| 12 | **Rameshwaram Cafe** | `swiggy_dineout` | 10% off on total bill *(10)* | 10% | 10 | ₹300 | 1.0 km | 7:30 PM–9:00 PM | free |
+| 13 | **Empire Restaurant** | `swiggy_dineout` | No offer | 0% | 0 | ₹500 | 1.6 km | 8:00 PM–9:30 PM | free |
+| 14 | **MTR** | `swiggy_dineout` | No offer | 0% | 0 | ₹400 | 1.9 km | 8:00 PM–9:30 PM | free |
 
 ## Why each offer scored that way
 
+- **Al Daaz** — Flat ₹300 off on bills above ₹1,000 → 21% of a ₹1,400 bill, score 21, flags: one-per-table. ₹300 off = 21.4% of a ₹1,400 bill
+- **Pizza Hut** — Buy 1 Get 1 on medium pizzas → 20% of a ₹1,200 bill, score 20, flags: none. non-cash perk = 20% of a ₹1,200 bill
 - **Onesta** — 1+1 on all pizzas → 20% of a ₹1,000 bill, score 20, flags: none. non-cash perk = 20% of a ₹1,000 bill
+- **Koramangala Social** — Flat 20% off on total bill → 20% of a ₹1,800 bill, score 17, flags: non-stackable. 20% off = 20% of a ₹1,800 bill
 - **Toit** — Flat 20% off on total bill → 20% of a ₹2,000 bill, score 17, flags: non-stackable. 20% off = 20% of a ₹2,000 bill
 - **Chulha Chauki Da Dhaba** — 20% off up to ₹400 → 20% of a ₹1,300 bill, score 11, flags: capped-up-to, non-stackable. 20% off = 20% of a ₹1,300 bill; 'up to' is a ceiling
+- **Nagarjuna** — Flat ₹250 off on bills above ₹1,200 → 17% of a ₹1,500 bill, score 17, flags: one-per-table. ₹250 off = 16.7% of a ₹1,500 bill
 - **Truffles** — Flat 15% off on total bill → 15% of a ₹800 bill, score 15, flags: none. 15% off = 15% of a ₹800 bill
 - **Meghana Foods** — Flat ₹200 off on bills above ₹1,200 → 14% of a ₹1,400 bill, score 14, flags: one-per-table. ₹200 off = 14.3% of a ₹1,400 bill
+- **KFC** — Flat ₹100 off on bills above ₹500 → 11% of a ₹900 bill, score 11, flags: none. ₹100 off = 11.1% of a ₹900 bill
+- **Sweet Chariot** — 10% off on total bill → 10% of a ₹450 bill, score 10, flags: none. 10% off = 10% of a ₹450 bill
+- **Rameshwaram Cafe** — 10% off on total bill → 10% of a ₹600 bill, score 10, flags: none. 10% off = 10% of a ₹600 bill
 - **Empire Restaurant** — no offer listed; ranked below every offer-bearing restaurant.
+- **MTR** — no offer listed; ranked below every offer-bearing restaurant.
 
 ## Excluded before ranking
 
-- **beyond-radius** (2): Big Brewsky, Windmills Craftworks
-- **no-availability** (20): Beijing Bites, Biryani Blues, Brahmins Coffee Bar, Corner House Ice Cream, Dyu Art Cafe, Dyu Art Cafe, Fenny's Lounge, Fenny's Lounge
-- **over-budget** (1): Prost Brew Pub
+- **beyond-radius** (4): Big Brewsky, Byg Brewski, Byg Brewski, Windmills Craftworks
+- **no-availability** (31): Anand Sweets, Beijing Bites, Biryani Blues, Brahmins Coffee Bar, Chai Point, Chai Point, Corner House Ice Cream, Dyu Art Cafe
+- **over-budget** (3): Prost Brew Pub, Toscano, Toscano
 - **unknown-cost** (1): Cafe Azzure
 
 ---

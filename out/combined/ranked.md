@@ -1,4 +1,4 @@
-# Koramangala restaurants — offer-ranked (3 results)
+# Koramangala restaurants — offer-ranked (4 results)
 
 **Anchor** 12.9352, 77.6245 · **radius** ≤ 3 km · **budget** ≤ ₹900/person · **party** 2 · **when** 2026-11-27 7:30 PM–9:30 PM
 **Cuisine** North Indian, Chinese (any match)
@@ -6,26 +6,28 @@
 **Bill reference**: each restaurant's cost for two (per person × party)
 
 Sorted by: cash value at the reference bill ↓, score ↓, distance ↑, name A–Z (then provider/id).
-**Top 3:** **Chulha Chauki Da Dhaba** (20% off up to ₹400, 20% of bill) · **Meghana Foods** (Flat ₹200 off on bills above ₹1,200, 14% of bill) · **Empire Restaurant** (no offer, 0% of bill)
+**Top 3:** **Al Daaz** (Flat ₹300 off on bills above ₹1,000, 21% of bill) · **Chulha Chauki Da Dhaba** (20% off up to ₹400, 20% of bill) · **Meghana Foods** (Flat ₹200 off on bills above ₹1,200, 14% of bill)
 
 | # | Restaurant | Provider | Best offer | Cash % | Score | ₹/person | Dist | Slot (start–end) | Booking |
 |---:|---|---|---|---:|---:|---:|---:|---|---|
-| 1 | **Chulha Chauki Da Dhaba** | `swiggy_dineout` | 20% off up to ₹400 *(11)* | 20% | 11 | ₹650 | 1.2 km | 8:00 PM–9:30 PM | free |
-| 2 | **Meghana Foods** | `swiggy_dineout` | Flat ₹200 off on bills above ₹1,200 *(14)* | 14% | 14 | ₹700 | 0.9 km | 7:30 PM–9:00 PM | free |
-| 3 | **Empire Restaurant** | `swiggy_dineout` | No offer | 0% | 0 | ₹500 | 1.6 km | 8:00 PM–9:30 PM | free |
+| 1 | **Al Daaz** | `swiggy_dineout` | Flat ₹300 off on bills above ₹1,000 *(21)* | 21% | 21 | ₹700 | 0.9 km | 9:00 PM–10:30 PM | free |
+| 2 | **Chulha Chauki Da Dhaba** | `swiggy_dineout` | 20% off up to ₹400 *(11)* | 20% | 11 | ₹650 | 1.2 km | 8:00 PM–9:30 PM | free |
+| 3 | **Meghana Foods** | `swiggy_dineout` | Flat ₹200 off on bills above ₹1,200 *(14)* | 14% | 14 | ₹700 | 0.9 km | 7:30 PM–9:00 PM | free |
+| 4 | **Empire Restaurant** | `swiggy_dineout` | No offer | 0% | 0 | ₹500 | 1.6 km | 8:00 PM–9:30 PM | free |
 
 ## Why each offer scored that way
 
+- **Al Daaz** — Flat ₹300 off on bills above ₹1,000 → 21% of a ₹1,400 bill, score 21, flags: one-per-table. ₹300 off = 21.4% of a ₹1,400 bill
 - **Chulha Chauki Da Dhaba** — 20% off up to ₹400 → 20% of a ₹1,300 bill, score 11, flags: capped-up-to, non-stackable. 20% off = 20% of a ₹1,300 bill; 'up to' is a ceiling
 - **Meghana Foods** — Flat ₹200 off on bills above ₹1,200 → 14% of a ₹1,400 bill, score 14, flags: one-per-table. ₹200 off = 14.3% of a ₹1,400 bill
 - **Empire Restaurant** — no offer listed; ranked below every offer-bearing restaurant.
 
 ## Excluded before ranking
 
-- **beyond-radius** (4): Big Brewsky, Biryani Blues, Taaza Thindi, Windmills Craftworks
-- **cuisine-mismatch** (15): Brahmins Coffee Bar, Corner House Ice Cream, Dyu Art Cafe, Dyu Art Cafe, Fenny's Lounge, Fenny's Lounge, Greenland Veg, Meghana Foods
-- **no-availability** (4): Beijing Bites, Gilly's Restobar, Gilly's Restobar, Spice Elephant
-- **over-budget** (3): Prost Brew Pub, Toit, Toit
+- **beyond-radius** (6): Big Brewsky, Biryani Blues, Byg Brewski, Byg Brewski, Taaza Thindi, Windmills Craftworks
+- **cuisine-mismatch** (32): Anand Sweets, Brahmins Coffee Bar, Chai Point, Chai Point, Corner House Ice Cream, Dyu Art Cafe, Dyu Art Cafe, Fenny's Lounge
+- **no-availability** (5): Beijing Bites, Gilly's Restobar, Gilly's Restobar, Hakka Legend, Spice Elephant
+- **over-budget** (5): Prost Brew Pub, Toit, Toit, Toscano, Toscano
 - **unknown-cost** (1): Cafe Azzure
 
 ---

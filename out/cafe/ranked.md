@@ -1,4 +1,4 @@
-# Koramangala restaurants — offer-ranked (4 results)
+# Koramangala restaurants — offer-ranked (6 results)
 
 **Anchor** 12.9352, 77.6245 · **radius** ≤ 5 km · **budget** ≤ ₹1,000/person · **party** 2 · **when** 2026-11-27 8:00 PM–10:00 PM
 **Cuisine** Cafe (any match)
@@ -6,27 +6,31 @@
 **Bill reference**: each restaurant's cost for two (per person × party)
 
 Sorted by: cash value at the reference bill ↓, score ↓, distance ↑, name A–Z (then provider/id).
-**Top 3:** **Dyu Art Cafe** (15% off up to ₹300, 15% of bill) · **Third Wave Coffee** (20% off on all beverages, 0% of bill)
+**Top 3:** **Dyu Art Cafe** (15% off up to ₹300, 15% of bill) · **Third Wave Coffee** (20% off on all beverages, 0% of bill) · **Chai Point** (15% off on all beverages, 0% of bill)
 
 | # | Restaurant | Provider | Best offer | Cash % | Score | ₹/person | Dist | Slot (start–end) | Booking |
 |---:|---|---|---|---:|---:|---:|---:|---|---|
 | 1 | **Dyu Art Cafe** | `district` | 15% off up to ₹300 *(10)* | 15% | 10 | ₹475 | 1.1 km | — | District link |
 | 2 | **Third Wave Coffee** | `district` | 20% off on all beverages *(0)* | 0% | 0 | ₹425 | 0.6 km | — | District link |
-| 3 | **Third Wave Coffee** | `swiggy_dineout` | Buy 1 Get 1 on all coffees *(0)* | 0% | 0 | ₹450 | 0.8 km | — | no slot |
-| 4 | **Dyu Art Cafe** | `swiggy_dineout` | Up to 30% off on total bill *(0)* | 0% | 0 | ₹450 | 1.3 km | — | no data |
+| 3 | **Chai Point** | `district` | 15% off on all beverages *(0)* | 0% | 0 | ₹175 | 0.7 km | — | District link |
+| 4 | **Chai Point** | `swiggy_dineout` | Buy 1 Get 1 on all chai *(0)* | 0% | 0 | ₹200 | 0.7 km | — | no slot |
+| 5 | **Third Wave Coffee** | `swiggy_dineout` | Buy 1 Get 1 on all coffees *(0)* | 0% | 0 | ₹450 | 0.8 km | — | no slot |
+| 6 | **Dyu Art Cafe** | `swiggy_dineout` | Up to 30% off on total bill *(0)* | 0% | 0 | ₹450 | 1.3 km | — | no data |
 
 ## Why each offer scored that way
 
 - **Dyu Art Cafe** — 15% off up to ₹300 → 15% of a ₹950 bill, score 10, flags: capped-up-to. 15% off = 15% of a ₹950 bill; 'up to' is a ceiling
 - **Third Wave Coffee** — 20% off on all beverages → 0% of a ₹850 bill, score 0, flags: not-valid-at-requested-time. Not usable for this booking.: daytime-only window, invalid for dinner
+- **Chai Point** — 15% off on all beverages → 0% of a ₹350 bill, score 0, flags: not-valid-at-requested-time. Not usable for this booking.: daytime-only window, invalid for dinner
+- **Chai Point** — Buy 1 Get 1 on all chai → 0% of a ₹400 bill, score 0, flags: not-valid-at-requested-time. Not usable for this booking.: daytime-only window, invalid for dinner
 - **Third Wave Coffee** — Buy 1 Get 1 on all coffees → 0% of a ₹900 bill, score 0, flags: not-valid-at-requested-time. Not usable for this booking.: daytime-only window, invalid for dinner
 - **Dyu Art Cafe** — Up to 30% off on total bill → 0% of a ₹900 bill, score 0, flags: min-spend-above-party-budget. Needs ₹2,500 spend, above the ₹2,000 party budget; unlocks at ₹2,500.
 
 ## Excluded before ranking
 
-- **beyond-radius** (2): Big Brewsky, Windmills Craftworks
-- **cuisine-mismatch** (22): Beijing Bites, Biryani Blues, Brahmins Coffee Bar, Chulha Chauki Da Dhaba, Corner House Ice Cream, Empire Restaurant, Fenny's Lounge, Fenny's Lounge
-- **over-budget** (1): Prost Brew Pub
+- **beyond-radius** (4): Big Brewsky, Byg Brewski, Byg Brewski, Windmills Craftworks
+- **cuisine-mismatch** (39): Al Daaz, Anand Sweets, Beijing Bites, Biryani Blues, Brahmins Coffee Bar, Chulha Chauki Da Dhaba, Corner House Ice Cream, Empire Restaurant
+- **over-budget** (3): Prost Brew Pub, Toscano, Toscano
 - **unknown-cost** (1): Cafe Azzure
 
 ---
